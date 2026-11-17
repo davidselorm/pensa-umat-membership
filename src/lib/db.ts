@@ -1,8 +1,9 @@
 import { DatabaseSync } from 'node:sqlite';
 import path from 'node:path';
 import fs from 'node:fs';
+import os from 'node:os';
 
-const DB_DIR = path.join(process.cwd(), 'data');
+const DB_DIR = process.env.VERCEL ? os.tmpdir() : path.join(process.cwd(), 'data');
 const DB_PATH = path.join(DB_DIR, 'pensa.db');
 
 let _db: DatabaseSync | null = null;
