@@ -2,6 +2,8 @@
 
 Official, mobile-first full-stack web application for Pentecost Students and Associates (PENSA), University of Mines and Technology (UMaT), Tarkwa, Ghana.
 
+🌐 **Live Production URL:** [https://pensa-umat-membership.vercel.app](https://pensa-umat-membership.vercel.app)
+
 Built with **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**, **Lucide Icons**, and **Node.js Native SQLite (`node:sqlite`)**.
 
 ---
