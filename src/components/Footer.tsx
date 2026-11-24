@@ -9,11 +9,21 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
           {/* Column 1: Fellowship Motto & Identity */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-[#D97706] flex items-center justify-center font-bold text-white text-xs shadow-sm">
-                P
+            <div className="flex items-center gap-3 mb-4">
+              <img
+                src="/images/cop-logo.svg"
+                alt="The Church of Pentecost"
+                className="w-11 h-11 object-contain drop-shadow"
+              />
+              <img
+                src="/images/pensa-umat-logo.svg"
+                alt="PENSA UMaT"
+                className="w-12 h-12 object-contain drop-shadow"
+              />
+              <div>
+                <span className="text-white font-bold text-base tracking-tight block">PENSA UMaT</span>
+                <span className="text-[11px] text-slate-400">The Church of Pentecost &bull; Tarkwa Area</span>
               </div>
-              <span className="text-white font-bold text-base tracking-tight">PENSA UMaT</span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
               Pentecost Students and Associates (PENSA), University of Mines and Technology, Tarkwa. Dedicated to raising godly leaders and mining the treasures in people for Christ.

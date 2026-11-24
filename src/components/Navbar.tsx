@@ -72,13 +72,22 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-[#0A192F]/90 backdrop-blur-md text-white border-b border-slate-800/80 shadow-sm transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo & Identity */}
-          <Link href="/" className="flex items-center gap-3 focus:outline-none shrink-0">
-            <div className="w-9 h-9 rounded-lg bg-[#D97706] flex items-center justify-center text-white font-bold text-xs tracking-wider shadow-sm">
-              <span>PENSA</span>
+          {/* Logo & Identity with Official Logos */}
+          <Link href="/" className="flex items-center gap-3 focus:outline-none shrink-0 group">
+            <div className="flex items-center gap-1.5">
+              <img
+                src="/images/cop-logo.svg"
+                alt="The Church of Pentecost"
+                className="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow"
+              />
+              <img
+                src="/images/pensa-umat-logo.svg"
+                alt="PENSA UMaT"
+                className="w-9 h-9 sm:w-10 sm:h-10 object-contain drop-shadow group-hover:scale-105 transition-transform"
+              />
             </div>
             <div className="flex flex-col">
-              <span className="font-bold text-base text-white tracking-tight leading-tight">
+              <span className="font-bold text-base text-white tracking-tight leading-tight group-hover:text-amber-400 transition-colors">
                 PENSA UMaT
               </span>
               <span className="text-[10px] text-slate-400 font-normal leading-none mt-0.5">

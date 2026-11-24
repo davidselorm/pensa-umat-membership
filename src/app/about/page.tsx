@@ -29,12 +29,27 @@ export default function AboutPage() {
   return (
     <div className="flex-1 bg-slate-50">
       {/* Header Banner */}
-      <section className="bg-[#0A192F] text-white py-14 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
+      <section className="bg-[#0A192F] text-white py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
         <div className="max-w-4xl mx-auto text-center">
-          <span className="text-xs uppercase tracking-wider font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 px-3 py-1 rounded">
+          {/* Dual Official Crests */}
+          <div className="flex items-center justify-center gap-3.5 mb-5">
+            <img
+              src="/images/cop-logo.svg"
+              alt="The Church of Pentecost"
+              className="w-14 h-14 sm:w-16 sm:h-16 object-contain drop-shadow"
+            />
+            <div className="h-8 w-px bg-slate-700" />
+            <img
+              src="/images/pensa-umat-logo.svg"
+              alt="PENSA UMaT Chapter"
+              className="w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow"
+            />
+          </div>
+
+          <span className="text-xs uppercase tracking-wider font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 px-3 py-1 rounded-full">
             Our Identity &amp; Mission
           </span>
-          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mt-3 text-white">
+          <h1 className="text-3xl sm:text-5xl font-black tracking-tight mt-3 text-white">
             About PENSA UMaT
           </h1>
           <p className="mt-3 text-slate-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import RegistrationForm from '@/components/RegistrationForm';
 import ServiceCountdown from '@/components/ServiceCountdown';
 import HostelCellFinder from '@/components/HostelCellFinder';
+import CampusLifeGallery from '@/components/CampusLifeGallery';
 import {
   Calendar,
   Clock,
@@ -47,13 +48,28 @@ export default function HomePage() {
 
   return (
     <div className="flex-1 bg-slate-50 pb-20">
-      {/* Premier Hero Section */}
+      {/* Premier Hero Section with Official Logos */}
       <section className="bg-[#0A192F] text-white pt-16 pb-24 px-4 sm:px-6 lg:px-8 border-b border-slate-800 relative overflow-hidden">
         {/* Subtle ambient lighting */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-amber-500/10 via-transparent to-transparent pointer-events-none" />
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs font-semibold mb-6 tracking-wide uppercase">
+          {/* Official Dual Crest Badge */}
+          <div className="flex items-center justify-center gap-3.5 mb-6">
+            <img
+              src="/images/cop-logo.svg"
+              alt="The Church of Pentecost Official Logo"
+              className="w-14 h-14 sm:w-16 sm:h-16 object-contain drop-shadow-lg"
+            />
+            <div className="h-10 w-px bg-slate-700/80" />
+            <img
+              src="/images/pensa-umat-logo.svg"
+              alt="PENSA UMaT Chapter Logo"
+              className="w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow-xl hover:scale-105 transition-transform"
+            />
+          </div>
+
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs font-semibold mb-5 tracking-wide uppercase">
             <span>The Church of Pentecost &bull; UMaT Chapter, Tarkwa</span>
           </div>
 
@@ -82,10 +98,10 @@ export default function HomePage() {
             </a>
 
             <Link
-              href="/about"
+              href="/sermons"
               className="px-4 py-3 rounded-lg text-slate-300 hover:text-white text-xs sm:text-sm font-medium transition-colors"
             >
-              About Fellowship &rarr;
+              Listen to Sermons &rarr;
             </Link>
           </div>
         </div>
@@ -194,6 +210,11 @@ export default function HomePage() {
             </p>
           </div>
         </div>
+      </section>
+
+      {/* Campus Life & Fellowship Media Gallery */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <CampusLifeGallery />
       </section>
 
       {/* Official Census Registration Form */}

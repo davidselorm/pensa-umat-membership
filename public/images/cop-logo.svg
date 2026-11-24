@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <radialGradient id="copGlobeGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E0F2FE"/>
+      <stop offset="70%" stop-color="#BAE6FD"/>
+      <stop offset="100%" stop-color="#38BDF8"/>
+    </radialGradient>
+    <linearGradient id="copGoldRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D"/>
+      <stop offset="50%" stop-color="#D97706"/>
+      <stop offset="100%" stop-color="#B45309"/>
+    </linearGradient>
+    <linearGradient id="copFlame" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="50%" stop-color="#EA580C"/>
+      <stop offset="100%" stop-color="#FBBF24"/>
+    </linearGradient>
+    <filter id="copShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Outer Deep Blue Ring -->
+  <circle cx="250" cy="250" r="235" fill="#0A2540" filter="url(#copShadow)"/>
+  
+  <!-- Outer Gold Border -->
+  <circle cx="250" cy="250" r="235" fill="none" stroke="url(#copGoldRing)" stroke-width="8"/>
+  <circle cx="250" cy="250" r="175" fill="none" stroke="url(#copGoldRing)" stroke-width="6"/>
+
+  <!-- Arc Text Paths -->
+  <path id="copTopPath" fill="none" d="M 75 250 A 175 175 0 0 1 425 250" />
+  <path id="copBottomPath" fill="none" d="M 420 250 A 170 170 0 0 1 80 250" />
+
+  <!-- Circular Text -->
+  <text fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="28" letter-spacing="4">
+    <textPath href="#copTopPath" startOffset="50%" text-anchor="middle">THE CHURCH OF PENTECOST</textPath>
+  </text>
+  <text fill="#FDE68A" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="19" letter-spacing="3">
+    <textPath href="#copBottomPath" startOffset="50%" text-anchor="middle">HEADQUARTERS &bull; ACCRA, GHANA</textPath>
+  </text>
+
+  <!-- Side Stars -->
+  <polygon points="62,250 67,240 78,240 69,247 72,258 62,251 52,258 55,247 46,240 57,240" fill="#F59E0B"/>
+  <polygon points="438,250 443,240 454,240 445,247 448,258 438,251 428,258 431,247 422,240 433,240" fill="#F59E0B"/>
+
+  <!-- Inner Center Globe -->
+  <circle cx="250" cy="250" r="160" fill="url(#copGlobeGrad)"/>
+  
+  <!-- Globe Latitude/Longitude Grid Lines -->
+  <ellipse cx="250" cy="250" rx="160" ry="80" fill="none" stroke="#7DD3FC" stroke-width="2.5" opacity="0.6"/>
+  <ellipse cx="250" cy="250" rx="160" ry="30" fill="none" stroke="#7DD3FC" stroke-width="2" opacity="0.6"/>
+  <line x1="90" y1="250" x2="410" y2="250" stroke="#7DD3FC" stroke-width="2.5" opacity="0.7"/>
+  <ellipse cx="250" cy="250" rx="80" ry="160" fill="none" stroke="#7DD3FC" stroke-width="2.5" opacity="0.6"/>
+  <ellipse cx="250" cy="250" rx="30" ry="160" fill="none" stroke="#7DD3FC" stroke-width="2" opacity="0.6"/>
+  <line x1="250" y1="90" x2="250" y2="410" stroke="#7DD3FC" stroke-width="2.5" opacity="0.7"/>
+
+  <!-- Red/Gold Flame of the Holy Spirit -->
+  <g transform="translate(0, -15)">
+    <!-- Flame background aura -->
+    <path d="M 250 120 C 220 170 200 200 210 240 C 215 260 230 280 250 280 C 270 280 285 260 290 240 C 300 200 280 170 250 120 Z" fill="url(#copFlame)" opacity="0.95" filter="url(#copShadow)"/>
+    <path d="M 250 145 C 235 180 225 200 230 225 C 233 240 240 255 250 255 C 260 255 267 240 270 225 C 275 200 265 180 250 145 Z" fill="#FEF08A"/>
+  </g>
+
+  <!-- Descending Holy Spirit White Dove -->
+  <g transform="translate(0, 10)">
+    <!-- Halo above dove -->
+    <ellipse cx="250" cy="180" rx="28" ry="10" fill="none" stroke="#F59E0B" stroke-width="4"/>
+    
+    <!-- Dove Body & Outspread Wings -->
+    <path d="M 250 190 
+             C 240 180 210 165 160 175 
+             C 185 195 210 205 235 210
+             C 220 225 190 255 170 275
+             C 205 265 235 250 246 235
+             C 247 255 240 285 230 310
+             C 243 300 257 300 270 310
+             C 260 285 253 255 254 235
+             C 265 250 295 265 330 275
+             C 310 255 280 225 265 210
+             C 290 205 315 195 340 175
+             C 290 165 260 180 250 190 Z" 
+          fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2" filter="url(#copShadow)"/>
+          
+    <!-- Dove Head -->
+    <circle cx="250" cy="195" r="14" fill="#FFFFFF"/>
+    <!-- Dove Beak pointing downwards -->
+    <polygon points="246,207 254,207 250,222" fill="#F59E0B"/>
+    <!-- Eye -->
+    <circle cx="247" cy="195" r="2" fill="#0A2540"/>
+    <circle cx="253" cy="195" r="2" fill="#0A2540"/>
+  </g>
+
+  <!-- Open Holy Bible at Base -->
+  <g transform="translate(250, 340)">
+    <!-- Left Page -->
+    <path d="M 0 -10 C -40 -20 -80 -15 -100 -5 L -95 35 C -75 25 -35 20 0 30 Z" fill="#F8FAFC" stroke="#94A3B8" stroke-width="2"/>
+    <!-- Right Page -->
+    <path d="M 0 -10 C 40 -20 80 -15 100 -5 L 95 35 C 75 25 35 20 0 30 Z" fill="#F8FAFC" stroke="#94A3B8" stroke-width="2"/>
+    <!-- Bible Bookmark Ribbon -->
+    <path d="M -3 28 L 0 52 L 3 28 Z" fill="#DC2626"/>
+    <!-- Inscription -->
+    <text x="-48" y="14" font-family="-apple-system, sans-serif" font-size="11" font-weight="900" fill="#0A2540">HOLY</text>
+    <text x="18" y="14" font-family="-apple-system, sans-serif" font-size="11" font-weight="900" fill="#0A2540">BIBLE</text>
+  </g>
+</svg>
