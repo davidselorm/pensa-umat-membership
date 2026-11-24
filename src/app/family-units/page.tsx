@@ -36,8 +36,12 @@ export default function FamilyUnitsPage() {
       {/* Header Banner */}
       <section className="bg-[#0A192F] text-white py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800 relative overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/20 via-slate-900/40 to-transparent" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] opacity-25" />
+          <img
+            src="/images/fb/arrival-moments.jpg"
+            alt="Campus Cells"
+            className="w-full h-full object-cover object-center opacity-20 filter contrast-125"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A192F]/80 via-[#0A192F]/95 to-[#0A192F]" />
         </div>
 
         <div className="max-w-4xl mx-auto text-center relative z-10">

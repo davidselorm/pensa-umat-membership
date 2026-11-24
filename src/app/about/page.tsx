@@ -29,8 +29,17 @@ export default function AboutPage() {
   return (
     <div className="flex-1 bg-slate-50">
       {/* Header Banner */}
-      <section className="bg-[#0A192F] text-white py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="bg-[#0A192F] text-white py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800 relative overflow-hidden">
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <img
+            src="/images/fb/challenge-climax.jpg"
+            alt="PENSA UMaT Fellowship"
+            className="w-full h-full object-cover object-center opacity-20 filter contrast-125"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A192F]/80 via-[#0A192F]/95 to-[#0A192F]" />
+        </div>
+
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           {/* Dual Official Crests */}
           <div className="flex items-center justify-center gap-3.5 mb-5">
             <img

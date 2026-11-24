@@ -1,9 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import ServiceCountdown from '@/components/ServiceCountdown';
-import HostelCellFinder from '@/components/HostelCellFinder';
 import CampusLifeGallery from '@/components/CampusLifeGallery';
 import {
   Clock,
@@ -20,133 +18,159 @@ import {
   BookOpen,
   Church,
   ChevronRight,
-  GraduationCap
+  ChevronLeft,
+  GraduationCap,
+  Heart,
+  Music,
+  Tv
 } from 'lucide-react';
 
 export default function HomePage() {
-  const [activeServiceIdx, setActiveServiceIdx] = useState(0);
+  // Hero Background Carousel
+  const heroSlides = [
+    {
+      image: '/images/fb/challenge-climax.jpg',
+      caption: 'The Climax of Challenge \'26 &bull; UMaT Main Auditorium',
+    },
+    {
+      image: '/images/fb/worship-adoration.jpg',
+      caption: 'Deep Campus Worship & Prophetic Adoration',
+    },
+    {
+      image: '/images/fb/heralds-of-zion.jpg',
+      caption: 'Heralds of Zion &bull; Sounds from Heaven',
+    },
+    {
+      image: '/images/fb/in-his-presence.jpg',
+      caption: 'Dunamis Encounters &bull; Hearts Aligned with God',
+    },
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [heroSlides.length]);
 
   const stats = [
-    { label: 'Active Fellowship Members', value: '1,200+', icon: <Users className="w-4 h-4 text-amber-400" /> },
-    { label: 'Campus Residential Cells', value: '4 Units', icon: <Compass className="w-4 h-4 text-emerald-400" /> },
-    { label: 'Specialized Ministries', value: '10 Arms', icon: <Award className="w-4 h-4 text-sky-400" /> },
+    { label: 'Student Members', value: '1,200+', icon: <Users className="w-4 h-4 text-amber-400" /> },
+    { label: 'Campus Residential Units', value: '4 Cells', icon: <Compass className="w-4 h-4 text-emerald-400" /> },
+    { label: 'Fellowship Ministries', value: '10 Arms', icon: <Award className="w-4 h-4 text-sky-400" /> },
     { label: 'Sunday Divine Sessions', value: '2 Services', icon: <Church className="w-4 h-4 text-purple-400" /> },
   ];
 
-  const serviceSchedule = [
+  const weeklyServices = [
     {
-      id: 'sunday',
       title: 'Sunday Divine Service',
-      badge: 'Main Campus Gathering',
+      badge: 'Main Worship Gathering',
       time: 'Session 1: 07:30 AM &bull; Session 2: 09:30 AM',
       venue: 'UMaT Main Auditorium',
-      desc: 'High praises, anointed worship by The Minstrels, ministry of the Word, and prophetic prayers tailored for university students.',
-      highlights: ['Over 1,200 students gather weekly', 'Intensive Word ministration', 'Freshers & visitor welcome', 'Communion & prayer sessions'],
-      gradient: 'from-amber-500/10 via-slate-900/60 to-[#0A192F]',
-      accentColor: 'border-amber-500/30 text-amber-400',
+      desc: 'High praises, anointed prophetic worship, life-transforming Word ministration, and communion.',
+      image: '/images/fb/worship-adoration.jpg',
     },
     {
-      id: 'midweek',
       title: 'Midweek Teaching & Miracle Service',
       badge: 'Bible Exposition',
       time: 'Wednesdays &bull; 6:30 PM &ndash; 8:15 PM',
       venue: 'Campus Fellowship Center',
       desc: 'Systematic expository Bible study, practical student life discussions, spiritual warfare, and miracles.',
-      highlights: ['Interactive scripture analysis', 'Campus Christian ethics & relationships', 'Examination & career guidance', 'Miracle & deliverance ministry'],
-      gradient: 'from-sky-500/10 via-slate-900/60 to-[#0A192F]',
-      accentColor: 'border-sky-500/30 text-sky-400',
+      image: '/images/fb/hope-of-glory.jpg',
     },
     {
-      id: 'dunamis',
-      title: 'Dunamis Hour & Friday Encounters',
-      badge: 'Holy Ghost Prayer Vigils',
+      title: 'Dunamis Friday Encounters',
+      badge: 'Holy Ghost Vigils',
       time: 'Fridays &bull; 9:00 PM (Bi-Weekly)',
-      venue: 'UMaT Main Auditorium / Fellowship Center',
-      desc: 'Intense Holy Ghost prayer vigils, revival impartation, semester examination intercession, and breakthrough sessions.',
-      highlights: ['Fervent Holy Ghost prayer rounds', 'Impartation for academic excellence', 'Spiritual gifts activation', 'All-night breakthrough prayer'],
-      gradient: 'from-rose-500/10 via-slate-900/60 to-[#0A192F]',
-      accentColor: 'border-rose-500/30 text-rose-400',
+      venue: 'Auditorium / Fellowship Center',
+      desc: 'Intense Holy Ghost prayer vigils, revival impartation, semester examination intercession, and breakthroughs.',
+      image: '/images/fb/in-his-presence.jpg',
     },
     {
-      id: 'cells',
-      title: 'Residential Family Units (Cells)',
+      title: 'Residential Family Units',
       badge: 'Hostel Fellowships',
       time: 'Sundays &bull; 4:30 PM &ndash; 5:30 PM',
-      venue: 'KT Hall, Chamber of Mines, Gold Refinery & Off-Campus',
+      venue: 'KT Hall, Chamber &amp; Off-Campus Cells',
       desc: 'Close-knit fellowship, pastoral check-ins, prayer walks, and academic brotherhood right where you live.',
-      highlights: ['Hostel room-to-room follow ups', 'Calculus & engineering study circles', 'Personal welfare support', 'Discipleship & close friendship'],
-      gradient: 'from-emerald-500/10 via-slate-900/60 to-[#0A192F]',
-      accentColor: 'border-emerald-500/30 text-emerald-400',
+      image: '/images/fb/arrival-moments.jpg',
     },
   ];
 
-  const pillars = [
+  const featuredMinistries = [
     {
-      icon: <Flame className="w-5 h-5 text-amber-400" />,
-      title: 'Spiritual Fervor & Holy Ghost Power',
-      description: 'We believe prayer changes atmospheres. Through morning dawn prayers, Friday Dunamis encounters, and uncompromised Bible teaching, students maintain a burning passion for Jesus Christ.',
-      gradient: 'hover:border-amber-500/40',
-      badge: 'Spiritual Grounding',
+      name: 'Heralds of Zion (Music Ministry)',
+      role: 'Praise & Prophetic Worship',
+      image: '/images/fb/heralds-of-zion.jpg',
+      desc: 'Leading the campus in high praises, intimate worship, and anointed choral presentations.',
     },
     {
-      icon: <GraduationCap className="w-5 h-5 text-sky-400" />,
-      title: 'Academic & Engineering Excellence',
-      description: 'UMaT engineering courses require rigorous diligence. Our Academic Committee coordinates calculus clinics, engineering mechanics tutorials, and past question banks to help members graduate with top honours.',
-      gradient: 'hover:border-sky-500/40',
-      badge: 'Academic Mentorship',
+      name: 'Creative Arts & Christian Drama',
+      role: 'Drama & Choreography',
+      image: '/images/fb/drama-dance.jpg',
+      desc: 'Communicating the living gospel through inspiring drama, choreography, and spoken word.',
     },
     {
-      icon: <Compass className="w-5 h-5 text-emerald-400" />,
-      title: 'Close-Knit Residential Care (Cells)',
-      description: 'Whether you reside in KT Hall, Chamber of Mines, Gold Refinery, or off-campus in Tarkwa Banso, our Family Units ensure you have an immediate spiritual family, prayer support, and welfare coverage.',
-      gradient: 'hover:border-emerald-500/40',
-      badge: 'Pastoral Care',
+      name: 'Prayer Force & Missions',
+      role: 'Intercession & Soul Winning',
+      image: '/images/fb/challenge-day2.jpg',
+      desc: 'Standing in the gap for students, semester exams, and evangelizing Tarkwa mining communities.',
     },
-  ];
-
-  const censusBenefits = [
-    { title: 'Immediate Hostel Cell Allocation', desc: 'Placed in your designated residential cell in KT Hall, Chamber, or Tarkwa Banso.' },
-    { title: 'Academic Tutorial Groups', desc: 'Connected to seniors and high-GPA peers in your engineering or science programme.' },
-    { title: 'Ministry & Wings Placement', desc: 'Find your area of service in Choir, Media, Prayer Force, Protocol, or BPC.' },
-    { title: 'Fellowship Welfare Coverage', desc: 'Pastoral support, emergency check-ins, and semester welfare assistance.' },
+    {
+      name: 'Professional Guild & Alumni',
+      role: 'Industry & Engineering Mentorship',
+      image: '/images/fb/alumni-spotlight.jpg',
+      desc: 'Connecting engineering and science undergraduates with accomplished PENSA alumni mentors.',
+    },
   ];
 
   return (
     <div className="flex-1 bg-slate-50 pb-20 overflow-x-hidden">
-      {/* Premier Hero Section with Fluid Transitions & Tri-Crest Badges */}
-      <section className="bg-[#0A192F] text-white pt-16 sm:pt-20 pb-28 px-4 sm:px-6 lg:px-8 border-b border-slate-800 relative overflow-hidden">
-        {/* Dynamic Glowing Mesh Background */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/20 via-slate-900/50 to-transparent" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] opacity-25" />
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-amber-500/10 blur-[130px] rounded-full pointer-events-none animate-glow" />
-        </div>
+      {/* Cinematic Hero Section with Cross-Fading Photography */}
+      <section className="relative min-h-[85vh] sm:min-h-[90vh] bg-[#0A192F] text-white flex items-center justify-center overflow-hidden border-b border-slate-800">
+        {/* Background Photo Slider with Ken-Burns Motion */}
+        {heroSlides.map((slide, idx) => (
+          <div
+            key={idx}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              idx === currentSlide ? 'opacity-40 scale-105 transition-transform duration-[7000ms]' : 'opacity-0 scale-100'
+            }`}
+          >
+            <img
+              src={slide.image}
+              alt={slide.caption}
+              className="w-full h-full object-cover object-center filter contrast-110"
+            />
+          </div>
+        ))}
 
-        <div className="max-w-5xl mx-auto text-center relative z-10">
-          {/* Official Tri-Crest Badge */}
-          <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6">
-            <div className="inline-flex items-center gap-2.5 sm:gap-3.5 bg-slate-900/80 px-4 py-2 rounded-2xl border border-slate-700/70 shadow-2xl backdrop-blur-md transition-all hover:border-amber-500/40">
-              <img
-                src="/images/cop-logo.png"
-                alt="The Church of Pentecost"
-                className="w-10 h-10 sm:w-12 sm:h-12 object-contain drop-shadow brightness-105"
-              />
-              <div className="h-6 w-px bg-slate-700" />
-              <img
-                src="/images/pensaumatofficial.jpg"
-                alt="Official PENSA UMaT Logo"
-                className="w-11 h-11 sm:w-14 sm:h-14 object-contain rounded-full drop-shadow-xl hover:scale-105 transition-transform"
-              />
-              <div className="h-6 w-px bg-slate-700" />
-              <img
-                src="/images/umat-logo.jpg"
-                alt="UMaT Crest"
-                className="w-9 h-9 sm:w-11 sm:h-11 object-contain rounded drop-shadow brightness-105"
-              />
-            </div>
+        {/* Ambient Dark Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/75 to-[#0A192F]/60 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent pointer-events-none" />
+
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center relative z-10 flex flex-col items-center">
+          {/* Official Tri-Crest Institutional Badge */}
+          <div className="inline-flex items-center gap-2.5 sm:gap-3.5 bg-slate-900/80 px-4 py-2 rounded-2xl border border-slate-700/80 shadow-2xl backdrop-blur-md mb-6 hover:border-amber-500/40 transition-all">
+            <img
+              src="/images/cop-logo.png"
+              alt="The Church of Pentecost"
+              className="w-10 h-10 sm:w-11 sm:h-11 object-contain drop-shadow brightness-105"
+            />
+            <div className="h-6 w-px bg-slate-700" />
+            <img
+              src="/images/pensaumatofficial.jpg"
+              alt="Official PENSA UMaT Logo"
+              className="w-11 h-11 sm:w-13 sm:h-13 object-contain rounded-full drop-shadow-xl hover:scale-105 transition-transform"
+            />
+            <div className="h-6 w-px bg-slate-700" />
+            <img
+              src="/images/umat-logo.jpg"
+              alt="UMaT Crest"
+              className="w-9 h-9 sm:w-10 sm:h-10 object-contain rounded drop-shadow brightness-105"
+            />
           </div>
 
-          {/* Academic Session Indicator */}
+          {/* Academic Session Pill */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-300 text-xs font-semibold mb-5 tracking-wide uppercase shadow-sm">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -155,45 +179,59 @@ export default function HomePage() {
             <span>The Church of Pentecost &bull; UMaT Chapter, Tarkwa</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight max-w-4xl">
             MINING THE TREASURES IN PEOPLE FOR CHRIST
           </h1>
 
-          <p className="mt-4 text-slate-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
-            Welcome to PENSA UMaT. A family of faith, academic excellence, and purposeful student leadership on the campus of the University of Mines and Technology.
+          <p className="mt-4 text-slate-200 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed drop-shadow">
+            Welcome to PENSA UMaT. A family of faith, prayer, and academic excellence on the campus of Ghana&apos;s premier University of Mines and Technology.
           </p>
 
-          {/* Interactive CTAs */}
+          {/* Action Hub */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/register"
-              className="px-6 py-3 rounded-lg bg-[#D97706] hover:bg-[#B45309] text-white text-xs sm:text-sm font-semibold shadow-xl shadow-amber-950/25 transition-all active:scale-95 flex items-center gap-2 group"
+              className="px-6 py-3 rounded-xl bg-[#D97706] hover:bg-[#B45309] text-white text-xs sm:text-sm font-semibold shadow-xl shadow-amber-950/30 transition-all active:scale-95 flex items-center gap-2 group"
             >
               <span>Membership Census 2025/2026</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </Link>
 
-            <a
-              href="#cell-finder"
-              className="px-5 py-3 rounded-lg border border-slate-700 bg-white/5 hover:bg-white/10 text-slate-200 text-xs sm:text-sm font-medium transition-all"
-            >
-              Find Your Campus Cell
-            </a>
-
             <Link
               href="/ministries"
-              className="px-5 py-3 rounded-lg border border-transparent hover:border-slate-700 text-slate-300 hover:text-white text-xs sm:text-sm font-medium transition-all"
+              className="px-5 py-3 rounded-xl border border-slate-700 bg-white/10 hover:bg-white/15 text-slate-200 text-xs sm:text-sm font-medium transition-all backdrop-blur-sm"
             >
-              Explore Ministries &rarr;
+              Explore Ministries
+            </Link>
+
+            <Link
+              href="/family-units"
+              className="px-5 py-3 rounded-xl border border-transparent hover:border-slate-700 text-slate-300 hover:text-white text-xs sm:text-sm font-medium transition-all"
+            >
+              Residential Cells &rarr;
             </Link>
           </div>
 
-          {/* Fellowship Stats Ribbon */}
-          <div className="mt-12 pt-8 border-t border-slate-800/80 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
+          {/* Slide Indicator Dots */}
+          <div className="mt-8 flex items-center gap-2">
+            {heroSlides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentSlide(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  currentSlide === i ? 'w-6 bg-amber-400' : 'w-1.5 bg-white/30 hover:bg-white/60'
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Live Stats Ribbon */}
+          <div className="mt-10 pt-6 border-t border-slate-800/80 grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl text-left">
             {stats.map((s, idx) => (
               <div
                 key={idx}
-                className="bg-slate-900/60 border border-slate-800 rounded-xl p-3.5 backdrop-blur-sm hover:border-slate-700 transition-all card-hover"
+                className="bg-slate-900/60 border border-slate-800/80 rounded-xl p-3.5 backdrop-blur-md hover:border-slate-700 transition-all card-hover"
               >
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-xl sm:text-2xl font-black text-white font-mono">{s.value}</span>
@@ -206,176 +244,184 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Live Service Countdown Widget */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 -mt-12 relative z-20">
-        <ServiceCountdown />
+      {/* Cinematic Chapter Identity & Welcome (Split Layout) */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <span className="text-xs uppercase font-bold text-amber-600 tracking-wider block mb-2">
+              Our Vision &amp; Campus Mission
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
+              A Spiritual Sanctuary for University Students in Tarkwa
+            </h2>
+            <p className="mt-4 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              At the University of Mines and Technology, academic training in engineering, geology, computing, and applied sciences demands extreme dedication. PENSA UMaT provides the spiritual foundation, close-knit brotherhood, and pastoral care that equips every student to excel spiritually and intellectually.
+            </p>
+
+            <div className="mt-6 p-4 rounded-xl bg-amber-50 border border-amber-200/80">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-amber-800 block mb-1">
+                Fellowship Motto &bull; Colossians 1:27
+              </span>
+              <p className="text-sm font-semibold text-amber-950 italic">
+                &ldquo;Christ in You, the Hope of Glory&rdquo;
+              </p>
+            </div>
+
+            <div className="mt-6 flex items-center gap-4">
+              <Link
+                href="/about"
+                className="text-xs font-semibold text-[#0A192F] hover:text-amber-600 inline-flex items-center gap-1.5 group transition-colors"
+              >
+                <span>Read our story and core pillars</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Visual Showcase Stack */}
+          <div className="grid grid-cols-2 gap-4 relative">
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 h-64 sm:h-72">
+              <img
+                src="/images/fb/freshers-akwaaba.jpg"
+                alt="Freshers Akwaaba Service"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 h-64 sm:h-72 mt-6">
+              <img
+                src="/images/fb/arrival-moments.jpg"
+                alt="Fellowship Arrival Moments"
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* Interactive Fellowship Rhythm & Service Explorer */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-slate-200 gap-4">
-          <div>
-            <span className="text-xs uppercase font-bold text-amber-600 tracking-wider">
-              Fellowship Rhythm
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
-              Weekly Service Schedules
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-500 mt-1">
-              Click on each gathering to view exact meeting times, campus venues, and program highlights.
+      {/* Worship Rhythm & Weekly Gathering Hours */}
+      <section className="bg-slate-900 text-white py-16 border-y border-slate-800 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 pb-4 border-b border-slate-800 gap-4">
+            <div>
+              <span className="text-xs uppercase font-bold text-amber-400 tracking-wider">
+                Gathering Rhythm
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
+                Weekly Service Schedules
+              </h2>
+            </div>
+            <p className="text-xs text-slate-400 max-w-md">
+              Join thousands of Christian students gathering for spirit-filled services across UMaT campus.
             </p>
           </div>
 
-          {/* Interactive Service Switcher Pills */}
-          <div className="flex flex-wrap gap-1.5 self-start sm:self-auto">
-            {serviceSchedule.map((svc, idx) => (
-              <button
-                key={svc.id}
-                onClick={() => setActiveServiceIdx(idx)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                  activeServiceIdx === idx
-                    ? 'bg-[#0A192F] text-white shadow-md'
-                    : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
-                }`}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {weeklyServices.map((svc, idx) => (
+              <div
+                key={idx}
+                className="bg-slate-800/80 border border-slate-700/80 rounded-2xl overflow-hidden shadow-md flex flex-col justify-between hover:border-amber-500/40 transition-all card-hover group"
               >
-                {svc.title.split(' ')[0]}
-              </button>
+                {/* Photo Thumbnail */}
+                <div className="h-44 relative overflow-hidden bg-slate-950">
+                  <img
+                    src={svc.image}
+                    alt={svc.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent" />
+                  <span className="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-black/60 backdrop-blur-md text-amber-300 border border-white/10">
+                    {svc.badge}
+                  </span>
+                </div>
+
+                {/* Card Info */}
+                <div className="p-5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-sm font-bold text-white group-hover:text-amber-300 transition-colors leading-snug mb-2">
+                      {svc.title}
+                    </h3>
+                    <p className="text-xs text-slate-400 leading-relaxed mb-4">
+                      {svc.desc}
+                    </p>
+                  </div>
+
+                  <div className="pt-3 border-t border-slate-700/60 space-y-1.5 text-[11px] text-slate-300">
+                    <div className="flex items-start gap-1.5 text-amber-400 font-semibold">
+                      <Clock className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                      <span dangerouslySetInnerHTML={{ __html: svc.time }} />
+                    </div>
+                    <div className="flex items-center gap-1.5 text-slate-400">
+                      <MapPin className="w-3.5 h-3.5 shrink-0 text-slate-500" />
+                      <span>{svc.venue}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
-
-        {/* Dynamic Active Service Spotlight Card with Smooth Transition */}
-        <div className="bg-[#0A192F] text-white rounded-2xl border border-slate-800 p-6 sm:p-8 shadow-xl mb-6 relative overflow-hidden transition-all duration-300">
-          <div className="absolute right-0 top-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-            <div className="max-w-2xl">
-              <span className={`text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded border mb-3 inline-block ${serviceSchedule[activeServiceIdx].accentColor}`}>
-                {serviceSchedule[activeServiceIdx].badge}
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-black text-white mt-1">
-                {serviceSchedule[activeServiceIdx].title}
-              </h3>
-              <p className="text-slate-300 text-xs sm:text-sm mt-2 leading-relaxed">
-                {serviceSchedule[activeServiceIdx].desc}
-              </p>
-
-              <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300">
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span dangerouslySetInnerHTML={{ __html: serviceSchedule[activeServiceIdx].time }} />
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span>{serviceSchedule[activeServiceIdx].venue}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Highlights Box */}
-            <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-5 min-w-[280px]">
-              <span className="text-[11px] font-bold text-amber-400 uppercase tracking-wider block mb-2.5">
-                Service Highlights:
-              </span>
-              <ul className="space-y-2 text-xs text-slate-300">
-                {serviceSchedule[activeServiceIdx].highlights.map((h, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                    <span>{h}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        {/* 4 Quick Selector Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {serviceSchedule.map((svc, idx) => (
-            <div
-              key={idx}
-              onClick={() => setActiveServiceIdx(idx)}
-              className={`p-5 rounded-xl border cursor-pointer transition-all card-hover flex flex-col justify-between ${
-                activeServiceIdx === idx
-                  ? 'bg-amber-50/60 border-amber-500/60 shadow-md ring-1 ring-amber-500/20'
-                  : 'bg-white border-slate-200/90 hover:bg-slate-50'
-              }`}
-            >
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-amber-600 block mb-1">
-                  Gathering {idx + 1}
-                </span>
-                <h4 className="text-sm font-bold text-slate-900 mb-1.5">
-                  {svc.title}
-                </h4>
-                <p className="text-xs text-slate-600 leading-relaxed line-clamp-2 mb-3">
-                  {svc.desc}
-                </p>
-              </div>
-
-              <div className="pt-2 border-t border-slate-100 text-[11px] text-slate-600 flex items-center justify-between">
-                <span className="flex items-center gap-1 font-medium">
-                  <Clock className="w-3 h-3 text-slate-400" />
-                  <span>{svc.time.split('&bull;')[0]}</span>
-                </span>
-                <span className={`text-xs font-semibold ${activeServiceIdx === idx ? 'text-amber-600' : 'text-slate-400'}`}>
-                  {activeServiceIdx === idx ? 'Active' : 'View'} &rarr;
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
       </section>
 
-      {/* Campus Life & Fellowship Media Gallery */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+      {/* Official Campus Life & Moments Media Gallery */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <CampusLifeGallery />
       </section>
 
-      {/* Interactive Hostel Cell Locator */}
-      <section id="cell-finder" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
-        <HostelCellFinder />
-      </section>
-
-      {/* Pillars of PENSA UMaT */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="text-xs uppercase font-bold text-amber-600 tracking-wider">
-            Why We Are Here
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
-            Built for Your Campus Journey
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1.5">
-            Balancing rigorous engineering and science studies with a vibrant, uncompromised Christian walk.
-          </p>
+      {/* Fellowship Ministries & Arms of Service Preview */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-slate-200 gap-4">
+          <div>
+            <span className="text-xs uppercase font-bold text-amber-600 tracking-wider">
+              Arms of Service
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
+              Ministries &amp; Departments
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-500 mt-1">
+              Every member has a grace and a calling. Discover the various arms where you can serve God on campus.
+            </p>
+          </div>
+          <Link
+            href="/ministries"
+            className="text-xs font-semibold text-amber-600 hover:text-amber-700 inline-flex items-center gap-1 group self-start sm:self-auto"
+          >
+            <span>Explore All 10 Ministries</span>
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {pillars.map((p, idx) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {featuredMinistries.map((min, idx) => (
             <div
               key={idx}
-              className={`bg-white p-6 rounded-xl border border-slate-200/90 shadow-sm card-hover flex flex-col justify-between ${p.gradient}`}
+              className="bg-white rounded-2xl border border-slate-200/90 shadow-sm overflow-hidden flex flex-col justify-between card-hover group"
             >
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <div className="w-10 h-10 rounded-lg bg-amber-50 border border-amber-200 text-amber-600 flex items-center justify-center">
-                    {p.icon}
-                  </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 text-slate-600">
-                    {p.badge}
-                  </span>
-                </div>
-                <h3 className="text-sm font-bold text-slate-900 mb-2">{p.title}</h3>
-                <p className="text-xs text-slate-600 leading-relaxed">{p.description}</p>
+              <div className="h-44 relative overflow-hidden bg-slate-900">
+                <img
+                  src={min.image}
+                  alt={min.name}
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <span className="absolute bottom-3 left-3 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-black/60 backdrop-blur-md text-amber-300">
+                  {min.role}
+                </span>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-slate-100">
+              <div className="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-sm font-bold text-slate-900 group-hover:text-amber-600 transition-colors leading-snug mb-1">
+                    {min.name}
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed mb-3">{min.desc}</p>
+                </div>
                 <Link
-                  href="/about"
-                  className="text-[11px] font-semibold text-amber-600 hover:text-amber-700 inline-flex items-center gap-1"
+                  href="/ministries"
+                  className="text-[11px] font-semibold text-amber-600 hover:underline inline-flex items-center gap-1"
                 >
-                  <span>Learn about our mission</span>
+                  <span>Learn more</span>
                   <ChevronRight className="w-3 h-3" />
                 </Link>
               </div>
@@ -384,15 +430,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Premium Membership Census Showcase (Replacing bulky form with sleek CTA experience) */}
-      <section id="census" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-        <div className="bg-gradient-to-br from-[#0A192F] via-[#0E2442] to-[#0A192F] rounded-2xl border border-slate-800 p-8 sm:p-12 shadow-2xl text-white relative overflow-hidden">
-          {/* Ambient Glow & Mesh */}
+      {/* Cinema-Grade Membership Census Invitation */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+        <div className="bg-gradient-to-br from-[#0A192F] via-[#0E2442] to-[#0A192F] rounded-3xl border border-slate-800 p-8 sm:p-12 shadow-2xl text-white relative overflow-hidden">
           <div className="absolute right-0 top-0 translate-x-12 -translate-y-12 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:2.5rem_2.5rem] opacity-30 pointer-events-none" />
 
           <div className="relative z-10 max-w-3xl">
-            <div className="flex items-center gap-2 mb-4 bg-amber-500/10 border border-amber-500/30 px-3.5 py-1 rounded-full w-fit">
+            <div className="inline-flex items-center gap-2 mb-4 bg-amber-500/10 border border-amber-500/30 px-3.5 py-1 rounded-full w-fit">
               <Sparkles className="w-3.5 h-3.5 text-amber-400" />
               <span className="text-xs uppercase font-bold text-amber-300 tracking-wider">
                 Official 2025/2026 Directory &bull; PENSA UMaT
@@ -404,38 +448,44 @@ export default function HomePage() {
             </h2>
 
             <p className="mt-3 text-slate-300 text-xs sm:text-sm leading-relaxed max-w-2xl">
-              All freshmen, continuing students, postgraduate researchers, and associates are required to complete the official census for the current semester. It takes less than 2 minutes.
+              All freshmen, continuing students, postgraduate researchers, and associates are required to complete the official census for the current semester. It takes less than 2 minutes and assigns you to your residential cell and engineering tutorial groups.
             </p>
 
             {/* Value Checkpoints */}
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {censusBenefits.map((b, i) => (
-                <div key={i} className="flex items-start gap-2.5 bg-slate-900/60 border border-slate-800/80 p-3.5 rounded-xl backdrop-blur-sm">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-xs font-bold text-white leading-tight">{b.title}</h4>
-                    <p className="text-[11px] text-slate-400 mt-0.5 leading-snug">{b.desc}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Immediate Hostel Cell Placement (KT, Chamber, Off-Campus)</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Engineering &amp; Science Course Tutorial Groups</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Ministry Arm &amp; Department Placement</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Pastoral Care &amp; Student Welfare Coverage</span>
+              </div>
             </div>
 
             {/* CTA Buttons */}
             <div className="mt-8 pt-6 border-t border-slate-800 flex flex-wrap items-center gap-4">
               <Link
                 href="/register"
-                className="px-7 py-3 rounded-lg bg-[#D97706] hover:bg-[#B45309] text-white text-xs sm:text-sm font-semibold shadow-xl shadow-amber-950/30 transition-all active:scale-95 flex items-center gap-2 group"
+                className="px-7 py-3 rounded-xl bg-[#D97706] hover:bg-[#B45309] text-white text-xs sm:text-sm font-semibold shadow-xl shadow-amber-950/30 transition-all active:scale-95 flex items-center gap-2 group"
               >
                 <span>Complete Membership Census Online</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
 
               <Link
-                href="/login"
-                className="px-5 py-3 rounded-lg border border-slate-700 bg-white/5 hover:bg-white/10 text-slate-300 text-xs sm:text-sm font-medium transition-all flex items-center gap-1.5"
+                href="/family-units"
+                className="px-5 py-3 rounded-xl border border-slate-700 bg-white/5 hover:bg-white/10 text-slate-300 text-xs sm:text-sm font-medium transition-all"
               >
-                <ShieldCheck className="w-4 h-4 text-slate-400" />
-                <span>Executive Login</span>
+                View Family Units
               </Link>
             </div>
           </div>
