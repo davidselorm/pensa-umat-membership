@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { ShieldCheck, UserCheck, Menu, X, LogOut, Home, LayoutDashboard } from 'lucide-react';
+import { ShieldCheck, UserCheck, Menu, X, LogOut, Home, Info, Users, Church, LayoutDashboard } from 'lucide-react';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -45,13 +45,20 @@ export default function Navbar() {
     }
   };
 
+  const navLinks = [
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About Us' },
+    { href: '/ministries', label: 'Ministries' },
+    { href: '/family-units', label: 'Family Units' },
+  ];
+
   return (
     <header className="sticky top-0 z-50 bg-[#0A192F] text-white border-b border-slate-800 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo & Authentic COP PENSA Identity */}
+          {/* Logo & Authentic Identity */}
           <Link href="/" className="flex items-center gap-3 focus:outline-none">
-            <div className="w-9 h-9 rounded-lg bg-[#D97706] flex items-center justify-center text-white font-bold text-sm tracking-wider shadow-sm">
+            <div className="w-9 h-9 rounded-lg bg-[#D97706] flex items-center justify-center text-white font-bold text-xs tracking-wider shadow-sm">
               <span>PENSA</span>
             </div>
             <div className="flex flex-col">
@@ -66,53 +73,51 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
-            <Link
-              href="/"
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
-                pathname === '/'
-                  ? 'bg-white/10 text-white'
-                  : 'text-slate-300 hover:text-white hover:bg-white/5'
-              }`}
-            >
-              <span className="flex items-center gap-1.5">
-                <Home className="w-3.5 h-3.5 text-amber-400" />
-                Home
-              </span>
-            </Link>
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
+                  pathname === link.href
+                    ? 'bg-white/10 text-white font-semibold'
+                    : 'text-slate-300 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
 
             <Link
               href="/register"
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
+              className={`ml-2 px-3 py-1.5 rounded-md text-xs font-semibold transition-colors flex items-center gap-1.5 ${
                 pathname === '/register'
-                  ? 'bg-white/10 text-white'
-                  : 'text-slate-300 hover:text-white hover:bg-white/5'
+                  ? 'bg-amber-500 text-slate-950 shadow-sm'
+                  : 'bg-amber-500/10 text-amber-400 border border-amber-500/30 hover:bg-amber-500 hover:text-slate-950'
               }`}
             >
-              <span className="flex items-center gap-1.5">
-                <UserCheck className="w-3.5 h-3.5 text-amber-400" />
-                Registration Form
-              </span>
+              <UserCheck className="w-3.5 h-3.5" />
+              <span>Membership Census</span>
             </Link>
 
             {isLoggedIn ? (
               <>
                 <Link
                   href="/dashboard"
-                  className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
+                  className={`ml-2 px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
                     pathname === '/dashboard'
-                      ? 'bg-amber-500 text-slate-950 font-semibold'
-                      : 'text-amber-400 hover:bg-white/5'
+                      ? 'bg-white/15 text-white'
+                      : 'text-slate-300 hover:bg-white/5'
                   }`}
                 >
                   <span className="flex items-center gap-1.5">
-                    <LayoutDashboard className="w-3.5 h-3.5" />
+                    <LayoutDashboard className="w-3.5 h-3.5 text-amber-400" />
                     Dashboard
                   </span>
                 </Link>
 
                 <div className="h-4 w-px bg-slate-700 mx-2" />
 
-                <div className="flex items-center gap-2 pl-1">
+                <div className="flex items-center gap-2">
                   <span className="text-xs text-slate-400">
                     {execUser?.name || 'Executive'}
                   </span>
@@ -128,7 +133,7 @@ export default function Navbar() {
             ) : (
               <Link
                 href="/login"
-                className="ml-2 px-3 py-1.5 rounded-md text-xs font-medium border border-slate-700 text-slate-200 hover:text-white hover:border-slate-500 hover:bg-white/5 transition-colors flex items-center gap-1.5"
+                className="ml-2 px-3 py-1.5 rounded-md text-xs font-medium border border-slate-700 text-slate-300 hover:text-white hover:border-slate-500 hover:bg-white/5 transition-colors flex items-center gap-1.5"
               >
                 <ShieldCheck className="w-3.5 h-3.5 text-slate-400" />
                 <span>Executive Login</span>
@@ -151,19 +156,23 @@ export default function Navbar() {
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-slate-800 bg-[#0A192F] px-4 pt-3 pb-5 space-y-2">
-          <Link
-            href="/"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-md text-sm font-medium text-slate-200 hover:bg-white/5"
-          >
-            Home
-          </Link>
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setMobileMenuOpen(false)}
+              className="block px-3 py-2 rounded-md text-sm font-medium text-slate-200 hover:bg-white/5"
+            >
+              {link.label}
+            </Link>
+          ))}
+
           <Link
             href="/register"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-md text-sm font-medium text-slate-200 hover:bg-white/5"
+            className="block px-3 py-2 rounded-md text-sm font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30"
           >
-            Registration Form
+            Membership Census &bull; Register
           </Link>
 
           {isLoggedIn ? (
@@ -171,7 +180,7 @@ export default function Navbar() {
               <Link
                 href="/dashboard"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-md text-sm font-medium text-amber-400 hover:bg-white/5"
+                className="block px-3 py-2 rounded-md text-sm font-medium text-white hover:bg-white/5"
               >
                 Executive Dashboard
               </Link>
