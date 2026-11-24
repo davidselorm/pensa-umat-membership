@@ -8,8 +8,10 @@ import {
   Flame,
   Globe2,
   Boxes,
-  HeartHandshake,
-  Music,
+  Truck,
+  BookOpen,
+  Users2,
+  Briefcase,
   GraduationCap,
   ArrowRight,
   Filter
@@ -20,6 +22,7 @@ interface Ministry {
   name: string;
   category: 'music' | 'prayer' | 'media' | 'service';
   icon: React.ReactNode;
+  banner: string;
   description: string;
   schedule: string;
 }
@@ -30,76 +33,102 @@ export default function MinistriesPage() {
   const ministries: Ministry[] = [
     {
       id: 'choir',
-      name: 'The Minstrels (PENSA Choir)',
+      name: 'The Minstrels & Drama (Music Ministry)',
       category: 'music',
-      icon: <Mic2 className="w-5 h-5 text-amber-500" />,
-      description: 'Anointed choir leading the fellowship in high praises, deep worship, and specialized choral ministrations.',
+      icon: <Mic2 className="w-5 h-5 text-amber-400" />,
+      banner: '/images/departments/music-drama.jpg',
+      description: 'Anointed choir and drama ministration leading the fellowship in high praises, deep prophetic worship, and impactful Christian drama.',
       schedule: 'Rehearsals: Saturdays 4:00 PM &bull; Main Auditorium',
-    },
-    {
-      id: 'instruments',
-      name: 'Instrumentalists & Audio Engineering',
-      category: 'music',
-      icon: <Music className="w-5 h-5 text-amber-500" />,
-      description: 'Keyboardists, bassists, lead guitarists, drummers, and acoustic sound engineers managing church audio equipment.',
-      schedule: 'Sound Checks: Sunday 6:30 AM &bull; Rehearsals: Fridays',
     },
     {
       id: 'media',
       name: 'Media & Technical Department',
       category: 'media',
-      icon: <Tv className="w-5 h-5 text-amber-500" />,
-      description: 'Livestreaming, campus photography, graphic design, video documentary, projection, and official digital communications.',
-      schedule: 'Technical Crew: Sundays &amp; Midweek Services',
+      icon: <Tv className="w-5 h-5 text-amber-400" />,
+      banner: '/images/departments/media.jpg',
+      description: 'Livestreaming, campus photography, sound engineering, graphic design, projection, social media, and digital broadcast operations.',
+      schedule: 'Technical Crew: Sundays 6:30 AM &amp; Midweek Services',
     },
     {
       id: 'prayer',
       name: 'Prayer Force (Intercessory Wing)',
       category: 'prayer',
-      icon: <Flame className="w-5 h-5 text-amber-500" />,
-      description: 'Standing in the gap for the body of Christ, student welfare, exam seasons, and national revival through intense intercession.',
+      icon: <Flame className="w-5 h-5 text-amber-400" />,
+      banner: '/images/departments/prayer.jpg',
+      description: 'Standing in the gap for the body of Christ, student welfare, exam seasons, and national revival through fervent Holy Ghost intercession.',
       schedule: 'Tuesdays 6:30 PM &amp; Friday Prayer Encounters',
     },
     {
       id: 'evangelism',
       name: 'Evangelism & Missions Committee',
       category: 'prayer',
-      icon: <Globe2 className="w-5 h-5 text-amber-500" />,
-      description: 'Outreach to campus halls, hostels, lecture theatres, surrounding Tarkwa mining communities, and annual rural crusades.',
+      icon: <Globe2 className="w-5 h-5 text-amber-400" />,
+      banner: '/images/departments/evangelism.jpg',
+      description: 'Taking the gospel to campus halls, hostels, lecture theatres, surrounding Tarkwa mining townships, and rural mission fields.',
       schedule: 'Saturday Morning Street &amp; Hall Evangelism: 7:00 AM',
     },
     {
-      id: 'organizing',
-      name: 'Organizing & Logistics Committee',
+      id: 'bible-study',
+      name: 'Bible Study & Discipleship Committee',
       category: 'service',
-      icon: <Boxes className="w-5 h-5 text-amber-500" />,
-      description: 'Logistics, seating arrangement, stage management, venue booking, and coordinating major fellowship conferences.',
+      icon: <BookOpen className="w-5 h-5 text-amber-400" />,
+      banner: '/images/departments/bible-study.jpg',
+      description: 'Facilitating systematic doctrinal studies, Sunday Bible discussions, member follow-ups, and freshers discipleship syllabus.',
+      schedule: 'Midweek Expository Studies: Wednesdays 6:30 PM',
+    },
+    {
+      id: 'organizing',
+      name: 'Organizing & Stage Protocol',
+      category: 'service',
+      icon: <Boxes className="w-5 h-5 text-amber-400" />,
+      banner: '/images/departments/organizing.jpg',
+      description: 'Logistics, auditorium seating arrangements, stage management, venue reservations, and coordinating major fellowship conferences.',
       schedule: 'Setup: Saturdays 5:00 PM &amp; Sundays before service',
     },
     {
-      id: 'ushering',
-      name: 'Ushering, Protocol & Welfare',
+      id: 'transport',
+      name: 'Transport & Logistics Committee',
       category: 'service',
-      icon: <HeartHandshake className="w-5 h-5 text-amber-500" />,
-      description: 'Warmly welcoming worshippers, maintaining orderly service atmosphere, offering pastoral protocol, and member welfare support.',
-      schedule: 'Duty Roster: All church gatherings &amp; services',
+      icon: <Truck className="w-5 h-5 text-amber-400" />,
+      banner: '/images/departments/transport.jpg',
+      description: 'Coordinating student bus shuttles from off-campus hostels across Tarkwa, logistics movement for crusades, and vehicular operations.',
+      schedule: 'Sunday Shuttles: 6:45 AM &amp; 8:45 AM from hostel cell stops',
     },
     {
-      id: 'academics',
-      name: 'Academic & Professional Committee',
+      id: 'ladies-gents',
+      name: 'Ladies&apos; & Gents&apos; Wing',
       category: 'service',
-      icon: <GraduationCap className="w-5 h-5 text-amber-500" />,
-      description: 'Organizing peer tutorials across UMaT engineering programmes, past question banks, career seminars, and academic mentorship.',
-      schedule: 'Study Sessions: Weekday Evenings in Lecture Blocks',
+      icon: <Users2 className="w-5 h-5 text-amber-400" />,
+      banner: '/images/departments/ladies-gents.jpg',
+      description: 'Nurturing godly young men (PEMEN) and virtuous women (Virtuous Ladies) for leadership, relationship purity, and professional excellence.',
+      schedule: 'Bi-Weekly Meetings &bull; Alternate Saturdays 4:30 PM',
+    },
+    {
+      id: 'bpc',
+      name: 'Business & Political Chamber (BPC)',
+      category: 'service',
+      icon: <Briefcase className="w-5 h-5 text-amber-400" />,
+      banner: '/images/departments/bpc.jpg',
+      description: 'Equipping Christian students for ethical governance, student politics, entrepreneurship, finance management, and career leadership.',
+      schedule: 'Chamber Sessions: Scheduled Monthly Symposiums',
+    },
+    {
+      id: 'professional-guild',
+      name: 'PENSA Professional Guild (PPG)',
+      category: 'service',
+      icon: <GraduationCap className="w-5 h-5 text-amber-400" />,
+      banner: '/images/departments/professional-guild.jpg',
+      description: 'Connecting undergraduate engineering and science students with alumni mentors, professional associations, and industrial internships.',
+      schedule: 'Mentorship Circles &bull; Academic Semester Clinics',
     },
   ];
 
   const categories = [
     { id: 'all', label: 'All Ministries' },
-    { id: 'music', label: 'Music & Instrumentalists' },
+    { id: 'music', label: 'Music & Drama' },
     { id: 'media', label: 'Media & Production' },
     { id: 'prayer', label: 'Prayer & Missions' },
-    { id: 'service', label: 'Service & Academics' },
+    { id: 'service', label: 'Service & Wings' },
   ] as const;
 
   const filtered = activeCategory === 'all'
@@ -109,13 +138,31 @@ export default function MinistriesPage() {
   return (
     <div className="flex-1 bg-slate-50 pb-20">
       {/* Header Banner */}
-      <section className="bg-[#0A192F] text-white py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="bg-[#0A192F] text-white py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800 relative overflow-hidden">
+        {/* Subtle background glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-80 bg-gradient-to-b from-amber-500/10 via-transparent to-transparent pointer-events-none" />
+
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          {/* Official Dual Crests */}
+          <div className="flex items-center justify-center gap-3.5 mb-5">
+            <img
+              src="/images/cop-logo.png"
+              alt="The Church of Pentecost"
+              className="w-12 h-12 sm:w-14 sm:h-14 object-contain drop-shadow brightness-105"
+            />
+            <div className="h-8 w-px bg-slate-700" />
+            <img
+              src="/images/pensa-umat-logo.png"
+              alt="PENSA UMaT Chapter"
+              className="w-14 h-14 sm:w-16 sm:h-16 object-contain drop-shadow brightness-105 hover:scale-105 transition-transform"
+            />
+          </div>
+
           <span className="text-xs uppercase tracking-wider font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 px-3 py-1 rounded-full">
             Fellowship Arms of Service
           </span>
           <h1 className="text-3xl sm:text-5xl font-black tracking-tight mt-3 text-white">
-            Ministries &amp; Committees
+            Ministries &amp; Departments
           </h1>
           <p className="mt-3 text-slate-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
             Every member has a grace and a calling. Discover the various departments within PENSA UMaT where you can use your gifts to serve God and build His church.
@@ -140,27 +187,42 @@ export default function MinistriesPage() {
         </div>
       </section>
 
-      {/* Ministries Grid with smooth micro-interactions */}
+      {/* Ministries Grid with Authentic Department Banners */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filtered.map((min) => (
             <div
               key={min.id}
-              className="bg-white p-6 rounded-xl border border-slate-200/90 shadow-sm card-hover flex flex-col justify-between"
+              className="bg-white rounded-xl border border-slate-200/90 shadow-sm hover:shadow-md transition-all duration-300 card-hover flex flex-col justify-between overflow-hidden group"
             >
-              <div>
-                <div className="w-10 h-10 rounded-lg bg-amber-50 border border-amber-200 flex items-center justify-center mb-3">
+              {/* Department Banner Image */}
+              <div className="h-44 w-full relative overflow-hidden bg-slate-900">
+                <img
+                  src={min.banner}
+                  alt={min.name}
+                  loading="lazy"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+                <div className="absolute top-3 left-3 w-9 h-9 rounded-lg bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center shadow">
                   {min.icon}
                 </div>
-                <h3 className="text-base font-bold text-slate-900 mb-2">{min.name}</h3>
-                <p className="text-xs text-slate-600 leading-relaxed mb-4">{min.description}</p>
+                <div className="absolute bottom-3 left-3 right-3 text-white">
+                  <h3 className="text-base font-bold text-white group-hover:text-amber-300 transition-colors leading-snug">
+                    {min.name}
+                  </h3>
+                </div>
               </div>
 
-              <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                <span
-                  className="text-slate-500 text-[11px]"
-                  dangerouslySetInnerHTML={{ __html: min.schedule }}
-                />
+              {/* Department Info & Schedule */}
+              <div className="p-5 flex-1 flex flex-col justify-between">
+                <p className="text-xs text-slate-600 leading-relaxed mb-4">{min.description}</p>
+                <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                  <span
+                    className="text-slate-500 text-[11px]"
+                    dangerouslySetInnerHTML={{ __html: min.schedule }}
+                  />
+                </div>
               </div>
             </div>
           ))}
@@ -177,7 +239,7 @@ export default function MinistriesPage() {
             </p>
           </div>
           <Link
-            href="/register"
+            href="/#census"
             className="px-6 py-2.5 rounded-lg bg-[#0A192F] hover:bg-[#122A4E] text-white text-xs font-semibold shrink-0 flex items-center gap-2 transition-colors shadow"
           >
             <span>Register &amp; Select Ministry</span>

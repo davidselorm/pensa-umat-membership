@@ -74,16 +74,16 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo & Identity with Official Logos */}
           <Link href="/" className="flex items-center gap-3 focus:outline-none shrink-0 group">
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-2">
               <img
-                src="/images/cop-logo.svg"
+                src="/images/cop-logo.png"
                 alt="The Church of Pentecost"
-                className="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow"
+                className="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow brightness-105"
               />
               <img
-                src="/images/pensa-umat-logo.svg"
+                src="/images/pensa-umat-logo.png"
                 alt="PENSA UMaT"
-                className="w-9 h-9 sm:w-10 sm:h-10 object-contain drop-shadow group-hover:scale-105 transition-transform"
+                className="w-9 h-9 sm:w-10 sm:h-10 object-contain drop-shadow brightness-105 group-hover:scale-105 transition-transform"
               />
             </div>
             <div className="flex flex-col">

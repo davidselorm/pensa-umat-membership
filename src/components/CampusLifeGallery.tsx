@@ -1,22 +1,22 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Camera, Eye, X, Calendar, MapPin, Users, Heart } from 'lucide-react';
+import { Camera, Eye, X, Calendar, MapPin, Users, Heart, Share2, Sparkles } from 'lucide-react';
 
 interface GalleryItem {
   id: string;
   title: string;
-  tag: string;
+  tag: 'worship' | 'prayer' | 'wings' | 'outreach';
   date: string;
   venue: string;
-  gradient?: string;
+  image: string;
   caption: string;
-  accent: string;
+  badge: string;
 }
 
 export default function CampusLifeGallery() {
   const [activeItem, setActiveItem] = useState<GalleryItem | null>(null);
-  const [filter, setFilter] = useState<'all' | 'worship' | 'prayer' | 'cells' | 'outreach'>('all');
+  const [filter, setFilter] = useState<'all' | 'worship' | 'prayer' | 'wings' | 'outreach'>('all');
 
   const gallery: GalleryItem[] = [
     {
@@ -25,59 +25,119 @@ export default function CampusLifeGallery() {
       tag: 'worship',
       date: 'Sunday Morning Services',
       venue: 'UMaT Main Auditorium',
-      gradient: 'from-[#0A192F] via-[#1E3A8A] to-[#0A192F]',
-      caption: 'Over 1,200 students gathering in the prestigious UMaT Main Auditorium for the 1st and 2nd sessions of Sunday Divine Service. Anointed praise, worship, and expository Word.',
-      accent: 'text-amber-400',
+      image: '/images/hero/hero-worship-1.jpg',
+      caption: 'Over 1,200 students gathering in the prestigious UMaT Main Auditorium for the Sunday Divine Service sessions. High praises, deep worship, and life-transforming expository teaching.',
+      badge: 'Sunday Service',
     },
     {
       id: 'gallery-2',
-      title: 'The Minstrels & Instrumentalists Live',
+      title: 'Campus Praise & Anointed Worship Ministry',
       tag: 'worship',
-      date: 'Annual Choral Evening',
-      venue: 'Auditorium Stage',
-      gradient: 'from-[#1E1B4B] via-[#4338CA] to-[#0F172A]',
-      caption: 'The official choir of PENSA UMaT leading the fellowship in deep prophetic worship and glorious Ghanaian highlife praises backed by full brass and rhythm sections.',
-      accent: 'text-sky-300',
+      date: 'Midweek & Sunday Praise',
+      venue: 'Fellowship Center Stage',
+      image: '/images/hero/hero-fellowship-2.jpg',
+      caption: 'The Minstrels and instrumentalists leading the congregation into glorious Ghanaian highlife praises, intimate worship, and deep spiritual fervor.',
+      badge: 'Music Ministry',
     },
     {
       id: 'gallery-3',
-      title: 'Dunamis Night of Fire & Intercession',
+      title: 'Ablaze Conference & Holy Ghost Encounters',
       tag: 'prayer',
-      date: 'Bi-Weekly Friday All-Night',
-      venue: 'Campus Fellowship Center',
-      gradient: 'from-[#1C1917] via-[#C2410C] to-[#0A192F]',
-      caption: 'Students pressing into God&apos;s presence during all-night prayer vigils. Interceding for semester examinations, spiritual revival, academic excellence, and family breakthroughs.',
-      accent: 'text-orange-400',
+      date: 'Annual Semester Conference',
+      venue: 'UMaT Auditorium',
+      image: '/images/hero/hero-conference-3.jpg',
+      caption: 'Spiritual revival, fire impartation, and divine breakthrough as students dedicate their academic journey and campus life to God Almighty.',
+      badge: 'Conference',
     },
     {
       id: 'gallery-4',
-      title: 'KT Hall Family Unit Fellowship Gathering',
-      tag: 'cells',
-      date: 'Sunday 4:30 PM',
-      venue: 'KT Hall Common Room',
-      gradient: 'from-[#064E3B] via-[#047857] to-[#0A192F]',
-      caption: 'Residential campus cells meeting in small circles. Students sharing personal testimonies, reviewing Sunday sermon notes, and encouraging one another.',
-      accent: 'text-emerald-400',
+      title: 'Dunamis Friday Campus All-Night Vigil',
+      tag: 'prayer',
+      date: 'Bi-Weekly Friday 9:00 PM',
+      venue: 'Campus Fellowship Center',
+      image: '/images/gallery/slide-campus-night.jpg',
+      caption: 'Students pressing into God&apos;s presence late into the night. Interceding for semester examinations, spiritual revival, academic excellence, and family breakthroughs.',
+      badge: 'All-Night Vigil',
     },
     {
       id: 'gallery-5',
-      title: 'Engineering Academic Exam Clinic',
-      tag: 'cells',
-      date: 'Semester Exam Season',
-      venue: 'Engineering Block A',
-      gradient: 'from-[#0F294A] via-[#1D4ED8] to-[#0A192F]',
-      caption: 'Senior engineering students and teaching assistants organizing free peer tutorials on engineering mathematics, applied mechanics, circuit analysis, and thermodynamics.',
-      accent: 'text-amber-300',
+      title: 'PENSA UMaT Alumni & Associates Homecoming',
+      tag: 'wings',
+      date: 'Annual Alumni Gathering',
+      venue: 'Alumni Hall & Campus',
+      image: '/images/gallery/alumni-homecoming.jpg',
+      caption: 'Alumni mining engineers, computer scientists, geologists, and industry leaders returning to campus to inspire, mentor, and network with undergraduate students.',
+      badge: 'Alumni & Mentorship',
     },
     {
       id: 'gallery-6',
-      title: 'Tarkwa Community Evangelism & Missions',
+      title: 'Freshers Welcome & Orientation Service',
+      tag: 'worship',
+      date: 'Semester Matriculation Season',
+      venue: 'Fellowship Center',
+      image: '/images/gallery/welcome-service.jpg',
+      caption: 'Welcoming newly admitted freshmen into the PENSA UMaT family. Assigning residential cell leaders, course tutorial seniors, and prayer partners.',
+      badge: 'Freshers Welcome',
+    },
+    {
+      id: 'gallery-7',
+      title: 'Tarkwa Mining Communities Evangelism',
       tag: 'outreach',
-      date: 'Saturday Morning Outreach',
-      venue: 'Tarkwa Banso & Market Area',
-      gradient: 'from-[#881337] via-[#BE123C] to-[#0A192F]',
-      caption: 'PENSA UMaT members taking the gospel outside campus walls into the mining townships and communities of Tarkwa with tracts, prayer, and practical charity.',
-      accent: 'text-rose-400',
+      date: 'Saturday Morning Missions',
+      venue: 'Tarkwa Banso & Environs',
+      image: '/images/gallery/rural-outreach.webp',
+      caption: 'PENSA UMaT taking the gospel outside campus lecture halls into the communities and townships of Tarkwa through tracts, one-on-one witness, and practical charity.',
+      badge: 'Missions Outreach',
+    },
+    {
+      id: 'gallery-8',
+      title: 'PENSA Gents&apos; Wing Campus Fellowship',
+      tag: 'wings',
+      date: 'Alternate Saturdays',
+      venue: 'KT Hall Forecourt',
+      image: '/images/gallery/gents-wing.jpeg',
+      caption: 'Empowering young Christian gentlemen for leadership, integrity, academic discipline, and purposeful career advancement in the mining and engineering industries.',
+      badge: 'PEMEN Gents',
+    },
+    {
+      id: 'gallery-9',
+      title: 'Prayer Force Intercessory Encounters',
+      tag: 'prayer',
+      date: 'Tuesdays & Pre-Service Vigils',
+      venue: 'Prayer Mountain & Center',
+      image: '/images/gallery/prayer-force.webp',
+      caption: 'Dedicated student intercessors lifting a shield of prayer over the university administration, faculty, students&apos; health, and examination seasons.',
+      badge: 'Prayer Force',
+    },
+    {
+      id: 'gallery-10',
+      title: 'International & Francophone Students Assembly',
+      tag: 'wings',
+      date: 'Monthly Assembly',
+      venue: 'Fellowship Chapel',
+      image: '/images/gallery/international-assembly.webp',
+      caption: 'Providing a welcoming bilingual spiritual home for international students studying engineering and science at UMaT from across West Africa and beyond.',
+      badge: 'International Assembly',
+    },
+    {
+      id: 'gallery-11',
+      title: 'Rural Crusades & Hall Evangelism Teams',
+      tag: 'outreach',
+      date: 'Semester Missions Trip',
+      venue: 'Western Region Field',
+      image: '/images/gallery/missions-field.jpg',
+      caption: 'Equipping students for lifelong evangelism. Hundreds of souls saved and established in local Pentecost assemblies during annual mission outreaches.',
+      badge: 'Rural Missions',
+    },
+    {
+      id: 'gallery-12',
+      title: 'Executive Council & Leadership Retreat',
+      tag: 'wings',
+      date: 'Annual Leadership Retreat',
+      venue: 'Fellowship Secretariat',
+      image: '/images/gallery/leadership-conference.jpg',
+      caption: 'Pastoral board, patrons, and elected committee heads converging to pray, strategize, and coordinate seamless welfare and spiritual oversight.',
+      badge: 'Secretariat Leadership',
     },
   ];
 
@@ -85,7 +145,7 @@ export default function CampusLifeGallery() {
     { id: 'all', label: 'All Moments' },
     { id: 'worship', label: 'Auditorium Services' },
     { id: 'prayer', label: 'Prayer & Vigils' },
-    { id: 'cells', label: 'Hostel Cells & Academics' },
+    { id: 'wings', label: 'Wings & Fellowship' },
     { id: 'outreach', label: 'Evangelism & Missions' },
   ] as const;
 
@@ -96,14 +156,15 @@ export default function CampusLifeGallery() {
       {/* Header and Filter */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-slate-200 gap-4">
         <div>
-          <span className="text-xs uppercase font-bold text-amber-600 tracking-wider">
-            Campus Life &amp; Community
+          <span className="text-xs uppercase font-bold text-amber-600 tracking-wider flex items-center gap-1.5">
+            <Camera className="w-3.5 h-3.5" />
+            Official Campus Media &amp; Moments
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
             Life at PENSA UMaT
           </h2>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-lg">
-            Glimpses of fellowship, intense prayer, choir ministrations, and vibrant student community at the University of Mines and Technology.
+          <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-xl">
+            Authentic photographs of Sunday services, campus prayer vigils, engineering tutorials, residential cells, and fellowship life in Tarkwa.
           </p>
         </div>
 
@@ -125,52 +186,59 @@ export default function CampusLifeGallery() {
         </div>
       </div>
 
-      {/* Gallery Grid with Visual Cards */}
+      {/* Gallery Grid with High-Res Photos */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {filtered.map((item) => (
           <div
             key={item.id}
             onClick={() => setActiveItem(item)}
-            className="group cursor-pointer rounded-xl overflow-hidden border border-slate-200/90 bg-white shadow-sm card-hover flex flex-col justify-between"
+            className="group cursor-pointer rounded-xl overflow-hidden border border-slate-200/90 bg-white shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between"
           >
-            {/* Visual Cover Banner with Authentic Logos & Typography */}
-            <div
-              className={`h-48 bg-gradient-to-br ${item.gradient} p-5 flex flex-col justify-between relative overflow-hidden text-white`}
-            >
-              <div className="flex items-center justify-between relative z-10">
-                <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-black/40 backdrop-blur-sm border border-white/20 ${item.accent}`}>
-                  {item.venue}
+            {/* Real Photo Thumbnail with Zoom & Badges */}
+            <div className="h-56 relative overflow-hidden bg-slate-900">
+              <img
+                src={item.image}
+                alt={item.title}
+                loading="lazy"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+              />
+              {/* Gradient Scrim for readable badges */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+              {/* Top Badges */}
+              <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-black/60 backdrop-blur-md text-amber-300 border border-amber-500/30">
+                  {item.badge}
                 </span>
-                <span className="p-1.5 rounded-full bg-white/10 group-hover:bg-white/20 text-white transition-colors">
+                <span className="p-1.5 rounded-full bg-black/50 backdrop-blur-sm text-white group-hover:bg-amber-500 group-hover:text-slate-950 transition-colors shadow">
                   <Eye className="w-3.5 h-3.5" />
                 </span>
               </div>
 
-              {/* Watermark Logo in background */}
-              <div className="absolute right-3 -bottom-4 opacity-15 pointer-events-none w-32 h-32">
-                <img src="/images/pensa-umat-logo.svg" alt="PENSA" className="w-full h-full object-contain" />
-              </div>
-
-              <div className="relative z-10">
-                <span className="text-[11px] text-slate-300 block font-medium mb-1 flex items-center gap-1">
+              {/* Bottom Info on Image */}
+              <div className="absolute bottom-3 left-3 right-3 text-white">
+                <span className="text-[11px] text-slate-300 flex items-center gap-1 mb-1 font-medium">
                   <Calendar className="w-3 h-3 text-amber-400" />
                   {item.date}
                 </span>
-                <h3 className="text-base font-bold text-white group-hover:text-amber-300 transition-colors leading-snug">
+                <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-amber-300 transition-colors line-clamp-1">
                   {item.title}
                 </h3>
               </div>
             </div>
 
-            {/* Bottom Card Summary */}
+            {/* Card Content Footer */}
             <div className="p-4 bg-white text-xs text-slate-600 flex-1 flex flex-col justify-between">
-              <p className="line-clamp-2 leading-relaxed mb-3">
+              <p className="line-clamp-2 leading-relaxed text-slate-600 mb-3">
                 {item.caption}
               </p>
               <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-medium">
-                <span>The Church of Pentecost &bull; UMaT</span>
+                <span className="flex items-center gap-1 text-slate-500">
+                  <MapPin className="w-3 h-3 text-amber-500" />
+                  {item.venue}
+                </span>
                 <span className="text-amber-600 font-semibold group-hover:underline">
-                  View Story &rarr;
+                  View Photo &rarr;
                 </span>
               </div>
             </div>
@@ -178,54 +246,71 @@ export default function CampusLifeGallery() {
         ))}
       </div>
 
-      {/* Interactive Detail Modal / Lightbox */}
+      {/* Interactive Photo Modal / Lightbox */}
       {activeItem && (
         <div
           onClick={() => setActiveItem(null)}
-          className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in-50 duration-200"
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in-50 duration-200"
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl border border-slate-700 animate-in zoom-in-95 duration-200"
+            className="bg-white rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl border border-slate-700 animate-in zoom-in-95 duration-200 flex flex-col max-h-[92vh]"
           >
-            {/* Modal Header Banner */}
-            <div className={`p-8 bg-gradient-to-br ${activeItem.gradient} text-white relative`}>
+            {/* Modal Image View */}
+            <div className="relative h-72 sm:h-96 bg-black flex items-center justify-center overflow-hidden">
+              <img
+                src={activeItem.image}
+                alt={activeItem.title}
+                className="w-full h-full object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+
+              {/* Close Button */}
               <button
                 onClick={() => setActiveItem(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-black/40 hover:bg-black/60 text-white transition-colors"
+                className="absolute top-4 right-4 p-2 rounded-full bg-black/60 hover:bg-black/90 text-white transition-colors z-10 shadow"
+                aria-label="Close modal"
               >
                 <X className="w-4 h-4" />
               </button>
 
-              <div className="flex items-center gap-2 mb-2">
-                <img src="/images/cop-logo.svg" alt="COP" className="w-6 h-6 object-contain" />
-                <img src="/images/pensa-umat-logo.svg" alt="PENSA" className="w-6 h-6 object-contain" />
-                <span className="text-xs uppercase font-bold text-amber-400 tracking-wider">
-                  PENSA UMaT &bull; Official Archive
+              {/* Watermark Crest */}
+              <div className="absolute top-4 left-4 flex items-center gap-2 z-10 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
+                <img src="/images/cop-logo.png" alt="COP" className="w-5 h-5 object-contain" />
+                <img src="/images/pensa-umat-logo.png" alt="PENSA" className="w-5 h-5 object-contain" />
+                <span className="text-[11px] font-bold text-amber-300 tracking-wide uppercase">
+                  PENSA UMaT Media
                 </span>
               </div>
 
-              <h2 className="text-xl sm:text-2xl font-black text-white leading-tight mt-1">
-                {activeItem.title}
-              </h2>
-
-              <div className="mt-3 flex flex-wrap items-center gap-4 text-xs text-slate-300">
-                <span className="flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5 text-amber-400" />
-                  {activeItem.date}
+              {/* Image Title on Cover */}
+              <div className="absolute bottom-4 left-4 right-4 text-white z-10">
+                <span className="text-xs font-semibold uppercase tracking-wider text-amber-400 block mb-1">
+                  {activeItem.badge}
                 </span>
-                <span className="flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-amber-400" />
-                  {activeItem.venue}
-                </span>
+                <h2 className="text-lg sm:text-2xl font-black text-white leading-tight">
+                  {activeItem.title}
+                </h2>
               </div>
             </div>
 
-            {/* Modal Body */}
-            <div className="p-6 sm:p-8 space-y-5 text-sm text-slate-700">
+            {/* Modal Body & Details */}
+            <div className="p-6 sm:p-7 space-y-4 text-sm text-slate-700 overflow-y-auto">
+              <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 pb-3 border-b border-slate-100">
+                <span className="flex items-center gap-1.5 font-medium">
+                  <Calendar className="w-4 h-4 text-amber-600" />
+                  {activeItem.date}
+                </span>
+                <span className="flex items-center gap-1.5 font-medium">
+                  <MapPin className="w-4 h-4 text-amber-600" />
+                  {activeItem.venue}
+                </span>
+                <span className="text-slate-400">&bull; The Church of Pentecost &bull; Tarkwa Area</span>
+              </div>
+
               <div>
                 <span className="text-xs uppercase font-bold text-slate-500 tracking-wider block mb-1">
-                  Fellowship Experience
+                  Fellowship Context &amp; Story
                 </span>
                 <p className="leading-relaxed text-slate-700 text-sm sm:text-base">
                   {activeItem.caption}
@@ -236,26 +321,39 @@ export default function CampusLifeGallery() {
                 <Users className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-semibold text-slate-900 block mb-0.5">
-                    Want to be part of these campus moments?
+                    Connect with PENSA UMaT on Campus
                   </span>
-                  Register for the 2025/2026 Academic Census and join an active Family Unit or ministry department.
+                  Are you a student in Tarkwa? Complete your official 2025/2026 census registration to be assigned to your hall cell and preferred ministry wing.
                 </div>
               </div>
 
-              <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-200">
-                <button
-                  onClick={() => setActiveItem(null)}
-                  className="px-4 py-2 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-50 text-xs font-semibold"
-                >
-                  Close
-                </button>
+              {/* Actions Footer */}
+              <div className="flex items-center justify-between pt-3 border-t border-slate-200">
                 <a
-                  href="/register"
-                  onClick={() => setActiveItem(null)}
-                  className="px-5 py-2 rounded-lg bg-[#0A192F] hover:bg-[#122A4E] text-white text-xs font-semibold shadow"
+                  href="https://www.facebook.com/share/15t4RRcwnn/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs text-blue-600 hover:text-blue-800 font-semibold"
                 >
-                  Register in Census
+                  <Share2 className="w-3.5 h-3.5" />
+                  <span>View More on Facebook</span>
                 </a>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => setActiveItem(null)}
+                    className="px-4 py-2 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-50 text-xs font-semibold"
+                  >
+                    Close
+                  </button>
+                  <a
+                    href="#census"
+                    onClick={() => setActiveItem(null)}
+                    className="px-5 py-2 rounded-lg bg-[#0A192F] hover:bg-[#122A4E] text-white text-xs font-semibold shadow"
+                  >
+                    Join Fellowship
+                  </a>
+                </div>
               </div>
             </div>
           </div>

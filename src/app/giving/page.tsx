@@ -49,6 +49,20 @@ export default function GivingPage() {
       {/* Header Banner */}
       <section className="bg-[#0A192F] text-white py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
         <div className="max-w-4xl mx-auto text-center">
+          <div className="flex items-center justify-center gap-3.5 mb-4">
+            <img
+              src="/images/cop-logo.png"
+              alt="The Church of Pentecost"
+              className="w-12 h-12 object-contain drop-shadow brightness-105"
+            />
+            <div className="h-7 w-px bg-slate-700" />
+            <img
+              src="/images/pensa-umat-logo.png"
+              alt="PENSA UMaT Chapter"
+              className="w-14 h-14 object-contain drop-shadow brightness-105"
+            />
+          </div>
+
           <span className="text-xs uppercase tracking-wider font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 px-3 py-1 rounded-full">
             Kingdom Stewardship &bull; Welfare
           </span>

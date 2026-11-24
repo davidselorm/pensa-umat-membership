@@ -34,15 +34,15 @@ export default function AboutPage() {
           {/* Dual Official Crests */}
           <div className="flex items-center justify-center gap-3.5 mb-5">
             <img
-              src="/images/cop-logo.svg"
+              src="/images/cop-logo.png"
               alt="The Church of Pentecost"
-              className="w-14 h-14 sm:w-16 sm:h-16 object-contain drop-shadow"
+              className="w-14 h-14 sm:w-16 sm:h-16 object-contain drop-shadow brightness-105"
             />
             <div className="h-8 w-px bg-slate-700" />
             <img
-              src="/images/pensa-umat-logo.svg"
+              src="/images/pensa-umat-logo.png"
               alt="PENSA UMaT Chapter"
-              className="w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow"
+              className="w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow brightness-105"
             />
           </div>
 

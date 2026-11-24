@@ -11,14 +11,14 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
               <img
-                src="/images/cop-logo.svg"
+                src="/images/cop-logo.png"
                 alt="The Church of Pentecost"
-                className="w-11 h-11 object-contain drop-shadow"
+                className="w-11 h-11 object-contain drop-shadow brightness-105"
               />
               <img
-                src="/images/pensa-umat-logo.svg"
+                src="/images/pensa-umat-logo.png"
                 alt="PENSA UMaT"
-                className="w-12 h-12 object-contain drop-shadow"
+                className="w-12 h-12 object-contain drop-shadow brightness-105"
               />
               <div>
                 <span className="text-white font-bold text-base tracking-tight block">PENSA UMaT</span>
@@ -28,13 +28,26 @@ export default function Footer() {
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
               Pentecost Students and Associates (PENSA), University of Mines and Technology, Tarkwa. Dedicated to raising godly leaders and mining the treasures in people for Christ.
             </p>
-            <div className="mt-4 pt-3 border-t border-slate-800/80 max-w-sm">
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-amber-500 block">
-                Fellowship Motto
-              </span>
-              <span className="text-xs text-slate-300 italic">
-                &ldquo;Christ in You, the Hope of Glory&rdquo; (Colossians 1:27)
-              </span>
+            <div className="mt-4 pt-3 border-t border-slate-800/80 max-w-sm flex items-center justify-between">
+              <div>
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-amber-500 block">
+                  Fellowship Motto
+                </span>
+                <span className="text-xs text-slate-300 italic">
+                  &ldquo;Christ in You, the Hope of Glory&rdquo; (Colossians 1:27)
+                </span>
+              </div>
+            </div>
+            <div className="mt-4 flex items-center gap-2">
+              <a
+                href="https://www.facebook.com/share/15t4RRcwnn/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600/20 border border-blue-500/30 text-blue-300 hover:text-white hover:bg-blue-600/30 text-xs font-semibold transition-all"
+              >
+                <span>Follow on Facebook</span>
+                <span>&rarr;</span>
+              </a>
             </div>
           </div>
 
