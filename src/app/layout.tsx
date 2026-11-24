@@ -4,8 +4,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'PENSA UMAT MEMBERSHIP | Official Campus Church Portal',
-  description: 'Official membership directory and self-registration portal for Pentecost Students and Associates (PENSA), University of Mines and Technology, Tarkwa.',
+  title: 'PENSA UMaT Membership Directory | The Church of Pentecost, Tarkwa',
+  description: 'Official membership directory and registration portal for Pentecost Students and Associates (PENSA), University of Mines and Technology, Tarkwa, Ghana.',
 };
 
 export default function RootLayout({

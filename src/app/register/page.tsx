@@ -9,16 +9,16 @@ export default function RegisterPage() {
       <div className="max-w-3xl mx-auto mb-6 flex items-center justify-between">
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#0F294A] hover:underline"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-slate-900 transition-colors"
         >
-          <ArrowLeft className="w-4 h-4" />
-          Back to Home
+          <ArrowLeft className="w-3.5 h-3.5" />
+          Back to Overview
         </Link>
         <Link
           href="/login"
-          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-amber-600 hover:text-amber-700 hover:underline"
+          className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0A192F] hover:underline"
         >
-          <ShieldCheck className="w-4 h-4" />
+          <ShieldCheck className="w-3.5 h-3.5 text-slate-500" />
           Executive Login
         </Link>
       </div>

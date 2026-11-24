@@ -30,7 +30,7 @@ import {
   ExternalLink,
   Info,
   Loader2,
-  Sparkles
+  UserPlus
 } from 'lucide-react';
 import {
   Member,
@@ -456,7 +456,7 @@ export default function DashboardPage() {
         <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-sm">
           <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-bold uppercase tracking-wider">Associates</span>
-            <Sparkles className="w-5 h-5 text-amber-500" />
+            <UserPlus className="w-5 h-5 text-amber-600" />
           </div>
           <div className="text-2xl sm:text-3xl font-black text-amber-600">{stats?.associateCount || 0}</div>
           <p className="text-[11px] text-slate-400 mt-1">Associate brothers/sisters</p>
