@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getDb } from '@/lib/db';
+import { get, run } from '@/lib/db';
 import { getCurrentExecutive } from '@/lib/auth';
 
 export async function GET(
@@ -13,16 +13,15 @@ export async function GET(
     }
 
     const { id } = params;
-    const db = getDb();
-    const stmt = db.prepare(`
-      SELECT 
+    const member = await get(
+      `SELECT 
         m.*, f.name AS family_unit_name 
       FROM members m
       LEFT JOIN family_units f ON m.family_unit_id = f.id
-      WHERE m.id = ?
-    `);
+      WHERE m.id = ?`,
+      [id]
+    );
 
-    const member = stmt.get(id);
     if (!member) {
       return NextResponse.json({ error: 'Member not found' }, { status: 404 });
     }
@@ -46,11 +45,8 @@ export async function PATCH(
 
     const { id } = params;
     const body = await req.json();
-    const db = getDb();
 
-    // Check if exists
-    const checkStmt = db.prepare('SELECT id FROM members WHERE id = ?');
-    const existing = checkStmt.get(id);
+    const existing = await get('SELECT id FROM members WHERE id = ?', [id]);
     if (!existing) {
       return NextResponse.json({ error: 'Member not found' }, { status: 404 });
     }
@@ -87,13 +83,12 @@ export async function PATCH(
     values.push(new Date().toISOString());
     values.push(id);
 
-    const updateStmt = db.prepare(`
-      UPDATE members 
-      SET ${updateFields.join(', ')}
-      WHERE id = ?
-    `);
-
-    updateStmt.run(...values);
+    await run(
+      `UPDATE members 
+       SET ${updateFields.join(', ')}
+       WHERE id = ?`,
+      values
+    );
 
     return NextResponse.json({ success: true, message: 'Member updated successfully' });
   } catch (error) {
@@ -113,9 +108,7 @@ export async function DELETE(
     }
 
     const { id } = params;
-    const db = getDb();
-    const stmt = db.prepare('DELETE FROM members WHERE id = ?');
-    stmt.run(id);
+    await run('DELETE FROM members WHERE id = ?', [id]);
 
     return NextResponse.json({ success: true, message: 'Member deleted' });
   } catch (error) {

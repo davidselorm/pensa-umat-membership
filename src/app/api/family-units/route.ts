@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getDb } from '@/lib/db';
+import { query, run } from '@/lib/db';
 import { getCurrentExecutive } from '@/lib/auth';
 
 export const dynamic = 'force-dynamic';
@@ -11,8 +11,7 @@ export async function GET() {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const db = getDb();
-    const stmt = db.prepare(`
+    const units = await query(`
       SELECT 
         f.id,
         f.name,
@@ -27,7 +26,6 @@ export async function GET() {
       ORDER BY f.name ASC
     `);
 
-    const units = stmt.all();
     return NextResponse.json({ units });
   } catch (error) {
     console.error('Error fetching family units:', error);
@@ -51,16 +49,14 @@ export async function POST(req: Request) {
       );
     }
 
-    const db = getDb();
     const id = `fu_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
     const now = new Date().toISOString();
 
-    const stmt = db.prepare(`
-      INSERT INTO family_units (id, name, leader_name, leader_phone, meeting_info, created_at)
-      VALUES (?, ?, ?, ?, ?, ?)
-    `);
-
-    stmt.run(id, name.trim(), leader_name.trim(), leader_phone.trim(), meeting_info?.trim() || '', now);
+    await run(
+      `INSERT INTO family_units (id, name, leader_name, leader_phone, meeting_info, created_at)
+       VALUES (?, ?, ?, ?, ?, ?)`,
+      [id, name.trim(), leader_name.trim(), leader_phone.trim(), meeting_info?.trim() || '', now]
+    );
 
     return NextResponse.json({ success: true, unitId: id, message: 'Family Unit created successfully' }, { status: 201 });
   } catch (error) {

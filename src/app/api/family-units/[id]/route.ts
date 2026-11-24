@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getDb } from '@/lib/db';
+import { run } from '@/lib/db';
 import { getCurrentExecutive } from '@/lib/auth';
 
 export async function PATCH(
@@ -15,17 +15,15 @@ export async function PATCH(
     const { id } = params;
     const { name, leader_name, leader_phone, meeting_info } = await req.json();
 
-    const db = getDb();
-    const updateStmt = db.prepare(`
-      UPDATE family_units
-      SET name = COALESCE(?, name),
-          leader_name = COALESCE(?, leader_name),
-          leader_phone = COALESCE(?, leader_phone),
-          meeting_info = COALESCE(?, meeting_info)
-      WHERE id = ?
-    `);
-
-    updateStmt.run(name?.trim(), leader_name?.trim(), leader_phone?.trim(), meeting_info?.trim(), id);
+    await run(
+      `UPDATE family_units
+       SET name = COALESCE(?, name),
+           leader_name = COALESCE(?, leader_name),
+           leader_phone = COALESCE(?, leader_phone),
+           meeting_info = COALESCE(?, meeting_info)
+       WHERE id = ?`,
+      [name?.trim(), leader_name?.trim(), leader_phone?.trim(), meeting_info?.trim(), id]
+    );
 
     return NextResponse.json({ success: true, message: 'Family Unit updated' });
   } catch (error) {
@@ -45,14 +43,10 @@ export async function DELETE(
     }
 
     const { id } = params;
-    const db = getDb();
 
     // Set any members in this unit to NULL
-    const unassign = db.prepare('UPDATE members SET family_unit_id = NULL WHERE family_unit_id = ?');
-    unassign.run(id);
-
-    const deleteUnit = db.prepare('DELETE FROM family_units WHERE id = ?');
-    deleteUnit.run(id);
+    await run('UPDATE members SET family_unit_id = NULL WHERE family_unit_id = ?', [id]);
+    await run('DELETE FROM family_units WHERE id = ?', [id]);
 
     return NextResponse.json({ success: true, message: 'Family Unit deleted and members unassigned' });
   } catch (error) {

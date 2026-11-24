@@ -67,8 +67,24 @@ Built with **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**, **Lucide 
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS (Navy `#0F294A` & Warm Gold `#D97706` theme)
 - **Icons:** Lucide React
-- **Database:** Zero-dependency, persistent SQLite powered by Node.js built-in `node:sqlite`
-- **Initial Seed Data:** Automatically populates 14 realistic UMaT student records, 3 Family Units, and default admin credentials upon first run.
+- **Database:** Universal SQLite engine with zero-dependency native `node:sqlite` for local development and seamless [Turso](https://turso.tech) Cloud SQLite support for persistent production on Vercel
+- **Authentication:** Secure HMAC-SHA256 session tokens with salted scrypt password hashing
+- **Duplicate Prevention:** Automatic conflict detection across email and phone variations
+- **Initial Seed Data:** Automatically populates realistic UMaT student records, Family Units, and default admin credentials upon first run.
+
+---
+
+## ⚙️ Environment Variables (Vercel Production)
+
+Add the following environment variables in your Vercel Project Settings (`Settings > Environment Variables`):
+
+| Variable | Description | Example |
+|---|---|---|
+| `TURSO_DATABASE_URL` | Persistent Turso Cloud SQLite URL | `libsql://pensa-umat.turso.io` |
+| `TURSO_AUTH_TOKEN` | Turso database authentication token | `eyJh...` |
+| `SESSION_SECRET` | 32+ character random secret for executive cookies | `pensa_secret_2026_xyz...` |
+
+*(If running locally, `TURSO_DATABASE_URL` is optional — it will automatically default to local SQLite in `data/pensa.db`)*
 
 ---
 

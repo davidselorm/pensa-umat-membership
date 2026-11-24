@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getDb } from '@/lib/db';
+import { query, get, run } from '@/lib/db';
 import { getCurrentExecutive } from '@/lib/auth';
 
 export const dynamic = 'force-dynamic';
@@ -20,9 +20,7 @@ export async function GET(req: Request) {
     const department = searchParams.get('department')?.trim() || '';
     const familyUnit = searchParams.get('familyUnit')?.trim() || '';
 
-    const db = getDb();
-
-    let query = `
+    let sql = `
       SELECT 
         m.id, m.full_name, m.phone, m.email, m.dob, m.programme,
         m.year_level, m.hostel, m.membership_status, m.home_location,
@@ -36,48 +34,47 @@ export async function GET(req: Request) {
     const params: any[] = [];
 
     if (q) {
-      query += ` AND (m.full_name LIKE ? OR m.phone LIKE ? OR m.email LIKE ?)`;
+      sql += ` AND (m.full_name LIKE ? OR m.phone LIKE ? OR m.email LIKE ?)`;
       params.push(`%${q}%`, `%${q}%`, `%${q}%`);
     }
 
     if (level && level !== 'ALL') {
-      query += ` AND m.year_level = ?`;
+      sql += ` AND m.year_level = ?`;
       params.push(level);
     }
 
     if (hostel && hostel !== 'ALL') {
-      query += ` AND m.hostel LIKE ?`;
+      sql += ` AND m.hostel LIKE ?`;
       params.push(`%${hostel}%`);
     }
 
     if (programme && programme !== 'ALL') {
-      query += ` AND m.programme LIKE ?`;
+      sql += ` AND m.programme LIKE ?`;
       params.push(`%${programme}%`);
     }
 
     if (status && status !== 'ALL') {
-      query += ` AND m.membership_status = ?`;
+      sql += ` AND m.membership_status = ?`;
       params.push(status);
     }
 
     if (department && department !== 'ALL') {
-      query += ` AND m.department = ?`;
+      sql += ` AND m.department = ?`;
       params.push(department);
     }
 
     if (familyUnit && familyUnit !== 'ALL') {
       if (familyUnit === 'UNASSIGNED') {
-        query += ` AND (m.family_unit_id IS NULL OR m.family_unit_id = '')`;
+        sql += ` AND (m.family_unit_id IS NULL OR m.family_unit_id = '')`;
       } else {
-        query += ` AND m.family_unit_id = ?`;
+        sql += ` AND m.family_unit_id = ?`;
         params.push(familyUnit);
       }
     }
 
-    query += ` ORDER BY m.created_at DESC`;
+    sql += ` ORDER BY m.created_at DESC`;
 
-    const stmt = db.prepare(query);
-    const members = stmt.all(...params);
+    const members = await query(sql, params);
 
     return NextResponse.json({ members });
   } catch (error) {
@@ -122,45 +119,70 @@ export async function POST(req: Request) {
       );
     }
 
-    const db = getDb();
+    const trimmedEmail = email.trim().toLowerCase();
+    const trimmedPhone = phone.trim();
+
+    // Duplicate detection: extract last 9 digits of phone to match local & international variations
+    const digitsOnly = trimmedPhone.replace(/\D/g, '');
+    const phoneSuffix = digitsOnly.length >= 9 ? digitsOnly.slice(-9) : digitsOnly;
+
+    const existing = await get<{ id: string; full_name: string }>(
+      `SELECT id, full_name FROM members 
+       WHERE LOWER(email) = LOWER(?) 
+          OR REPLACE(REPLACE(REPLACE(phone, ' ', ''), '-', ''), '+', '') LIKE ?
+       LIMIT 1`,
+      [trimmedEmail, `%${phoneSuffix}`]
+    );
+
+    if (existing) {
+      return NextResponse.json(
+        {
+          error: `A member with this phone number or email address is already registered (${existing.full_name}). If you need to update your details, please contact a PENSA executive.`,
+        },
+        { status: 409 }
+      );
+    }
+
     const id = `mem_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
     const now = new Date().toISOString();
 
-    const insertStmt = db.prepare(`
-      INSERT INTO members (
+    await run(
+      `INSERT INTO members (
         id, full_name, phone, email, dob, programme,
         year_level, hostel, membership_status, home_location,
         department, family_unit_id, created_at, updated_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `);
-
-    insertStmt.run(
-      id,
-      full_name.trim(),
-      phone.trim(),
-      email.trim(),
-      dob.trim(),
-      programme.trim(),
-      year_level.trim(),
-      hostel.trim(),
-      membership_status.trim(),
-      home_location.trim(),
-      department.trim(),
-      family_unit_id || null,
-      now,
-      now
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [
+        id,
+        full_name.trim(),
+        trimmedPhone,
+        trimmedEmail,
+        dob.trim(),
+        programme.trim(),
+        year_level.trim(),
+        hostel.trim(),
+        membership_status.trim(),
+        home_location.trim(),
+        department.trim(),
+        family_unit_id || null,
+        now,
+        now,
+      ]
     );
 
     return NextResponse.json(
       {
         success: true,
-        message: 'Registration successful! Welcome to PENSA UMaT.',
         memberId: id,
+        message: 'Registration successful! Welcome to PENSA UMaT.',
       },
       { status: 201 }
     );
   } catch (error) {
-    console.error('Error registering member:', error);
-    return NextResponse.json({ error: 'Failed to submit registration' }, { status: 500 });
+    console.error('Registration error:', error);
+    return NextResponse.json(
+      { error: 'Internal server error while processing registration.' },
+      { status: 500 }
+    );
   }
 }
