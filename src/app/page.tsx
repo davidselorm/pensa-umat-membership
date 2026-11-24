@@ -3,13 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import CampusLifeGallery from '@/components/CampusLifeGallery';
+import ServiceCountdown from '@/components/ServiceCountdown';
 import {
   Clock,
   MapPin,
   Users,
   Compass,
   ArrowRight,
-  ShieldCheck,
   Award,
   Flame,
   CheckCircle2,
@@ -18,7 +18,6 @@ import {
   BookOpen,
   Church,
   ChevronRight,
-  ChevronLeft,
   GraduationCap,
   Heart,
   Music,
@@ -56,10 +55,10 @@ export default function HomePage() {
   }, [heroSlides.length]);
 
   const stats = [
-    { label: 'Student Members', value: '1,200+', icon: <Users className="w-4 h-4 text-amber-400" /> },
-    { label: 'Campus Residential Units', value: '4 Cells', icon: <Compass className="w-4 h-4 text-emerald-400" /> },
-    { label: 'Fellowship Ministries', value: '10 Arms', icon: <Award className="w-4 h-4 text-sky-400" /> },
-    { label: 'Sunday Divine Sessions', value: '2 Services', icon: <Church className="w-4 h-4 text-purple-400" /> },
+    { label: 'Student Members', value: '1,200+', icon: <Users className="w-4 h-4 text-yellow-400" /> },
+    { label: 'Campus Residential Units', value: '4 Cells', icon: <Compass className="w-4 h-4 text-red-500" /> },
+    { label: 'Fellowship Ministries', value: '10 Arms', icon: <Award className="w-4 h-4 text-yellow-400" /> },
+    { label: 'Sunday Divine Sessions', value: '2 Services', icon: <Church className="w-4 h-4 text-white" /> },
   ];
 
   const weeklyServices = [
@@ -125,10 +124,10 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="flex-1 bg-slate-50 pb-20 overflow-x-hidden">
+    <div className="flex-1 bg-white pb-20 overflow-x-hidden">
       {/* Cinematic Hero Section with Cross-Fading Photography */}
-      <section className="relative min-h-[85vh] sm:min-h-[90vh] bg-[#0A192F] text-white flex items-center justify-center overflow-hidden border-b border-slate-800">
-        {/* Background Photo Slider with Ken-Burns Motion */}
+      <section className="relative min-h-[85vh] sm:min-h-[90vh] bg-[#04112B] text-white flex items-center justify-center overflow-hidden border-b border-[#00205B]">
+        {/* Background Photo Slider with Cinema Ken-Burns Motion */}
         {heroSlides.map((slide, idx) => (
           <div
             key={idx}
@@ -144,25 +143,25 @@ export default function HomePage() {
           </div>
         ))}
 
-        {/* Ambient Dark Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A192F] via-[#0A192F]/75 to-[#0A192F]/60 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent pointer-events-none" />
+        {/* Ambient Dark Ultramarine Gradient Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#04112B] via-[#04112B]/80 to-[#00205B]/60 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-yellow-400/10 via-transparent to-transparent pointer-events-none" />
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center relative z-10 flex flex-col items-center">
           {/* Official Tri-Crest Institutional Badge */}
-          <div className="inline-flex items-center gap-2.5 sm:gap-3.5 bg-slate-900/80 px-4 py-2 rounded-2xl border border-slate-700/80 shadow-2xl backdrop-blur-md mb-6 hover:border-amber-500/40 transition-all">
+          <div className="inline-flex items-center gap-2.5 sm:gap-3.5 bg-[#00205B]/85 px-4 py-2 rounded-2xl border border-yellow-400/30 shadow-2xl backdrop-blur-md mb-6 hover:border-yellow-400/60 transition-all">
             <img
               src="/images/cop-logo.png"
               alt="The Church of Pentecost"
               className="w-10 h-10 sm:w-11 sm:h-11 object-contain drop-shadow brightness-105"
             />
-            <div className="h-6 w-px bg-slate-700" />
+            <div className="h-6 w-px bg-white/20" />
             <img
               src="/images/pensaumatofficial.jpg"
               alt="Official PENSA UMaT Logo"
               className="w-11 h-11 sm:w-13 sm:h-13 object-contain rounded-full drop-shadow-xl hover:scale-105 transition-transform"
             />
-            <div className="h-6 w-px bg-slate-700" />
+            <div className="h-6 w-px bg-white/20" />
             <img
               src="/images/umat-logo.jpg"
               alt="UMaT Crest"
@@ -171,42 +170,42 @@ export default function HomePage() {
           </div>
 
           {/* Academic Session Pill */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-300 text-xs font-semibold mb-5 tracking-wide uppercase shadow-sm">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-yellow-400/40 bg-yellow-400/10 text-yellow-300 text-xs font-semibold mb-5 tracking-wide uppercase shadow-sm">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
             </span>
             <span>The Church of Pentecost &bull; UMaT Chapter, Tarkwa</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight max-w-4xl">
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight max-w-4xl drop-shadow-md">
             MINING THE TREASURES IN PEOPLE FOR CHRIST
           </h1>
 
-          <p className="mt-4 text-slate-200 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed drop-shadow">
+          <p className="mt-4 text-white/90 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed drop-shadow">
             Welcome to PENSA UMaT. A family of faith, prayer, and academic excellence on the campus of Ghana&apos;s premier University of Mines and Technology.
           </p>
 
           {/* Action Hub */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3.5">
             <Link
               href="/register"
-              className="px-6 py-3 rounded-xl bg-[#D97706] hover:bg-[#B45309] text-white text-xs sm:text-sm font-semibold shadow-xl shadow-amber-950/30 transition-all active:scale-95 flex items-center gap-2 group"
+              className="px-7 py-3.5 rounded-xl bg-[#FACC15] hover:bg-yellow-300 text-[#00205B] text-xs sm:text-sm font-bold shadow-xl shadow-black/25 transition-all active:scale-95 flex items-center gap-2 group border border-yellow-400"
             >
               <span>Membership Census 2025/2026</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
 
             <Link
               href="/ministries"
-              className="px-5 py-3 rounded-xl border border-slate-700 bg-white/10 hover:bg-white/15 text-slate-200 text-xs sm:text-sm font-medium transition-all backdrop-blur-sm"
+              className="px-6 py-3.5 rounded-xl border border-white/20 bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-semibold transition-all backdrop-blur-sm"
             >
               Explore Ministries
             </Link>
 
             <Link
               href="/family-units"
-              className="px-5 py-3 rounded-xl border border-transparent hover:border-slate-700 text-slate-300 hover:text-white text-xs sm:text-sm font-medium transition-all"
+              className="px-6 py-3.5 rounded-xl border border-red-600/30 bg-red-600/15 hover:bg-red-600/25 text-white text-xs sm:text-sm font-semibold transition-all backdrop-blur-sm"
             >
               Residential Cells &rarr;
             </Link>
@@ -220,49 +219,54 @@ export default function HomePage() {
                 onClick={() => setCurrentSlide(i)}
                 aria-label={`Go to slide ${i + 1}`}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
-                  currentSlide === i ? 'w-6 bg-amber-400' : 'w-1.5 bg-white/30 hover:bg-white/60'
+                  currentSlide === i ? 'w-7 bg-[#FACC15]' : 'w-2 bg-white/30 hover:bg-white/60'
                 }`}
               />
             ))}
           </div>
 
           {/* Live Stats Ribbon */}
-          <div className="mt-10 pt-6 border-t border-slate-800/80 grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl text-left">
+          <div className="mt-10 pt-6 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl text-left">
             {stats.map((s, idx) => (
               <div
                 key={idx}
-                className="bg-slate-900/60 border border-slate-800/80 rounded-xl p-3.5 backdrop-blur-md hover:border-slate-700 transition-all card-hover"
+                className="bg-[#00205B]/80 border border-[#0038A8]/50 rounded-xl p-3.5 backdrop-blur-md hover:border-yellow-400/50 transition-all card-hover"
               >
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-xl sm:text-2xl font-black text-white font-mono">{s.value}</span>
                   {s.icon}
                 </div>
-                <span className="text-[11px] text-slate-400 font-medium leading-tight block">{s.label}</span>
+                <span className="text-[11px] text-white/70 font-medium leading-tight block">{s.label}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Cinematic Chapter Identity & Welcome (Split Layout) */}
+      {/* Real-time Countdown Banner */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-20">
+        <ServiceCountdown />
+      </section>
+
+      {/* Chapter Identity & Welcome (Split Layout) */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
-            <span className="text-xs uppercase font-bold text-amber-600 tracking-wider block mb-2">
+            <span className="text-xs uppercase font-bold text-red-600 tracking-wider block mb-2">
               Our Vision &amp; Campus Mission
             </span>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 leading-tight">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#00205B] leading-tight">
               A Spiritual Sanctuary for University Students in Tarkwa
             </h2>
-            <p className="mt-4 text-xs sm:text-sm text-slate-600 leading-relaxed">
+            <p className="mt-4 text-xs sm:text-sm text-neutral-700 leading-relaxed">
               At the University of Mines and Technology, academic training in engineering, geology, computing, and applied sciences demands extreme dedication. PENSA UMaT provides the spiritual foundation, close-knit brotherhood, and pastoral care that equips every student to excel spiritually and intellectually.
             </p>
 
-            <div className="mt-6 p-4 rounded-xl bg-amber-50 border border-amber-200/80">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-amber-800 block mb-1">
+            <div className="mt-6 p-4 rounded-xl bg-yellow-400/10 border border-yellow-400/40">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-red-700 block mb-1">
                 Fellowship Motto &bull; Colossians 1:27
               </span>
-              <p className="text-sm font-semibold text-amber-950 italic">
+              <p className="text-sm font-bold text-[#00205B] italic">
                 &ldquo;Christ in You, the Hope of Glory&rdquo;
               </p>
             </div>
@@ -270,7 +274,7 @@ export default function HomePage() {
             <div className="mt-6 flex items-center gap-4">
               <Link
                 href="/about"
-                className="text-xs font-semibold text-[#0A192F] hover:text-amber-600 inline-flex items-center gap-1.5 group transition-colors"
+                className="text-xs font-bold text-[#00205B] hover:text-red-600 inline-flex items-center gap-1.5 group transition-colors"
               >
                 <span>Read our story and core pillars</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -280,14 +284,14 @@ export default function HomePage() {
 
           {/* Visual Showcase Stack */}
           <div className="grid grid-cols-2 gap-4 relative">
-            <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 h-64 sm:h-72">
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-[#0038A8]/20 h-64 sm:h-72">
               <img
                 src="/images/fb/freshers-akwaaba.jpg"
                 alt="Freshers Akwaaba Service"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200 h-64 sm:h-72 mt-6">
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-[#0038A8]/20 h-64 sm:h-72 mt-6">
               <img
                 src="/images/fb/arrival-moments.jpg"
                 alt="Fellowship Arrival Moments"
@@ -299,18 +303,18 @@ export default function HomePage() {
       </section>
 
       {/* Worship Rhythm & Weekly Gathering Hours */}
-      <section className="bg-slate-900 text-white py-16 border-y border-slate-800 relative overflow-hidden">
+      <section className="bg-[#04112B] text-white py-16 border-y border-[#00205B] relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 pb-4 border-b border-slate-800 gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 pb-4 border-b border-[#00205B] gap-4">
             <div>
-              <span className="text-xs uppercase font-bold text-amber-400 tracking-wider">
+              <span className="text-xs uppercase font-bold text-yellow-400 tracking-wider">
                 Gathering Rhythm
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-1">
                 Weekly Service Schedules
               </h2>
             </div>
-            <p className="text-xs text-slate-400 max-w-md">
+            <p className="text-xs text-white/70 max-w-md">
               Join thousands of Christian students gathering for spirit-filled services across UMaT campus.
             </p>
           </div>
@@ -319,18 +323,18 @@ export default function HomePage() {
             {weeklyServices.map((svc, idx) => (
               <div
                 key={idx}
-                className="bg-slate-800/80 border border-slate-700/80 rounded-2xl overflow-hidden shadow-md flex flex-col justify-between hover:border-amber-500/40 transition-all card-hover group"
+                className="bg-[#00205B] border border-[#0038A8]/40 rounded-2xl overflow-hidden shadow-md flex flex-col justify-between hover:border-yellow-400 transition-all card-hover group"
               >
                 {/* Photo Thumbnail */}
-                <div className="h-44 relative overflow-hidden bg-slate-950">
+                <div className="h-44 relative overflow-hidden bg-black">
                   <img
                     src={svc.image}
                     alt={svc.title}
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent" />
-                  <span className="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-black/60 backdrop-blur-md text-amber-300 border border-white/10">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#00205B] via-[#00205B]/30 to-transparent" />
+                  <span className="absolute top-3 left-3 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-[#00205B]/90 backdrop-blur-md text-yellow-300 border border-yellow-400/30">
                     {svc.badge}
                   </span>
                 </div>
@@ -338,21 +342,21 @@ export default function HomePage() {
                 {/* Card Info */}
                 <div className="p-5 flex-1 flex flex-col justify-between">
                   <div>
-                    <h3 className="text-sm font-bold text-white group-hover:text-amber-300 transition-colors leading-snug mb-2">
+                    <h3 className="text-sm font-bold text-white group-hover:text-yellow-300 transition-colors leading-snug mb-2">
                       {svc.title}
                     </h3>
-                    <p className="text-xs text-slate-400 leading-relaxed mb-4">
+                    <p className="text-xs text-white/75 leading-relaxed mb-4">
                       {svc.desc}
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-slate-700/60 space-y-1.5 text-[11px] text-slate-300">
-                    <div className="flex items-start gap-1.5 text-amber-400 font-semibold">
+                  <div className="pt-3 border-t border-[#0038A8]/40 space-y-1.5 text-[11px] text-white/80">
+                    <div className="flex items-start gap-1.5 text-yellow-400 font-semibold">
                       <Clock className="w-3.5 h-3.5 shrink-0 mt-0.5" />
                       <span dangerouslySetInnerHTML={{ __html: svc.time }} />
                     </div>
-                    <div className="flex items-center gap-1.5 text-slate-400">
-                      <MapPin className="w-3.5 h-3.5 shrink-0 text-slate-500" />
+                    <div className="flex items-center gap-1.5 text-white/70">
+                      <MapPin className="w-3.5 h-3.5 shrink-0 text-red-500" />
                       <span>{svc.venue}</span>
                     </div>
                   </div>
@@ -370,21 +374,21 @@ export default function HomePage() {
 
       {/* Fellowship Ministries & Arms of Service Preview */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-slate-200 gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-neutral-200 gap-4">
           <div>
-            <span className="text-xs uppercase font-bold text-amber-600 tracking-wider">
+            <span className="text-xs uppercase font-bold text-red-600 tracking-wider">
               Arms of Service
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#00205B] mt-1">
               Ministries &amp; Departments
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500 mt-1">
+            <p className="text-xs sm:text-sm text-neutral-600 mt-1">
               Every member has a grace and a calling. Discover the various arms where you can serve God on campus.
             </p>
           </div>
           <Link
             href="/ministries"
-            className="text-xs font-semibold text-amber-600 hover:text-amber-700 inline-flex items-center gap-1 group self-start sm:self-auto"
+            className="text-xs font-bold text-red-600 hover:text-red-700 inline-flex items-center gap-1 group self-start sm:self-auto"
           >
             <span>Explore All 10 Ministries</span>
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -395,9 +399,9 @@ export default function HomePage() {
           {featuredMinistries.map((min, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-2xl border border-slate-200/90 shadow-sm overflow-hidden flex flex-col justify-between card-hover group"
+              className="bg-white rounded-2xl border border-[#0038A8]/20 shadow-sm overflow-hidden flex flex-col justify-between card-hover group hover:border-yellow-400 transition-all"
             >
-              <div className="h-44 relative overflow-hidden bg-slate-900">
+              <div className="h-44 relative overflow-hidden bg-black">
                 <img
                   src={min.image}
                   alt={min.name}
@@ -405,21 +409,21 @@ export default function HomePage() {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                <span className="absolute bottom-3 left-3 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-black/60 backdrop-blur-md text-amber-300">
+                <span className="absolute bottom-3 left-3 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#00205B]/90 backdrop-blur-md text-yellow-300 border border-yellow-400/30">
                   {min.role}
                 </span>
               </div>
 
               <div className="p-4 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-sm font-bold text-slate-900 group-hover:text-amber-600 transition-colors leading-snug mb-1">
+                  <h3 className="text-sm font-bold text-[#00205B] group-hover:text-red-600 transition-colors leading-snug mb-1">
                     {min.name}
                   </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed mb-3">{min.desc}</p>
+                  <p className="text-xs text-neutral-600 leading-relaxed mb-3">{min.desc}</p>
                 </div>
                 <Link
                   href="/ministries"
-                  className="text-[11px] font-semibold text-amber-600 hover:underline inline-flex items-center gap-1"
+                  className="text-[11px] font-bold text-red-600 hover:text-red-700 inline-flex items-center gap-1"
                 >
                   <span>Learn more</span>
                   <ChevronRight className="w-3 h-3" />
@@ -432,13 +436,13 @@ export default function HomePage() {
 
       {/* Cinema-Grade Membership Census Invitation */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-        <div className="bg-gradient-to-br from-[#0A192F] via-[#0E2442] to-[#0A192F] rounded-3xl border border-slate-800 p-8 sm:p-12 shadow-2xl text-white relative overflow-hidden">
-          <div className="absolute right-0 top-0 translate-x-12 -translate-y-12 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="bg-gradient-to-br from-[#00205B] via-[#0038A8] to-[#04112B] rounded-3xl border border-yellow-400/30 p-8 sm:p-12 shadow-2xl text-white relative overflow-hidden">
+          <div className="absolute right-0 top-0 translate-x-12 -translate-y-12 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 max-w-3xl">
-            <div className="inline-flex items-center gap-2 mb-4 bg-amber-500/10 border border-amber-500/30 px-3.5 py-1 rounded-full w-fit">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-              <span className="text-xs uppercase font-bold text-amber-300 tracking-wider">
+            <div className="inline-flex items-center gap-2 mb-4 bg-yellow-400/10 border border-yellow-400/30 px-3.5 py-1 rounded-full w-fit">
+              <Sparkles className="w-3.5 h-3.5 text-yellow-400" />
+              <span className="text-xs uppercase font-bold text-yellow-300 tracking-wider">
                 Official 2025/2026 Directory &bull; PENSA UMaT
               </span>
             </div>
@@ -447,35 +451,35 @@ export default function HomePage() {
               Ready for the Academic Session? Complete Your Census
             </h2>
 
-            <p className="mt-3 text-slate-300 text-xs sm:text-sm leading-relaxed max-w-2xl">
+            <p className="mt-3 text-white/90 text-xs sm:text-sm leading-relaxed max-w-2xl">
               All freshmen, continuing students, postgraduate researchers, and associates are required to complete the official census for the current semester. It takes less than 2 minutes and assigns you to your residential cell and engineering tutorial groups.
             </p>
 
             {/* Value Checkpoints */}
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300">
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-white/90">
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-yellow-400 shrink-0" />
                 <span>Immediate Hostel Cell Placement (KT, Chamber, Off-Campus)</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-yellow-400 shrink-0" />
                 <span>Engineering &amp; Science Course Tutorial Groups</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-yellow-400 shrink-0" />
                 <span>Ministry Arm &amp; Department Placement</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-yellow-400 shrink-0" />
                 <span>Pastoral Care &amp; Student Welfare Coverage</span>
               </div>
             </div>
 
             {/* CTA Buttons */}
-            <div className="mt-8 pt-6 border-t border-slate-800 flex flex-wrap items-center gap-4">
+            <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap items-center gap-4">
               <Link
                 href="/register"
-                className="px-7 py-3 rounded-xl bg-[#D97706] hover:bg-[#B45309] text-white text-xs sm:text-sm font-semibold shadow-xl shadow-amber-950/30 transition-all active:scale-95 flex items-center gap-2 group"
+                className="px-7 py-3.5 rounded-xl bg-[#FACC15] hover:bg-yellow-300 text-[#00205B] text-xs sm:text-sm font-bold shadow-xl shadow-black/30 transition-all active:scale-95 flex items-center gap-2 group border border-yellow-400"
               >
                 <span>Complete Membership Census Online</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -483,7 +487,7 @@ export default function HomePage() {
 
               <Link
                 href="/family-units"
-                className="px-5 py-3 rounded-xl border border-slate-700 bg-white/5 hover:bg-white/10 text-slate-300 text-xs sm:text-sm font-medium transition-all"
+                className="px-6 py-3.5 rounded-xl border border-white/20 bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm font-semibold transition-all backdrop-blur-sm"
               >
                 View Family Units
               </Link>

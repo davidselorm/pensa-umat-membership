@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={jakarta.variable}>
-      <body className="min-h-screen flex flex-col bg-slate-50 text-slate-800 antialiased selection:bg-amber-500 selection:text-slate-900 font-sans">
+      <body className="min-h-screen flex flex-col bg-white text-slate-900 antialiased selection:bg-[#FACC15] selection:text-[#00205B] font-sans">
         <Navbar />
         <main className="flex-1 flex flex-col">
           {children}

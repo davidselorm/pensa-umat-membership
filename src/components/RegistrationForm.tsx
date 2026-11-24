@@ -4,12 +4,7 @@ import React, { useState } from 'react';
 import {
   CheckCircle2,
   AlertCircle,
-  Loader2,
-  ChevronDown,
-  Building,
-  GraduationCap,
-  User,
-  Users
+  Loader2
 } from 'lucide-react';
 import {
   YEAR_LEVELS,
@@ -145,66 +140,66 @@ export default function RegistrationForm() {
 
   if (submittedData) {
     return (
-      <div className="bg-white rounded-lg border border-slate-300 shadow-sm p-6 sm:p-8 max-w-2xl mx-auto">
-        <div className="flex items-center gap-3 border-b border-slate-200 pb-4 mb-6">
-          <div className="w-10 h-10 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center shrink-0">
-            <CheckCircle2 className="w-6 h-6" />
+      <div className="bg-white rounded-2xl border border-[#0038A8]/20 shadow-xl p-6 sm:p-8 max-w-2xl mx-auto">
+        <div className="flex items-center gap-3 border-b border-neutral-100 pb-4 mb-6">
+          <div className="w-12 h-12 rounded-xl bg-yellow-400/20 border border-yellow-400/40 text-red-600 flex items-center justify-center shrink-0">
+            <CheckCircle2 className="w-7 h-7 text-red-600" />
           </div>
           <div>
-            <h2 className="text-lg font-bold text-slate-900">
+            <h2 className="text-xl font-bold text-[#00205B]">
               Registration Recorded
             </h2>
-            <p className="text-xs text-slate-500">
-              Reference: <span className="font-mono text-slate-800 font-semibold">{submittedData.id}</span>
+            <p className="text-xs text-neutral-500">
+              Reference: <span className="font-mono text-[#00205B] font-bold">{submittedData.id}</span>
             </p>
           </div>
         </div>
 
-        <p className="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">
-          Thank you, <strong className="text-slate-900">{submittedData.form.full_name}</strong>. Your record has been submitted to the PENSA UMaT Secretariat. You will be contacted regarding your Family Unit allocation.
+        <p className="text-xs sm:text-sm text-neutral-700 mb-6 leading-relaxed">
+          Thank you, <strong className="text-[#00205B]">{submittedData.form.full_name}</strong>. Your record has been submitted to the PENSA UMaT Secretariat. You will be contacted regarding your Family Unit allocation.
         </p>
 
         {/* Tabular Profile Summary */}
-        <div className="border border-slate-200 rounded-md bg-slate-50/50 p-4 mb-6 text-xs text-slate-700">
+        <div className="border border-[#0038A8]/20 rounded-xl bg-neutral-50/70 p-4 mb-6 text-xs text-neutral-700">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
             <div>
-              <span className="text-slate-500 block">Full Name</span>
-              <span className="font-medium text-slate-900">{submittedData.form.full_name}</span>
+              <span className="text-neutral-500 block">Full Name</span>
+              <span className="font-semibold text-[#00205B]">{submittedData.form.full_name}</span>
             </div>
             <div>
-              <span className="text-slate-500 block">Phone</span>
-              <span className="font-medium text-slate-900">{submittedData.form.phone}</span>
+              <span className="text-neutral-500 block">Phone</span>
+              <span className="font-semibold text-[#00205B]">{submittedData.form.phone}</span>
             </div>
             <div>
-              <span className="text-slate-500 block">Programme</span>
-              <span className="font-medium text-slate-900">{submittedData.form.programme}</span>
+              <span className="text-neutral-500 block">Programme</span>
+              <span className="font-semibold text-[#00205B]">{submittedData.form.programme}</span>
             </div>
             <div>
-              <span className="text-slate-500 block">Year Level</span>
-              <span className="font-medium text-slate-900">{submittedData.form.year_level}</span>
+              <span className="text-neutral-500 block">Year Level</span>
+              <span className="font-semibold text-[#00205B]">{submittedData.form.year_level}</span>
             </div>
             <div>
-              <span className="text-slate-500 block">Hall / Hostel</span>
-              <span className="font-medium text-slate-900">{submittedData.form.hostel}</span>
+              <span className="text-neutral-500 block">Hall / Hostel</span>
+              <span className="font-semibold text-[#00205B]">{submittedData.form.hostel}</span>
             </div>
             <div>
-              <span className="text-slate-500 block">Membership Status</span>
-              <span className="font-medium text-slate-900">{submittedData.form.membership_status}</span>
+              <span className="text-neutral-500 block">Membership Status</span>
+              <span className="font-semibold text-[#00205B]">{submittedData.form.membership_status}</span>
             </div>
             <div>
-              <span className="text-slate-500 block">Department</span>
-              <span className="font-medium text-slate-900">{submittedData.form.department}</span>
+              <span className="text-neutral-500 block">Department</span>
+              <span className="font-semibold text-[#00205B]">{submittedData.form.department}</span>
             </div>
             <div>
-              <span className="text-slate-500 block">Hometown / Vacation Location</span>
-              <span className="font-medium text-slate-900">{submittedData.form.home_location}</span>
+              <span className="text-neutral-500 block">Hometown / Vacation Location</span>
+              <span className="font-semibold text-[#00205B]">{submittedData.form.home_location}</span>
             </div>
           </div>
         </div>
 
         <button
           onClick={() => setSubmittedData(null)}
-          className="w-full sm:w-auto px-5 py-2 rounded-md bg-[#0A192F] hover:bg-[#122A4E] text-white text-xs font-semibold transition-colors"
+          className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-[#00205B] hover:bg-[#0038A8] text-yellow-400 text-xs font-bold transition-colors border border-yellow-400/30 shadow-md"
         >
           Submit Another Registration
         </button>
@@ -213,115 +208,119 @@ export default function RegistrationForm() {
   }
 
   return (
-    <div className="bg-white rounded-lg border border-slate-300 shadow-sm overflow-hidden">
+    <div className="bg-white rounded-2xl border border-[#0038A8]/20 shadow-xl overflow-hidden max-w-3xl mx-auto">
       {/* Form Header */}
-      <div className="border-b border-slate-200 px-6 py-5 bg-white">
+      <div className="border-b border-[#0038A8] px-6 py-5 bg-[#00205B] text-white">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-lg font-bold text-slate-900">
+            <span className="text-xs font-bold uppercase tracking-wider text-yellow-300 block mb-1">
+              PENSA UMaT Annual Census
+            </span>
+            <h2 className="text-xl font-black text-white">
               Membership Registration Form
             </h2>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <p className="text-xs text-white/80 mt-0.5">
               Please enter your academic, residential, and fellowship details below.
             </p>
           </div>
-          <span className="hidden sm:inline-block text-[11px] font-medium px-2 py-1 rounded bg-slate-100 text-slate-600 border border-slate-200">
-            All fields mandatory
+          <span className="hidden sm:inline-block text-[11px] font-bold px-3 py-1 rounded-full bg-yellow-400/10 text-yellow-300 border border-yellow-400/40">
+            Official Directory
           </span>
         </div>
       </div>
 
       <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-8">
         {submitError && (
-          <div className="p-3.5 rounded-md bg-amber-50 border border-amber-300 text-amber-900 text-xs flex items-start gap-2.5">
-            <AlertCircle className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
+          <div className="p-3.5 rounded-xl bg-red-50 border border-red-300 text-red-900 text-xs flex items-start gap-2.5">
+            <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
             <div>
-              <p className="font-semibold">Unable to complete registration</p>
-              <p className="mt-0.5 text-amber-800">{submitError}</p>
+              <p className="font-bold">Unable to complete registration</p>
+              <p className="mt-0.5 text-red-800">{submitError}</p>
             </div>
           </div>
         )}
 
         {/* Section 1: Personal Details */}
         <div>
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700 pb-2 border-b border-slate-200 mb-4">
-            1. Personal Details
+          <h3 className="text-xs font-bold uppercase tracking-wider text-[#00205B] pb-2 border-b border-neutral-200 mb-4 flex items-center justify-between">
+            <span>1. Personal Details</span>
+            <span className="text-red-600 text-[11px] font-semibold">* Required</span>
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="sm:col-span-2">
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Full Name <span className="text-red-500">*</span>
+              <label className="block text-xs font-bold text-[#00205B] mb-1">
+                Full Name <span className="text-red-600">*</span>
               </label>
               <input
                 type="text"
                 placeholder="e.g. Kwadwo Asare Boateng"
                 value={form.full_name}
                 onChange={(e) => setForm({ ...form, full_name: e.target.value })}
-                className={`w-full px-3 py-2 rounded-md border text-xs sm:text-sm text-slate-900 outline-none transition-colors ${
-                  errors.full_name ? 'border-red-400 bg-red-50/30' : 'border-slate-300 focus:border-[#0A192F] focus:ring-1 focus:ring-[#0A192F]'
+                className={`w-full px-3 py-2.5 rounded-xl border text-xs sm:text-sm text-neutral-900 outline-none transition-colors ${
+                  errors.full_name ? 'border-red-400 bg-red-50/30' : 'border-neutral-300 focus:border-[#0038A8] focus:ring-1 focus:ring-[#0038A8]'
                 }`}
               />
               {errors.full_name && <p className="text-[11px] text-red-600 mt-1">{errors.full_name}</p>}
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Phone Number (WhatsApp) <span className="text-red-500">*</span>
+              <label className="block text-xs font-bold text-[#00205B] mb-1">
+                Phone Number (WhatsApp) <span className="text-red-600">*</span>
               </label>
               <input
                 type="tel"
                 placeholder="024 123 4567"
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                className={`w-full px-3 py-2 rounded-md border text-xs sm:text-sm text-slate-900 outline-none transition-colors ${
-                  errors.phone ? 'border-red-400 bg-red-50/30' : 'border-slate-300 focus:border-[#0A192F] focus:ring-1 focus:ring-[#0A192F]'
+                className={`w-full px-3 py-2.5 rounded-xl border text-xs sm:text-sm text-neutral-900 outline-none transition-colors ${
+                  errors.phone ? 'border-red-400 bg-red-50/30' : 'border-neutral-300 focus:border-[#0038A8] focus:ring-1 focus:ring-[#0038A8]'
                 }`}
               />
               {errors.phone && <p className="text-[11px] text-red-600 mt-1">{errors.phone}</p>}
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Email Address <span className="text-red-500">*</span>
+              <label className="block text-xs font-bold text-[#00205B] mb-1">
+                Email Address <span className="text-red-600">*</span>
               </label>
               <input
                 type="email"
                 placeholder="kboateng@st.umat.edu.gh"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className={`w-full px-3 py-2 rounded-md border text-xs sm:text-sm text-slate-900 outline-none transition-colors ${
-                  errors.email ? 'border-red-400 bg-red-50/30' : 'border-slate-300 focus:border-[#0A192F] focus:ring-1 focus:ring-[#0A192F]'
+                className={`w-full px-3 py-2.5 rounded-xl border text-xs sm:text-sm text-neutral-900 outline-none transition-colors ${
+                  errors.email ? 'border-red-400 bg-red-50/30' : 'border-neutral-300 focus:border-[#0038A8] focus:ring-1 focus:ring-[#0038A8]'
                 }`}
               />
               {errors.email && <p className="text-[11px] text-red-600 mt-1">{errors.email}</p>}
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Date of Birth <span className="text-red-500">*</span>
+              <label className="block text-xs font-bold text-[#00205B] mb-1">
+                Date of Birth <span className="text-red-600">*</span>
               </label>
               <input
                 type="date"
                 value={form.dob}
                 onChange={(e) => setForm({ ...form, dob: e.target.value })}
-                className={`w-full px-3 py-2 rounded-md border text-xs sm:text-sm text-slate-900 outline-none transition-colors ${
-                  errors.dob ? 'border-red-400 bg-red-50/30' : 'border-slate-300 focus:border-[#0A192F] focus:ring-1 focus:ring-[#0A192F]'
+                className={`w-full px-3 py-2.5 rounded-xl border text-xs sm:text-sm text-neutral-900 outline-none transition-colors ${
+                  errors.dob ? 'border-red-400 bg-red-50/30' : 'border-neutral-300 focus:border-[#0038A8] focus:ring-1 focus:ring-[#0038A8]'
                 }`}
               />
               {errors.dob && <p className="text-[11px] text-red-600 mt-1">{errors.dob}</p>}
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Hometown / Vacation Location <span className="text-red-500">*</span>
+              <label className="block text-xs font-bold text-[#00205B] mb-1">
+                Hometown / Vacation Location <span className="text-red-600">*</span>
               </label>
               <input
                 type="text"
                 placeholder="e.g. Kumasi, Ashanti Region"
                 value={form.home_location}
                 onChange={(e) => setForm({ ...form, home_location: e.target.value })}
-                className={`w-full px-3 py-2 rounded-md border text-xs sm:text-sm text-slate-900 outline-none transition-colors ${
-                  errors.home_location ? 'border-red-400 bg-red-50/30' : 'border-slate-300 focus:border-[#0A192F] focus:ring-1 focus:ring-[#0A192F]'
+                className={`w-full px-3 py-2.5 rounded-xl border text-xs sm:text-sm text-neutral-900 outline-none transition-colors ${
+                  errors.home_location ? 'border-red-400 bg-red-50/30' : 'border-neutral-300 focus:border-[#0038A8] focus:ring-1 focus:ring-[#0038A8]'
                 }`}
               />
               {errors.home_location && <p className="text-[11px] text-red-600 mt-1">{errors.home_location}</p>}
@@ -331,13 +330,13 @@ export default function RegistrationForm() {
 
         {/* Section 2: Academic Details */}
         <div>
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700 pb-2 border-b border-slate-200 mb-4">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-[#00205B] pb-2 border-b border-neutral-200 mb-4">
             2. Academic Information
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Programme of Study <span className="text-red-500">*</span>
+              <label className="block text-xs font-bold text-[#00205B] mb-1">
+                Programme of Study <span className="text-red-600">*</span>
               </label>
               <input
                 list="programmes-list"
@@ -345,8 +344,8 @@ export default function RegistrationForm() {
                 placeholder="Select or type your programme"
                 value={form.programme}
                 onChange={(e) => setForm({ ...form, programme: e.target.value })}
-                className={`w-full px-3 py-2 rounded-md border text-xs sm:text-sm text-slate-900 outline-none transition-colors ${
-                  errors.programme ? 'border-red-400 bg-red-50/30' : 'border-slate-300 focus:border-[#0A192F] focus:ring-1 focus:ring-[#0A192F]'
+                className={`w-full px-3 py-2.5 rounded-xl border text-xs sm:text-sm text-neutral-900 outline-none transition-colors ${
+                  errors.programme ? 'border-red-400 bg-red-50/30' : 'border-neutral-300 focus:border-[#0038A8] focus:ring-1 focus:ring-[#0038A8]'
                 }`}
               />
               <datalist id="programmes-list">
@@ -358,14 +357,14 @@ export default function RegistrationForm() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Current Year Level <span className="text-red-500">*</span>
+              <label className="block text-xs font-bold text-[#00205B] mb-1">
+                Current Year Level <span className="text-red-600">*</span>
               </label>
               <select
                 value={form.year_level}
                 onChange={(e) => setForm({ ...form, year_level: e.target.value as YearLevel })}
-                className={`w-full px-3 py-2 rounded-md border text-xs sm:text-sm text-slate-900 bg-white outline-none transition-colors ${
-                  errors.year_level ? 'border-red-400 bg-red-50/30' : 'border-slate-300 focus:border-[#0A192F] focus:ring-1 focus:ring-[#0A192F]'
+                className={`w-full px-3 py-2.5 rounded-xl border text-xs sm:text-sm text-neutral-900 bg-white outline-none transition-colors ${
+                  errors.year_level ? 'border-red-400 bg-red-50/30' : 'border-neutral-300 focus:border-[#0038A8] focus:ring-1 focus:ring-[#0038A8]'
                 }`}
               >
                 <option value="">Select Level</option>
@@ -379,8 +378,8 @@ export default function RegistrationForm() {
             </div>
 
             <div className="sm:col-span-2">
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Hall of Residence / Hostel <span className="text-red-500">*</span>
+              <label className="block text-xs font-bold text-[#00205B] mb-1">
+                Hall of Residence / Hostel <span className="text-red-600">*</span>
               </label>
               <input
                 list="hostels-list"
@@ -388,8 +387,8 @@ export default function RegistrationForm() {
                 placeholder="e.g. KT Hall, Chamber of Mines, Grace Hostel"
                 value={form.hostel}
                 onChange={(e) => setForm({ ...form, hostel: e.target.value })}
-                className={`w-full px-3 py-2 rounded-md border text-xs sm:text-sm text-slate-900 outline-none transition-colors ${
-                  errors.hostel ? 'border-red-400 bg-red-50/30' : 'border-slate-300 focus:border-[#0A192F] focus:ring-1 focus:ring-[#0A192F]'
+                className={`w-full px-3 py-2.5 rounded-xl border text-xs sm:text-sm text-neutral-900 outline-none transition-colors ${
+                  errors.hostel ? 'border-red-400 bg-red-50/30' : 'border-neutral-300 focus:border-[#0038A8] focus:ring-1 focus:ring-[#0038A8]'
                 }`}
               />
               <datalist id="hostels-list">
@@ -404,18 +403,18 @@ export default function RegistrationForm() {
 
         {/* Section 3: Fellowship Details */}
         <div>
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700 pb-2 border-b border-slate-200 mb-4">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-[#00205B] pb-2 border-b border-neutral-200 mb-4">
             3. Fellowship Details
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Membership Status <span className="text-red-500">*</span>
+              <label className="block text-xs font-bold text-[#00205B] mb-1">
+                Membership Status <span className="text-red-600">*</span>
               </label>
               <select
                 value={form.membership_status}
                 onChange={(e) => setForm({ ...form, membership_status: e.target.value as MembershipStatus })}
-                className="w-full px-3 py-2 rounded-md border border-slate-300 text-xs sm:text-sm text-slate-900 bg-white outline-none focus:border-[#0A192F] focus:ring-1 focus:ring-[#0A192F]"
+                className="w-full px-3 py-2.5 rounded-xl border border-neutral-300 text-xs sm:text-sm text-neutral-900 bg-white outline-none focus:border-[#0038A8] focus:ring-1 focus:ring-[#0038A8]"
               >
                 {MEMBERSHIP_STATUSES.map((status) => (
                   <option key={status} value={status}>
@@ -423,19 +422,19 @@ export default function RegistrationForm() {
                   </option>
                 ))}
               </select>
-              <p className="text-[11px] text-slate-500 mt-1">
+              <p className="text-[11px] text-neutral-500 mt-1">
                 Select Associate if you belong to another denomination but fellowship with PENSA.
               </p>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Church Department / Ministry <span className="text-red-500">*</span>
+              <label className="block text-xs font-bold text-[#00205B] mb-1">
+                Church Department / Ministry <span className="text-red-600">*</span>
               </label>
               <select
                 value={form.department}
                 onChange={(e) => setForm({ ...form, department: e.target.value as ChurchDepartment })}
-                className="w-full px-3 py-2 rounded-md border border-slate-300 text-xs sm:text-sm text-slate-900 bg-white outline-none focus:border-[#0A192F] focus:ring-1 focus:ring-[#0A192F]"
+                className="w-full px-3 py-2.5 rounded-xl border border-neutral-300 text-xs sm:text-sm text-neutral-900 bg-white outline-none focus:border-[#0038A8] focus:ring-1 focus:ring-[#0038A8]"
               >
                 {CHURCH_DEPARTMENTS.map((dept) => (
                   <option key={dept} value={dept}>
@@ -443,7 +442,7 @@ export default function RegistrationForm() {
                   </option>
                 ))}
               </select>
-              <p className="text-[11px] text-slate-500 mt-1">
+              <p className="text-[11px] text-neutral-500 mt-1">
                 Select None / General Member if not currently serving on a committee.
               </p>
             </div>
@@ -451,16 +450,16 @@ export default function RegistrationForm() {
         </div>
 
         {/* Submission Button */}
-        <div className="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[11px] text-slate-500 order-2 sm:order-1">
+        <div className="pt-4 border-t border-neutral-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-[11px] text-neutral-500 order-2 sm:order-1">
             By submitting, you confirm that the information provided is accurate.
           </p>
           <button
             type="submit"
             disabled={submitting}
-            className="w-full sm:w-auto px-6 py-2.5 rounded-md bg-[#0A192F] hover:bg-[#122A4E] text-white text-xs sm:text-sm font-semibold transition-colors disabled:opacity-60 flex items-center justify-center gap-2 order-1 sm:order-2"
+            className="w-full sm:w-auto px-7 py-3 rounded-xl bg-[#FACC15] hover:bg-yellow-300 text-[#00205B] text-xs sm:text-sm font-black transition-colors disabled:opacity-60 flex items-center justify-center gap-2 order-1 sm:order-2 border border-yellow-400 shadow-md"
           >
-            {submitting && <Loader2 className="w-4 h-4 animate-spin" />}
+            {submitting && <Loader2 className="w-4 h-4 animate-spin text-[#00205B]" />}
             <span>{submitting ? 'Submitting Registration...' : 'Submit Registration'}</span>
           </button>
         </div>

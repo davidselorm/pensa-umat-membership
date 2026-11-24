@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import HostelCellFinder from '@/components/HostelCellFinder';
-import { Home, Users, MapPin, Phone, MessageSquare, Clock, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Home, Users, MapPin, MessageSquare, Clock, ArrowRight } from 'lucide-react';
 
 export default function FamilyUnitsPage() {
   const units = [
@@ -32,16 +32,16 @@ export default function FamilyUnitsPage() {
   ];
 
   return (
-    <div className="flex-1 bg-slate-50 pb-20">
+    <div className="flex-1 bg-white pb-20">
       {/* Header Banner */}
-      <section className="bg-[#0A192F] text-white py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800 relative overflow-hidden">
+      <section className="bg-[#04112B] text-white py-16 px-4 sm:px-6 lg:px-8 border-b border-[#00205B] relative overflow-hidden">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <img
             src="/images/fb/arrival-moments.jpg"
             alt="Campus Cells"
             className="w-full h-full object-cover object-center opacity-20 filter contrast-125"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A192F]/80 via-[#0A192F]/95 to-[#0A192F]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#04112B]/80 via-[#04112B]/95 to-[#04112B]" />
         </div>
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -51,7 +51,7 @@ export default function FamilyUnitsPage() {
               alt="The Church of Pentecost"
               className="w-12 h-12 object-contain drop-shadow brightness-105"
             />
-            <div className="h-7 w-px bg-slate-700" />
+            <div className="h-7 w-px bg-white/20" />
             <img
               src="/images/pensaumatofficial.jpg"
               alt="Official PENSA UMaT Chapter Logo"
@@ -59,13 +59,13 @@ export default function FamilyUnitsPage() {
             />
           </div>
 
-          <span className="text-xs uppercase tracking-wider font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 px-3 py-1 rounded-full">
+          <span className="text-xs uppercase tracking-wider font-bold text-yellow-300 bg-yellow-400/10 border border-yellow-400/30 px-3.5 py-1 rounded-full">
             Residential Campus Cells
           </span>
           <h1 className="text-3xl sm:text-5xl font-black tracking-tight mt-3 text-white">
             Family Units &amp; Home Cells
           </h1>
-          <p className="mt-3 text-slate-300 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-3 text-white/90 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
             Campus is bigger than just services. Our Family Units group members by hostel and residential area so you receive personal care, prayer support, and close friendship.
           </p>
         </div>
@@ -77,16 +77,16 @@ export default function FamilyUnitsPage() {
         <HostelCellFinder />
 
         {/* What Happens Notice */}
-        <div className="bg-white rounded-xl border border-slate-200/90 p-6 sm:p-8 shadow-sm">
+        <div className="bg-white rounded-2xl border border-[#0038A8]/20 p-6 sm:p-8 shadow-sm">
           <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-lg bg-amber-50 border border-amber-200 text-amber-600 flex items-center justify-center shrink-0">
-              <Home className="w-5 h-5" />
+            <div className="w-10 h-10 rounded-xl bg-yellow-400/10 border border-yellow-400/30 text-[#00205B] flex items-center justify-center shrink-0">
+              <Home className="w-5 h-5 text-red-600" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-slate-900">
+              <h2 className="text-base font-bold text-[#00205B]">
                 What Happens at a Family Unit Meeting?
               </h2>
-              <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
+              <p className="text-xs text-neutral-600 mt-1.5 leading-relaxed">
                 Every Sunday afternoon, members gather in their halls or hostels for 1 hour of interactive Bible discussion, personal prayer, academic check-ins, and fellowship. If you fall ill, miss classes, or face challenges, your Cell Leader and family unit members are your first circle of support.
               </p>
             </div>
@@ -96,10 +96,10 @@ export default function FamilyUnitsPage() {
         {/* All Units Cards */}
         <div>
           <div className="mb-6">
-            <span className="text-xs uppercase font-bold text-amber-600 tracking-wider">
+            <span className="text-xs uppercase font-bold text-red-600 tracking-wider">
               Campus Coverage
             </span>
-            <h3 className="text-xl font-bold text-slate-900 mt-0.5">
+            <h3 className="text-xl font-black text-[#00205B] mt-0.5">
               All Residential Fellowship Cells
             </h3>
           </div>
@@ -108,47 +108,47 @@ export default function FamilyUnitsPage() {
             {units.map((unit, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-xl border border-slate-200/90 shadow-sm p-6 card-hover flex flex-col justify-between"
+                className="bg-white rounded-2xl border border-[#0038A8]/20 shadow-sm p-6 card-hover flex flex-col justify-between hover:border-yellow-400 transition-all"
               >
                 <div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-amber-600 block mb-1">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-red-600 block mb-1">
                     {unit.coverage}
                   </span>
-                  <h3 className="text-base font-bold text-slate-900 mb-2">
+                  <h3 className="text-base font-bold text-[#00205B] mb-2">
                     {unit.name}
                   </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                  <p className="text-xs text-neutral-600 leading-relaxed mb-4">
                     {unit.description}
                   </p>
 
-                  <div className="space-y-2 border-t border-slate-100 pt-3 text-xs text-slate-700">
+                  <div className="space-y-2 border-t border-neutral-100 pt-3 text-xs text-neutral-700">
                     <div className="flex items-start gap-2">
-                      <Clock className="w-3.5 h-3.5 text-slate-400 shrink-0 mt-0.5" />
+                      <Clock className="w-3.5 h-3.5 text-yellow-500 shrink-0 mt-0.5" />
                       <span dangerouslySetInnerHTML={{ __html: unit.time }} />
                     </div>
                     <div className="flex items-start gap-2">
-                      <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0 mt-0.5" />
+                      <MapPin className="w-3.5 h-3.5 text-red-600 shrink-0 mt-0.5" />
                       <span>{unit.venue}</span>
                     </div>
                     <div className="flex items-start gap-2">
-                      <Users className="w-3.5 h-3.5 text-slate-400 shrink-0 mt-0.5" />
+                      <Users className="w-3.5 h-3.5 text-[#0038A8] shrink-0 mt-0.5" />
                       <span>Oversight: <strong>{unit.oversight}</strong></span>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-6 pt-3 border-t border-slate-100 flex items-center gap-2">
-                  <a
-                    href="#census"
-                    className="flex-1 py-2 px-2 rounded-md bg-[#0A192F] hover:bg-[#122A4E] text-[11px] font-semibold text-white text-center flex items-center justify-center gap-1.5 transition-colors shadow-sm"
+                <div className="mt-6 pt-3 border-t border-neutral-100 flex items-center gap-2">
+                  <Link
+                    href="/register"
+                    className="flex-1 py-2.5 px-3 rounded-xl bg-[#00205B] hover:bg-[#0038A8] text-[11px] font-bold text-yellow-400 text-center flex items-center justify-center gap-1.5 transition-colors shadow-sm border border-yellow-400/30"
                   >
                     <span>Register for Placement</span>
-                  </a>
+                  </Link>
                   <a
                     href="mailto:secretariat@pensa-umat.org"
-                    className="py-2 px-3 rounded-md border border-slate-200 hover:bg-slate-50 text-[11px] font-semibold text-slate-700 text-center flex items-center justify-center gap-1.5 transition-colors"
+                    className="py-2.5 px-3 rounded-xl border border-neutral-200 hover:bg-neutral-50 text-[11px] font-bold text-neutral-700 text-center flex items-center justify-center gap-1.5 transition-colors"
                   >
-                    <MessageSquare className="w-3 h-3 text-slate-400" />
+                    <MessageSquare className="w-3.5 h-3.5 text-neutral-400" />
                     <span>Inquire</span>
                   </a>
                 </div>
@@ -158,18 +158,18 @@ export default function FamilyUnitsPage() {
         </div>
 
         {/* Allocation Notice Banner */}
-        <div className="bg-[#0A192F] text-white rounded-xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
+        <div className="bg-[#00205B] text-white rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl border border-yellow-400/30">
           <div>
             <h3 className="text-base sm:text-lg font-bold text-white">
               Haven&apos;t been placed in a Family Unit yet?
             </h3>
-            <p className="text-xs text-slate-300 mt-1 max-w-xl">
+            <p className="text-xs text-white/80 mt-1 max-w-xl">
               Fill out the annual membership census with your hostel and level. The executive secretariat automatically routes you to your designated residential cell.
             </p>
           </div>
           <Link
             href="/register"
-            className="px-6 py-2.5 rounded-lg bg-[#D97706] hover:bg-[#B45309] text-white text-xs font-semibold shrink-0 flex items-center gap-2 transition-colors shadow"
+            className="px-6 py-3 rounded-xl bg-[#FACC15] hover:bg-yellow-300 text-[#00205B] text-xs font-bold shrink-0 flex items-center gap-2 transition-colors shadow-md border border-yellow-400"
           >
             <span>Register for Cell Placement</span>
             <ArrowRight className="w-3.5 h-3.5" />

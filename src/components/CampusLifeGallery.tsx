@@ -7,15 +7,7 @@ import {
   X,
   Calendar,
   MapPin,
-  Users,
-  Flame,
-  Award,
-  Sparkles,
-  ExternalLink,
-  BookOpen,
-  Church,
-  Compass,
-  ArrowRight
+  ExternalLink
 } from 'lucide-react';
 
 interface GalleryItem {
@@ -172,16 +164,16 @@ export default function CampusLifeGallery() {
   return (
     <div className="w-full">
       {/* Header and Filter */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-slate-200 gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-neutral-200 gap-4">
         <div>
-          <span className="text-xs uppercase font-bold text-amber-600 tracking-wider flex items-center gap-1.5">
+          <span className="text-xs uppercase font-bold text-red-600 tracking-wider flex items-center gap-1.5">
             <Camera className="w-3.5 h-3.5" />
             Official Campus Photography
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#00205B] mt-1">
             Life at PENSA UMaT
           </h2>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1 max-w-xl">
+          <p className="text-xs sm:text-sm text-neutral-600 mt-1 max-w-xl">
             Authentic photographs of Sunday services, campus prayer vigils, praise ministration, and fellowship life in Tarkwa.
           </p>
         </div>
@@ -192,10 +184,10 @@ export default function CampusLifeGallery() {
             <button
               key={c.id}
               onClick={() => setFilter(c.id)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+              className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
                 filter === c.id
-                  ? 'bg-[#0A192F] text-white shadow-md'
-                  : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+                  ? 'bg-[#00205B] text-yellow-400 shadow-md border border-[#0038A8]'
+                  : 'bg-white border border-[#0038A8]/20 text-[#00205B] hover:bg-yellow-50'
               }`}
             >
               {c.label}
@@ -210,51 +202,51 @@ export default function CampusLifeGallery() {
           <div
             key={item.id}
             onClick={() => setActiveItem(item)}
-            className="group cursor-pointer rounded-2xl overflow-hidden border border-slate-200/90 bg-white shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between card-hover"
+            className="group cursor-pointer rounded-2xl overflow-hidden border border-[#0038A8]/20 bg-white shadow-sm hover:shadow-xl hover:border-yellow-400 transition-all duration-300 flex flex-col justify-between card-hover"
           >
             {/* Authentic Photo Image Container */}
-            <div className="h-60 relative overflow-hidden bg-slate-900">
+            <div className="h-60 relative overflow-hidden bg-black">
               <img
                 src={item.image}
                 alt={item.title}
                 loading="lazy"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
 
               {/* Top Badges */}
               <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-black/60 backdrop-blur-md text-amber-300 border border-white/15">
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-[#00205B]/85 backdrop-blur-md text-yellow-300 border border-yellow-400/30">
                   {item.badge}
                 </span>
-                <span className="p-1.5 rounded-full bg-black/50 backdrop-blur-sm text-white group-hover:bg-amber-500 group-hover:text-slate-950 transition-colors shadow">
+                <span className="p-1.5 rounded-full bg-black/60 backdrop-blur-sm text-white group-hover:bg-yellow-400 group-hover:text-[#00205B] transition-colors shadow">
                   <Eye className="w-3.5 h-3.5" />
                 </span>
               </div>
 
               {/* Bottom Info on Image */}
               <div className="absolute bottom-3 left-3 right-3 text-white">
-                <span className="text-[11px] text-slate-300 flex items-center gap-1 font-medium mb-0.5">
-                  <Calendar className="w-3 h-3 text-amber-400" />
+                <span className="text-[11px] text-white/80 flex items-center gap-1 font-medium mb-0.5">
+                  <Calendar className="w-3 h-3 text-yellow-400" />
                   <span>{item.date}</span>
                 </span>
-                <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-amber-300 transition-colors line-clamp-1">
+                <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-yellow-300 transition-colors line-clamp-1">
                   {item.title}
                 </h3>
               </div>
             </div>
 
             {/* Card Content Footer */}
-            <div className="p-4 bg-white text-xs text-slate-600 flex-1 flex flex-col justify-between">
-              <p className="line-clamp-2 leading-relaxed text-slate-600 mb-3">
+            <div className="p-4 bg-white text-xs text-neutral-600 flex-1 flex flex-col justify-between">
+              <p className="line-clamp-2 leading-relaxed text-neutral-600 mb-3">
                 {item.caption}
               </p>
-              <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-medium">
-                <span className="flex items-center gap-1 text-slate-500">
-                  <MapPin className="w-3 h-3 text-amber-500" />
+              <div className="pt-2 border-t border-neutral-100 flex items-center justify-between text-[11px] text-neutral-500 font-medium">
+                <span className="flex items-center gap-1 text-neutral-600">
+                  <MapPin className="w-3 h-3 text-red-600" />
                   <span>{item.venue}</span>
                 </span>
-                <span className="text-amber-600 font-semibold group-hover:underline">
+                <span className="text-red-600 font-bold group-hover:underline">
                   View Photo &rarr;
                 </span>
               </div>
@@ -271,7 +263,7 @@ export default function CampusLifeGallery() {
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl border border-slate-700 animate-in zoom-in-95 duration-200 flex flex-col max-h-[92vh]"
+            className="bg-white rounded-2xl max-w-3xl w-full overflow-hidden shadow-2xl border border-yellow-400/30 animate-in zoom-in-95 duration-200 flex flex-col max-h-[92vh]"
           >
             {/* Modal Image View */}
             <div className="relative h-80 sm:h-96 bg-black flex items-center justify-center overflow-hidden">
@@ -285,24 +277,24 @@ export default function CampusLifeGallery() {
               {/* Close Button */}
               <button
                 onClick={() => setActiveItem(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-black/60 hover:bg-black/90 text-white transition-colors z-10 shadow"
+                className="absolute top-4 right-4 p-2 rounded-full bg-black/60 hover:bg-red-600 text-white transition-colors z-10 shadow"
                 aria-label="Close modal"
               >
                 <X className="w-4 h-4" />
               </button>
 
               {/* Watermark Crest */}
-              <div className="absolute top-4 left-4 flex items-center gap-2 z-10 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/20">
+              <div className="absolute top-4 left-4 flex items-center gap-2 z-10 bg-[#00205B]/85 backdrop-blur-md px-3 py-1 rounded-full border border-yellow-400/30">
                 <img src="/images/cop-logo.png" alt="COP" className="w-4 h-4 object-contain" />
                 <img src="/images/pensaumatofficial.jpg" alt="Official PENSA UMaT Logo" className="w-4 h-4 object-contain rounded-full" />
-                <span className="text-[10px] font-bold text-amber-300 tracking-wide uppercase">
+                <span className="text-[10px] font-bold text-yellow-300 tracking-wide uppercase">
                   PENSA UMaT Media
                 </span>
               </div>
 
               {/* Image Title on Cover */}
               <div className="absolute bottom-4 left-4 right-4 text-white z-10">
-                <span className="text-xs font-semibold uppercase tracking-wider text-amber-400 block mb-1">
+                <span className="text-xs font-semibold uppercase tracking-wider text-yellow-400 block mb-1">
                   {activeItem.badge}
                 </span>
                 <h2 className="text-lg sm:text-2xl font-black text-white leading-tight">
@@ -312,35 +304,35 @@ export default function CampusLifeGallery() {
             </div>
 
             {/* Modal Body & Details */}
-            <div className="p-6 sm:p-7 space-y-4 text-sm text-slate-700 overflow-y-auto">
-              <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 pb-3 border-b border-slate-100">
-                <span className="flex items-center gap-1.5 font-medium text-slate-800">
-                  <Calendar className="w-4 h-4 text-amber-600" />
+            <div className="p-6 sm:p-7 space-y-4 text-sm text-neutral-700 overflow-y-auto">
+              <div className="flex flex-wrap items-center gap-4 text-xs text-neutral-500 pb-3 border-b border-neutral-100">
+                <span className="flex items-center gap-1.5 font-semibold text-[#00205B]">
+                  <Calendar className="w-4 h-4 text-red-600" />
                   <span>{activeItem.date}</span>
                 </span>
-                <span className="flex items-center gap-1.5 font-medium text-slate-800">
-                  <MapPin className="w-4 h-4 text-amber-600" />
+                <span className="flex items-center gap-1.5 font-semibold text-[#00205B]">
+                  <MapPin className="w-4 h-4 text-red-600" />
                   <span>{activeItem.venue}</span>
                 </span>
-                <span className="text-slate-400">&bull; The Church of Pentecost &bull; Tarkwa Area</span>
+                <span className="text-neutral-400">&bull; The Church of Pentecost &bull; Tarkwa Area</span>
               </div>
 
               <div>
-                <span className="text-xs uppercase font-bold text-slate-500 tracking-wider block mb-1">
+                <span className="text-xs uppercase font-bold text-red-600 tracking-wider block mb-1">
                   Fellowship Context &amp; Story
                 </span>
-                <p className="leading-relaxed text-slate-700 text-sm sm:text-base">
+                <p className="leading-relaxed text-neutral-700 text-sm sm:text-base">
                   {activeItem.caption}
                 </p>
               </div>
 
               {/* Actions Footer */}
-              <div className="flex items-center justify-between pt-3 border-t border-slate-200">
+              <div className="flex items-center justify-between pt-3 border-t border-neutral-200">
                 <a
                   href={activeItem.fbUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs text-blue-600 hover:text-blue-800 font-semibold"
+                  className="inline-flex items-center gap-1.5 text-xs text-[#0038A8] hover:text-[#00205B] font-bold"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                   <span>View Original Post on Facebook</span>
@@ -349,14 +341,14 @@ export default function CampusLifeGallery() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => setActiveItem(null)}
-                    className="px-4 py-2 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-50 text-xs font-semibold"
+                    className="px-4 py-2 rounded-lg border border-neutral-300 text-neutral-700 hover:bg-neutral-50 text-xs font-semibold"
                   >
                     Close
                   </button>
                   <a
                     href="/register"
                     onClick={() => setActiveItem(null)}
-                    className="px-5 py-2 rounded-lg bg-[#0A192F] hover:bg-[#122A4E] text-white text-xs font-semibold shadow"
+                    className="px-5 py-2 rounded-lg bg-[#00205B] hover:bg-[#0038A8] text-yellow-400 font-bold text-xs shadow border border-yellow-400/30"
                   >
                     Join Fellowship
                   </a>

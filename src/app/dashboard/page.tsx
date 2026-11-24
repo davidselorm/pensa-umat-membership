@@ -360,7 +360,7 @@ export default function DashboardPage() {
     return (
       <div className="flex-1 flex items-center justify-center py-20 bg-slate-50">
         <div className="text-center space-y-3">
-          <Loader2 className="w-10 h-10 animate-spin text-[#0F294A] mx-auto" />
+          <Loader2 className="w-10 h-10 animate-spin text-[#00205B] mx-auto" />
           <p className="text-sm font-semibold text-slate-600">Loading PENSA UMaT Secretariat Hub...</p>
         </div>
       </div>
@@ -374,11 +374,11 @@ export default function DashboardPage() {
         <div
           className={`fixed bottom-5 right-5 z-50 px-4 py-3 rounded-xl shadow-xl flex items-center gap-2 text-sm font-medium animate-in slide-in-from-bottom-5 ${
             notification.type === 'success'
-              ? 'bg-[#0F294A] text-white border border-amber-400/40'
+              ? 'bg-[#00205B] text-white border border-yellow-400/40'
               : 'bg-red-600 text-white'
           }`}
         >
-          {notification.type === 'success' ? <Check className="w-4 h-4 text-amber-400" /> : <Info className="w-4 h-4" />}
+          {notification.type === 'success' ? <Check className="w-4 h-4 text-yellow-400" /> : <Info className="w-4 h-4" />}
           <span>{notification.message}</span>
         </div>
       )}
@@ -387,10 +387,10 @@ export default function DashboardPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-200">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-[#0F294A] tracking-tight">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-[#00205B] tracking-tight">
               Executive Admin Dashboard
             </h1>
-            <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-800 border border-amber-300">
+            <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-yellow-100 text-yellow-700 border border-yellow-300">
               SECRETARIAT
             </span>
           </div>
@@ -415,16 +415,16 @@ export default function DashboardPage() {
           </button>
           <button
             onClick={handleExportCsv}
-            className="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-[#0F294A] font-semibold text-xs sm:text-sm shadow-sm flex items-center gap-2 transition-all"
+            className="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-[#00205B] font-semibold text-xs sm:text-sm shadow-sm flex items-center gap-2 transition-all"
           >
-            <Download className="w-4 h-4 text-amber-600" />
+            <Download className="w-4 h-4 text-yellow-500" />
             <span>Export CSV</span>
           </button>
           <button
             onClick={openNewFamilyModal}
-            className="px-4 py-2.5 rounded-xl bg-[#0F294A] hover:bg-[#153A68] text-white font-semibold text-xs sm:text-sm shadow flex items-center gap-2 transition-all active:scale-95"
+            className="px-4 py-2.5 rounded-xl bg-[#00205B] hover:bg-[#0038A8] text-white font-semibold text-xs sm:text-sm shadow flex items-center gap-2 transition-all active:scale-95"
           >
-            <Plus className="w-4 h-4 text-amber-400" />
+            <Plus className="w-4 h-4 text-yellow-400" />
             <span>New Family Unit</span>
           </button>
         </div>
@@ -436,9 +436,9 @@ export default function DashboardPage() {
         <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-sm">
           <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-bold uppercase tracking-wider">Total Members</span>
-            <Users className="w-5 h-5 text-[#0F294A]" />
+            <Users className="w-5 h-5 text-[#00205B]" />
           </div>
-          <div className="text-2xl sm:text-3xl font-black text-[#0F294A]">{stats?.totalMembers || 0}</div>
+          <div className="text-2xl sm:text-3xl font-black text-[#00205B]">{stats?.totalMembers || 0}</div>
           <p className="text-[11px] text-slate-400 mt-1">Registered students</p>
         </div>
 
@@ -446,9 +446,9 @@ export default function DashboardPage() {
         <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-sm">
           <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-bold uppercase tracking-wider">Pentecost</span>
-            <UserCheck className="w-5 h-5 text-emerald-600" />
+            <UserCheck className="w-5 h-5 text-red-600" />
           </div>
-          <div className="text-2xl sm:text-3xl font-black text-emerald-700">{stats?.pentecostCount || 0}</div>
+          <div className="text-2xl sm:text-3xl font-black text-red-700">{stats?.pentecostCount || 0}</div>
           <p className="text-[11px] text-slate-400 mt-1">COP baptized/members</p>
         </div>
 
@@ -456,20 +456,20 @@ export default function DashboardPage() {
         <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-sm">
           <div className="flex items-center justify-between text-slate-500 mb-2">
             <span className="text-xs font-bold uppercase tracking-wider">Associates</span>
-            <UserPlus className="w-5 h-5 text-amber-600" />
+            <UserPlus className="w-5 h-5 text-yellow-500" />
           </div>
-          <div className="text-2xl sm:text-3xl font-black text-amber-600">{stats?.associateCount || 0}</div>
+          <div className="text-2xl sm:text-3xl font-black text-yellow-500">{stats?.associateCount || 0}</div>
           <p className="text-[11px] text-slate-400 mt-1">Associate brothers/sisters</p>
         </div>
 
         {/* Unassigned Members */}
-        <div className="bg-white p-4 sm:p-5 rounded-2xl border border-amber-200 bg-amber-50/40 shadow-sm">
-          <div className="flex items-center justify-between text-amber-800 mb-2">
+        <div className="bg-white p-4 sm:p-5 rounded-2xl border border-yellow-200 bg-yellow-50/40 shadow-sm">
+          <div className="flex items-center justify-between text-yellow-700 mb-2">
             <span className="text-xs font-bold uppercase tracking-wider">Unassigned</span>
-            <UserX className="w-5 h-5 text-amber-600" />
+            <UserX className="w-5 h-5 text-yellow-500" />
           </div>
-          <div className="text-2xl sm:text-3xl font-black text-amber-700">{stats?.unassignedCount || 0}</div>
-          <p className="text-[11px] text-amber-800/80 mt-1">Need Family Unit grouping</p>
+          <div className="text-2xl sm:text-3xl font-black text-yellow-600">{stats?.unassignedCount || 0}</div>
+          <p className="text-[11px] text-yellow-700/80 mt-1">Need Family Unit grouping</p>
         </div>
       </div>
 
@@ -479,7 +479,7 @@ export default function DashboardPage() {
           onClick={() => setActiveTab('directory')}
           className={`pb-3 px-4 text-xs sm:text-sm font-bold border-b-2 flex items-center gap-2 transition-colors ${
             activeTab === 'directory'
-              ? 'border-[#0F294A] text-[#0F294A]'
+              ? 'border-[#00205B] text-[#00205B]'
               : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
@@ -491,7 +491,7 @@ export default function DashboardPage() {
           onClick={() => setActiveTab('family_units')}
           className={`pb-3 px-4 text-xs sm:text-sm font-bold border-b-2 flex items-center gap-2 transition-colors ${
             activeTab === 'family_units'
-              ? 'border-[#0F294A] text-[#0F294A]'
+              ? 'border-[#00205B] text-[#00205B]'
               : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
@@ -503,7 +503,7 @@ export default function DashboardPage() {
           onClick={() => setActiveTab('analytics')}
           className={`pb-3 px-4 text-xs sm:text-sm font-bold border-b-2 flex items-center gap-2 transition-colors ${
             activeTab === 'analytics'
-              ? 'border-[#0F294A] text-[#0F294A]'
+              ? 'border-[#00205B] text-[#00205B]'
               : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
@@ -527,7 +527,7 @@ export default function DashboardPage() {
                 placeholder="Search live by Full Name or Phone Number..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-10 py-3 rounded-xl border border-slate-200 text-sm bg-slate-50/50 focus:bg-white focus:border-[#0F294A] focus:ring-2 focus:ring-blue-100 outline-none transition-all"
+                className="w-full pl-11 pr-10 py-3 rounded-xl border border-slate-200 text-sm bg-slate-50/50 focus:bg-white focus:border-[#00205B] focus:ring-2 focus:ring-blue-100 outline-none transition-all"
               />
               {searchQuery && (
                 <button
@@ -547,7 +547,7 @@ export default function DashboardPage() {
                 <select
                   value={levelFilter}
                   onChange={(e) => setLevelFilter(e.target.value)}
-                  className="w-full p-2 rounded-lg border border-slate-200 bg-white font-medium text-slate-700 outline-none focus:border-[#0F294A]"
+                  className="w-full p-2 rounded-lg border border-slate-200 bg-white font-medium text-slate-700 outline-none focus:border-[#00205B]"
                 >
                   <option value="ALL">All Levels</option>
                   {YEAR_LEVELS.map((lvl) => (
@@ -562,7 +562,7 @@ export default function DashboardPage() {
                 <select
                   value={hostelFilter}
                   onChange={(e) => setHostelFilter(e.target.value)}
-                  className="w-full p-2 rounded-lg border border-slate-200 bg-white font-medium text-slate-700 outline-none focus:border-[#0F294A]"
+                  className="w-full p-2 rounded-lg border border-slate-200 bg-white font-medium text-slate-700 outline-none focus:border-[#00205B]"
                 >
                   <option value="ALL">All Hostels</option>
                   <option value="Chamber of Mines">Chamber of Mines Hall</option>
@@ -578,7 +578,7 @@ export default function DashboardPage() {
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="w-full p-2 rounded-lg border border-slate-200 bg-white font-medium text-slate-700 outline-none focus:border-[#0F294A]"
+                  className="w-full p-2 rounded-lg border border-slate-200 bg-white font-medium text-slate-700 outline-none focus:border-[#00205B]"
                 >
                   <option value="ALL">All Statuses</option>
                   {MEMBERSHIP_STATUSES.map((st) => (
@@ -593,7 +593,7 @@ export default function DashboardPage() {
                 <select
                   value={deptFilter}
                   onChange={(e) => setDeptFilter(e.target.value)}
-                  className="w-full p-2 rounded-lg border border-slate-200 bg-white font-medium text-slate-700 outline-none focus:border-[#0F294A]"
+                  className="w-full p-2 rounded-lg border border-slate-200 bg-white font-medium text-slate-700 outline-none focus:border-[#00205B]"
                 >
                   <option value="ALL">All Departments</option>
                   {CHURCH_DEPARTMENTS.map((dept) => (
@@ -608,7 +608,7 @@ export default function DashboardPage() {
                 <select
                   value={familyFilter}
                   onChange={(e) => setFamilyFilter(e.target.value)}
-                  className="w-full p-2 rounded-lg border border-slate-200 bg-white font-medium text-slate-700 outline-none focus:border-[#0F294A]"
+                  className="w-full p-2 rounded-lg border border-slate-200 bg-white font-medium text-slate-700 outline-none focus:border-[#00205B]"
                 >
                   <option value="ALL">All Units</option>
                   <option value="UNASSIGNED">Unassigned Only</option>
@@ -640,7 +640,7 @@ export default function DashboardPage() {
 
           {/* Bulk Action Bar (when members selected) */}
           {selectedMemberIds.length > 0 && (
-            <div className="bg-[#0F294A] text-white p-3 sm:p-4 rounded-xl flex flex-wrap items-center justify-between gap-3 shadow-md animate-in fade-in duration-200">
+            <div className="bg-[#00205B] text-white p-3 sm:p-4 rounded-xl flex flex-wrap items-center justify-between gap-3 shadow-md animate-in fade-in duration-200">
               <div className="flex items-center gap-3">
                 <span className="text-xs sm:text-sm font-semibold bg-white/20 px-2.5 py-1 rounded-lg">
                   {selectedMemberIds.length} member{selectedMemberIds.length > 1 ? 's' : ''} selected
@@ -656,7 +656,7 @@ export default function DashboardPage() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setShowBulkModal(true)}
-                  className="px-4 py-2 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold rounded-lg text-xs sm:text-sm shadow transition-all active:scale-95 flex items-center gap-1.5"
+                  className="px-4 py-2 bg-gradient-to-r from-yellow-500 to-yellow-500 text-slate-950 font-bold rounded-lg text-xs sm:text-sm shadow transition-all active:scale-95 flex items-center gap-1.5"
                 >
                   <Building className="w-4 h-4" />
                   Assign to Family Unit
@@ -685,11 +685,11 @@ export default function DashboardPage() {
                         <th className="py-3 px-4 w-10">
                           <button
                             onClick={handleSelectAll}
-                            className="text-slate-400 hover:text-[#0F294A]"
+                            className="text-slate-400 hover:text-[#00205B]"
                             title="Select All"
                           >
                             {selectedMemberIds.length === members.length && members.length > 0 ? (
-                              <CheckSquare className="w-4 h-4 text-[#0F294A]" />
+                              <CheckSquare className="w-4 h-4 text-[#00205B]" />
                             ) : (
                               <Square className="w-4 h-4" />
                             )}
@@ -711,16 +711,16 @@ export default function DashboardPage() {
                           <tr
                             key={member.id}
                             className={`hover:bg-blue-50/40 transition-colors ${
-                              isSelected ? 'bg-amber-50/50' : ''
+                              isSelected ? 'bg-yellow-50/50' : ''
                             }`}
                           >
                             <td className="py-3.5 px-4">
                               <button
                                 onClick={() => handleToggleSelect(member.id)}
-                                className="text-slate-400 hover:text-[#0F294A]"
+                                className="text-slate-400 hover:text-[#00205B]"
                               >
                                 {isSelected ? (
-                                  <CheckSquare className="w-4 h-4 text-[#0F294A]" />
+                                  <CheckSquare className="w-4 h-4 text-[#00205B]" />
                                 ) : (
                                   <Square className="w-4 h-4" />
                                 )}
@@ -731,7 +731,7 @@ export default function DashboardPage() {
                             <td className="py-3.5 px-4">
                               <div
                                 onClick={() => setViewingMember(member)}
-                                className="font-bold text-[#0F294A] cursor-pointer hover:underline flex items-center gap-1.5"
+                                className="font-bold text-[#00205B] cursor-pointer hover:underline flex items-center gap-1.5"
                               >
                                 <span>{member.full_name}</span>
                               </div>
@@ -739,8 +739,8 @@ export default function DashboardPage() {
                                 <span
                                   className={`text-[10px] px-1.5 py-0.2 rounded font-semibold ${
                                     member.membership_status === 'Pentecost Member'
-                                      ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
-                                      : 'bg-amber-50 text-amber-700 border border-amber-200'
+                                      ? 'bg-red-50 text-red-700 border border-red-200'
+                                      : 'bg-yellow-50 text-yellow-600 border border-yellow-200'
                                   }`}
                                 >
                                   {member.membership_status}
@@ -754,7 +754,7 @@ export default function DashboardPage() {
                               <div className="flex items-center gap-1 mt-1">
                                 <a
                                   href={`tel:${member.phone}`}
-                                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-blue-50 hover:bg-blue-100 text-[#0F294A] text-[11px] font-semibold border border-blue-200"
+                                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-blue-50 hover:bg-blue-100 text-[#00205B] text-[11px] font-semibold border border-blue-200"
                                   title="Call member"
                                 >
                                   <Phone className="w-3 h-3 text-blue-600" />
@@ -764,10 +764,10 @@ export default function DashboardPage() {
                                   href={getWhatsAppLink(member.phone, member.full_name)}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-[11px] font-semibold border border-emerald-200"
+                                  className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-red-50 hover:bg-red-100 text-red-800 text-[11px] font-semibold border border-red-200"
                                   title="WhatsApp member"
                                 >
-                                  <MessageSquare className="w-3 h-3 text-emerald-600" />
+                                  <MessageSquare className="w-3 h-3 text-red-600" />
                                   <span>WhatsApp</span>
                                 </a>
                               </div>
@@ -792,7 +792,7 @@ export default function DashboardPage() {
                             </td>
 
                             {/* Department */}
-                            <td className="py-3.5 px-4 text-xs font-semibold text-[#0F294A]">
+                            <td className="py-3.5 px-4 text-xs font-semibold text-[#00205B]">
                               <span className="bg-slate-100 px-2 py-1 rounded-md">
                                 {member.department}
                               </span>
@@ -801,12 +801,12 @@ export default function DashboardPage() {
                             {/* Family Unit */}
                             <td className="py-3.5 px-4">
                               {member.family_unit_name ? (
-                                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-50 text-[#0F294A] border border-blue-200">
-                                  <Building className="w-3 h-3 text-amber-500" />
+                                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-50 text-[#00205B] border border-blue-200">
+                                  <Building className="w-3 h-3 text-yellow-500" />
                                   {member.family_unit_name}
                                 </span>
                               ) : (
-                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-amber-50 text-amber-800 border border-amber-200">
+                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-yellow-50 text-yellow-700 border border-yellow-200">
                                   Unassigned
                                 </span>
                               )}
@@ -816,7 +816,7 @@ export default function DashboardPage() {
                             <td className="py-3.5 px-4 text-right">
                               <button
                                 onClick={() => setViewingMember(member)}
-                                className="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 hover:bg-[#0F294A] hover:text-white text-slate-700 transition-colors"
+                                className="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 hover:bg-[#00205B] hover:text-white text-slate-700 transition-colors"
                               >
                                 View Details
                               </button>
@@ -833,7 +833,7 @@ export default function DashboardPage() {
               <div className="lg:hidden space-y-3">
                 <div className="flex items-center justify-between px-1 text-xs text-slate-500">
                   <span>Showing {members.length} members</span>
-                  <button onClick={handleSelectAll} className="font-semibold text-[#0F294A]">
+                  <button onClick={handleSelectAll} className="font-semibold text-[#00205B]">
                     {selectedMemberIds.length === members.length ? 'Deselect All' : 'Select All'}
                   </button>
                 </div>
@@ -844,7 +844,7 @@ export default function DashboardPage() {
                     <div
                       key={member.id}
                       className={`bg-white rounded-2xl p-4 border transition-all shadow-sm ${
-                        isSelected ? 'border-[#0F294A] ring-2 ring-blue-100' : 'border-slate-200'
+                        isSelected ? 'border-[#00205B] ring-2 ring-blue-100' : 'border-slate-200'
                       }`}
                     >
                       <div className="flex items-start justify-between gap-2">
@@ -854,7 +854,7 @@ export default function DashboardPage() {
                             className="mt-1 text-slate-400"
                           >
                             {isSelected ? (
-                              <CheckSquare className="w-5 h-5 text-[#0F294A]" />
+                              <CheckSquare className="w-5 h-5 text-[#00205B]" />
                             ) : (
                               <Square className="w-5 h-5" />
                             )}
@@ -862,7 +862,7 @@ export default function DashboardPage() {
                           <div>
                             <h3
                               onClick={() => setViewingMember(member)}
-                              className="font-bold text-base text-[#0F294A] active:underline cursor-pointer"
+                              className="font-bold text-base text-[#00205B] active:underline cursor-pointer"
                             >
                               {member.full_name}
                             </h3>
@@ -877,8 +877,8 @@ export default function DashboardPage() {
                         <span
                           className={`text-[10px] px-2 py-0.5 rounded-full font-bold uppercase shrink-0 ${
                             member.membership_status === 'Pentecost Member'
-                              ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
-                              : 'bg-amber-50 text-amber-700 border border-amber-200'
+                              ? 'bg-red-50 text-red-700 border border-red-200'
+                              : 'bg-yellow-50 text-yellow-600 border border-yellow-200'
                           }`}
                         >
                           {member.membership_status === 'Pentecost Member' ? 'Pentecost' : 'Associate'}
@@ -893,7 +893,7 @@ export default function DashboardPage() {
                         </div>
                         <div>
                           <span className="text-[10px] text-slate-400 block font-semibold uppercase">Department</span>
-                          <span className="font-medium text-[#0F294A]">{member.department}</span>
+                          <span className="font-medium text-[#00205B]">{member.department}</span>
                         </div>
                       </div>
 
@@ -901,12 +901,12 @@ export default function DashboardPage() {
                       <div className="mt-2 text-xs">
                         <span className="text-[10px] text-slate-400 block font-semibold uppercase">Family Unit</span>
                         {member.family_unit_name ? (
-                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full font-semibold bg-blue-50 text-[#0F294A] border border-blue-200 mt-0.5">
-                            <Building className="w-3 h-3 text-amber-500" />
+                          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full font-semibold bg-blue-50 text-[#00205B] border border-blue-200 mt-0.5">
+                            <Building className="w-3 h-3 text-yellow-500" />
                             {member.family_unit_name}
                           </span>
                         ) : (
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-medium bg-amber-50 text-amber-800 border border-amber-200 mt-0.5">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-medium bg-yellow-50 text-yellow-700 border border-yellow-200 mt-0.5">
                             Unassigned
                           </span>
                         )}
@@ -917,7 +917,7 @@ export default function DashboardPage() {
                         <div className="flex items-center gap-2">
                           <a
                             href={`tel:${member.phone}`}
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#0F294A] font-bold text-xs border border-blue-200 active:scale-95"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#00205B] font-bold text-xs border border-blue-200 active:scale-95"
                           >
                             <Phone className="w-3.5 h-3.5 text-blue-600" />
                             <span>Call</span>
@@ -927,9 +927,9 @@ export default function DashboardPage() {
                             href={getWhatsAppLink(member.phone, member.full_name)}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold text-xs border border-emerald-200 active:scale-95"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-red-50 hover:bg-red-100 text-red-800 font-bold text-xs border border-red-200 active:scale-95"
                           >
-                            <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
+                            <MessageSquare className="w-3.5 h-3.5 text-red-600" />
                             <span>WhatsApp</span>
                           </a>
                         </div>
@@ -955,16 +955,16 @@ export default function DashboardPage() {
         <div className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-5 rounded-2xl border border-slate-200/90 shadow-sm">
             <div>
-              <h2 className="text-lg font-bold text-[#0F294A]">Family Units & Home Cell Groups</h2>
+              <h2 className="text-lg font-bold text-[#00205B]">Family Units & Home Cell Groups</h2>
               <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
                 Organize members into fellowship cells based on halls and off-campus residences
               </p>
             </div>
             <button
               onClick={openNewFamilyModal}
-              className="px-4 py-2.5 rounded-xl bg-[#0F294A] hover:bg-[#153A68] text-white font-bold text-xs sm:text-sm shadow flex items-center gap-2 transition-all self-start sm:self-auto"
+              className="px-4 py-2.5 rounded-xl bg-[#00205B] hover:bg-[#0038A8] text-white font-bold text-xs sm:text-sm shadow flex items-center gap-2 transition-all self-start sm:self-auto"
             >
-              <Plus className="w-4 h-4 text-amber-400" />
+              <Plus className="w-4 h-4 text-yellow-400" />
               <span>Create New Family Unit</span>
             </button>
           </div>
@@ -977,13 +977,13 @@ export default function DashboardPage() {
               >
                 <div>
                   <div className="flex items-start justify-between gap-2 mb-3">
-                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0F294A] flex items-center justify-center font-bold">
-                      <Building className="w-5 h-5 text-amber-500" />
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#00205B] flex items-center justify-center font-bold">
+                      <Building className="w-5 h-5 text-yellow-500" />
                     </div>
                     <div className="flex items-center gap-1">
                       <button
                         onClick={() => openEditFamilyModal(unit)}
-                        className="p-1.5 rounded-lg text-slate-400 hover:text-[#0F294A] hover:bg-slate-100"
+                        className="p-1.5 rounded-lg text-slate-400 hover:text-[#00205B] hover:bg-slate-100"
                         title="Edit Unit"
                       >
                         <Edit className="w-4 h-4" />
@@ -998,7 +998,7 @@ export default function DashboardPage() {
                     </div>
                   </div>
 
-                  <h3 className="font-extrabold text-lg text-[#0F294A]">{unit.name}</h3>
+                  <h3 className="font-extrabold text-lg text-[#00205B]">{unit.name}</h3>
                   <div className="mt-2 space-y-1.5 text-xs text-slate-600">
                     <p>
                       <strong>Leader:</strong> {unit.leader_name}
@@ -1007,7 +1007,7 @@ export default function DashboardPage() {
                       <strong>Contact:</strong>
                       <a
                         href={`tel:${unit.leader_phone}`}
-                        className="text-[#0F294A] hover:underline font-mono"
+                        className="text-[#00205B] hover:underline font-mono"
                       >
                         {unit.leader_phone}
                       </a>
@@ -1029,7 +1029,7 @@ export default function DashboardPage() {
                       setFamilyFilter(unit.id);
                       setActiveTab('directory');
                     }}
-                    className="text-xs font-bold text-[#0F294A] hover:text-amber-600 hover:underline"
+                    className="text-xs font-bold text-[#00205B] hover:text-yellow-500 hover:underline"
                   >
                     View Members &rarr;
                   </button>
@@ -1046,8 +1046,8 @@ export default function DashboardPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Year Level Breakdown */}
             <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-              <h3 className="text-base font-bold text-[#0F294A] mb-4 flex items-center gap-2">
-                <GraduationCap className="w-5 h-5 text-amber-500" />
+              <h3 className="text-base font-bold text-[#00205B] mb-4 flex items-center gap-2">
+                <GraduationCap className="w-5 h-5 text-yellow-500" />
                 Distribution by Year Level
               </h3>
               <div className="space-y-3">
@@ -1063,7 +1063,7 @@ export default function DashboardPage() {
                       </div>
                       <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
                         <div
-                          className="bg-[#0F294A] h-full rounded-full transition-all duration-500"
+                          className="bg-[#00205B] h-full rounded-full transition-all duration-500"
                           style={{ width: `${percent}%` }}
                         />
                       </div>
@@ -1075,8 +1075,8 @@ export default function DashboardPage() {
 
             {/* Department Breakdown */}
             <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-              <h3 className="text-base font-bold text-[#0F294A] mb-4 flex items-center gap-2">
-                <Users className="w-5 h-5 text-amber-500" />
+              <h3 className="text-base font-bold text-[#00205B] mb-4 flex items-center gap-2">
+                <Users className="w-5 h-5 text-yellow-500" />
                 Distribution by Church Department
               </h3>
               <div className="space-y-3">
@@ -1092,7 +1092,7 @@ export default function DashboardPage() {
                       </div>
                       <div className="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
                         <div
-                          className="bg-amber-500 h-full rounded-full transition-all duration-500"
+                          className="bg-yellow-500 h-full rounded-full transition-all duration-500"
                           style={{ width: `${percent}%` }}
                         />
                       </div>
@@ -1110,7 +1110,7 @@ export default function DashboardPage() {
         <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in">
           <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-extrabold text-lg text-[#0F294A]">Bulk Assign to Family Unit</h3>
+              <h3 className="font-extrabold text-lg text-[#00205B]">Bulk Assign to Family Unit</h3>
               <button
                 onClick={() => setShowBulkModal(false)}
                 className="text-slate-400 hover:text-slate-700"
@@ -1131,7 +1131,7 @@ export default function DashboardPage() {
                 <select
                   value={bulkTargetUnit}
                   onChange={(e) => setBulkTargetUnit(e.target.value)}
-                  className="w-full p-3 rounded-xl border border-slate-300 text-sm outline-none focus:border-[#0F294A]"
+                  className="w-full p-3 rounded-xl border border-slate-300 text-sm outline-none focus:border-[#00205B]"
                 >
                   <option value="">-- Choose Family Unit --</option>
                   <option value="UNASSIGN">&bull; Set to Unassigned</option>
@@ -1155,7 +1155,7 @@ export default function DashboardPage() {
                   type="button"
                   disabled={bulkLoading || !bulkTargetUnit}
                   onClick={handleBulkAssign}
-                  className="px-5 py-2.5 rounded-xl bg-[#0F294A] hover:bg-[#153A68] text-white font-bold text-xs shadow disabled:opacity-50 flex items-center gap-2"
+                  className="px-5 py-2.5 rounded-xl bg-[#00205B] hover:bg-[#0038A8] text-white font-bold text-xs shadow disabled:opacity-50 flex items-center gap-2"
                 >
                   {bulkLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
                   <span>Apply Assignment</span>
@@ -1171,7 +1171,7 @@ export default function DashboardPage() {
         <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 animate-in fade-in">
           <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-extrabold text-lg text-[#0F294A]">
+              <h3 className="font-extrabold text-lg text-[#00205B]">
                 {editingFamilyUnit ? 'Edit Family Unit' : 'Create New Family Unit'}
               </h3>
               <button
@@ -1193,7 +1193,7 @@ export default function DashboardPage() {
                   placeholder="e.g. KT Hall Family Unit or Aboso Cell"
                   value={familyForm.name}
                   onChange={(e) => setFamilyForm({ ...familyForm, name: e.target.value })}
-                  className="w-full p-2.5 rounded-xl border border-slate-300 text-sm outline-none focus:border-[#0F294A]"
+                  className="w-full p-2.5 rounded-xl border border-slate-300 text-sm outline-none focus:border-[#00205B]"
                 />
               </div>
 
@@ -1207,7 +1207,7 @@ export default function DashboardPage() {
                   placeholder="e.g. Eld. Emmanuel Ofori"
                   value={familyForm.leader_name}
                   onChange={(e) => setFamilyForm({ ...familyForm, leader_name: e.target.value })}
-                  className="w-full p-2.5 rounded-xl border border-slate-300 text-sm outline-none focus:border-[#0F294A]"
+                  className="w-full p-2.5 rounded-xl border border-slate-300 text-sm outline-none focus:border-[#00205B]"
                 />
               </div>
 
@@ -1221,7 +1221,7 @@ export default function DashboardPage() {
                   placeholder="e.g. 024XXXXXXX"
                   value={familyForm.leader_phone}
                   onChange={(e) => setFamilyForm({ ...familyForm, leader_phone: e.target.value })}
-                  className="w-full p-2.5 rounded-xl border border-slate-300 text-sm outline-none focus:border-[#0F294A]"
+                  className="w-full p-2.5 rounded-xl border border-slate-300 text-sm outline-none focus:border-[#00205B]"
                 />
               </div>
 
@@ -1234,7 +1234,7 @@ export default function DashboardPage() {
                   placeholder="e.g. Sundays 4:30 PM @ KT Hall Lounge"
                   value={familyForm.meeting_info}
                   onChange={(e) => setFamilyForm({ ...familyForm, meeting_info: e.target.value })}
-                  className="w-full p-2.5 rounded-xl border border-slate-300 text-sm outline-none focus:border-[#0F294A]"
+                  className="w-full p-2.5 rounded-xl border border-slate-300 text-sm outline-none focus:border-[#00205B]"
                 />
               </div>
 
@@ -1249,7 +1249,7 @@ export default function DashboardPage() {
                 <button
                   type="submit"
                   disabled={savingFamily}
-                  className="px-5 py-2.5 rounded-xl bg-[#0F294A] hover:bg-[#153A68] text-white font-bold text-xs shadow flex items-center gap-2"
+                  className="px-5 py-2.5 rounded-xl bg-[#00205B] hover:bg-[#0038A8] text-white font-bold text-xs shadow flex items-center gap-2"
                 >
                   {savingFamily ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
                   <span>Save Family Unit</span>
@@ -1267,10 +1267,10 @@ export default function DashboardPage() {
             {/* Drawer Header */}
             <div className="flex items-start justify-between pb-4 border-b border-slate-200">
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-amber-600 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-yellow-500 bg-yellow-50 px-2 py-0.5 rounded-md border border-yellow-200">
                   {viewingMember.membership_status}
                 </span>
-                <h2 className="text-xl font-black text-[#0F294A] mt-1.5">{viewingMember.full_name}</h2>
+                <h2 className="text-xl font-black text-[#00205B] mt-1.5">{viewingMember.full_name}</h2>
                 <p className="text-xs text-slate-500">{viewingMember.year_level} &bull; {viewingMember.programme}</p>
               </div>
               <button
@@ -1289,7 +1289,7 @@ export default function DashboardPage() {
               <div className="flex items-center gap-2">
                 <a
                   href={`tel:${viewingMember.phone}`}
-                  className="px-3.5 py-1.5 rounded-lg bg-blue-50 text-[#0F294A] hover:bg-blue-100 text-xs font-bold border border-blue-200 flex items-center gap-1.5"
+                  className="px-3.5 py-1.5 rounded-lg bg-blue-50 text-[#00205B] hover:bg-blue-100 text-xs font-bold border border-blue-200 flex items-center gap-1.5"
                 >
                   <Phone className="w-3.5 h-3.5 text-blue-600" />
                   <span>Call {viewingMember.phone}</span>
@@ -1298,9 +1298,9 @@ export default function DashboardPage() {
                   href={getWhatsAppLink(viewingMember.phone, viewingMember.full_name)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-3.5 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 hover:bg-emerald-100 text-xs font-bold border border-emerald-200 flex items-center gap-1.5"
+                  className="px-3.5 py-1.5 rounded-lg bg-red-50 text-red-800 hover:bg-red-100 text-xs font-bold border border-red-200 flex items-center gap-1.5"
                 >
-                  <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
+                  <MessageSquare className="w-3.5 h-3.5 text-red-600" />
                   <span>WhatsApp</span>
                 </a>
               </div>
@@ -1349,12 +1349,12 @@ export default function DashboardPage() {
 
                   <div className="p-3 bg-slate-50/60 rounded-xl border border-slate-100">
                     <span className="text-[10px] uppercase font-bold text-slate-400 block">Church Department</span>
-                    <span className="font-semibold text-[#0F294A]">{viewingMember.department}</span>
+                    <span className="font-semibold text-[#00205B]">{viewingMember.department}</span>
                   </div>
 
                   <div className="p-3 bg-slate-50/60 rounded-xl border border-slate-100">
                     <span className="text-[10px] uppercase font-bold text-slate-400 block">Assigned Family Unit</span>
-                    <span className="font-semibold text-[#0F294A]">
+                    <span className="font-semibold text-[#00205B]">
                       {viewingMember.family_unit_name || 'Unassigned'}
                     </span>
                   </div>
@@ -1386,7 +1386,7 @@ export default function DashboardPage() {
                     type="text"
                     value={editForm.full_name || ''}
                     onChange={(e) => setEditForm({ ...editForm, full_name: e.target.value })}
-                    className="w-full p-2.5 rounded-xl border border-slate-300 text-xs outline-none focus:border-[#0F294A]"
+                    className="w-full p-2.5 rounded-xl border border-slate-300 text-xs outline-none focus:border-[#00205B]"
                   />
                 </div>
 
@@ -1397,7 +1397,7 @@ export default function DashboardPage() {
                       type="text"
                       value={editForm.phone || ''}
                       onChange={(e) => setEditForm({ ...editForm, phone: e.target.value })}
-                      className="w-full p-2.5 rounded-xl border border-slate-300 text-xs outline-none focus:border-[#0F294A]"
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-xs outline-none focus:border-[#00205B]"
                     />
                   </div>
                   <div>
@@ -1406,7 +1406,7 @@ export default function DashboardPage() {
                       type="email"
                       value={editForm.email || ''}
                       onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
-                      className="w-full p-2.5 rounded-xl border border-slate-300 text-xs outline-none focus:border-[#0F294A]"
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-xs outline-none focus:border-[#00205B]"
                     />
                   </div>
                 </div>
@@ -1417,7 +1417,7 @@ export default function DashboardPage() {
                     <select
                       value={editForm.year_level || ''}
                       onChange={(e) => setEditForm({ ...editForm, year_level: e.target.value as any })}
-                      className="w-full p-2.5 rounded-xl border border-slate-300 text-xs outline-none focus:border-[#0F294A]"
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-xs outline-none focus:border-[#00205B]"
                     >
                       {YEAR_LEVELS.map((lvl) => (
                         <option key={lvl} value={lvl}>{lvl}</option>
@@ -1429,7 +1429,7 @@ export default function DashboardPage() {
                     <select
                       value={editForm.membership_status || ''}
                       onChange={(e) => setEditForm({ ...editForm, membership_status: e.target.value as any })}
-                      className="w-full p-2.5 rounded-xl border border-slate-300 text-xs outline-none focus:border-[#0F294A]"
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-xs outline-none focus:border-[#00205B]"
                     >
                       {MEMBERSHIP_STATUSES.map((st) => (
                         <option key={st} value={st}>{st}</option>
@@ -1445,7 +1445,7 @@ export default function DashboardPage() {
                       type="text"
                       value={editForm.hostel || ''}
                       onChange={(e) => setEditForm({ ...editForm, hostel: e.target.value })}
-                      className="w-full p-2.5 rounded-xl border border-slate-300 text-xs outline-none focus:border-[#0F294A]"
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-xs outline-none focus:border-[#00205B]"
                     />
                   </div>
                   <div>
@@ -1453,7 +1453,7 @@ export default function DashboardPage() {
                     <select
                       value={editForm.department || ''}
                       onChange={(e) => setEditForm({ ...editForm, department: e.target.value as any })}
-                      className="w-full p-2.5 rounded-xl border border-slate-300 text-xs outline-none focus:border-[#0F294A]"
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-xs outline-none focus:border-[#00205B]"
                     >
                       {CHURCH_DEPARTMENTS.map((dept) => (
                         <option key={dept} value={dept}>{dept}</option>
@@ -1467,7 +1467,7 @@ export default function DashboardPage() {
                   <select
                     value={editForm.family_unit_id || ''}
                     onChange={(e) => setEditForm({ ...editForm, family_unit_id: e.target.value })}
-                    className="w-full p-2.5 rounded-xl border border-slate-300 text-xs outline-none focus:border-[#0F294A]"
+                    className="w-full p-2.5 rounded-xl border border-slate-300 text-xs outline-none focus:border-[#00205B]"
                   >
                     <option value="">Unassigned</option>
                     {familyUnits.map((u) => (
@@ -1482,7 +1482,7 @@ export default function DashboardPage() {
                     type="text"
                     value={editForm.home_location || ''}
                     onChange={(e) => setEditForm({ ...editForm, home_location: e.target.value })}
-                    className="w-full p-2.5 rounded-xl border border-slate-300 text-xs outline-none focus:border-[#0F294A]"
+                    className="w-full p-2.5 rounded-xl border border-slate-300 text-xs outline-none focus:border-[#00205B]"
                   />
                 </div>
 
@@ -1498,7 +1498,7 @@ export default function DashboardPage() {
                     type="button"
                     disabled={savingMember}
                     onClick={handleSaveMember}
-                    className="px-5 py-2 rounded-xl bg-[#0F294A] hover:bg-[#153A68] text-white font-bold text-xs shadow flex items-center gap-1.5"
+                    className="px-5 py-2 rounded-xl bg-[#00205B] hover:bg-[#0038A8] text-white font-bold text-xs shadow flex items-center gap-1.5"
                   >
                     {savingMember && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
                     <span>Save Changes</span>
