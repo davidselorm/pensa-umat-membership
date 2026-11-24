@@ -169,9 +169,9 @@ export default function MinistriesPage() {
               />
               <div className="h-6 w-px bg-slate-700" />
               <img
-                src="/images/pensa-umat-logo.png"
-                alt="PENSA Crest"
-                className="w-11 h-11 object-contain drop-shadow hover:scale-105 transition-transform"
+                src="/images/pensaumatofficial.jpg"
+                alt="Official PENSA UMaT Crest"
+                className="w-11 h-11 object-contain rounded-full drop-shadow hover:scale-105 transition-transform"
               />
               <div className="h-6 w-px bg-slate-700" />
               <img

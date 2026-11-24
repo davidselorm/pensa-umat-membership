@@ -276,7 +276,7 @@ export default function CampusLifeGallery() {
               {/* Crest Badge */}
               <div className="flex items-center gap-2 mb-4 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 w-fit">
                 <img src="/images/cop-logo.png" alt="COP" className="w-4 h-4 object-contain" />
-                <img src="/images/pensa-umat-logo.png" alt="PENSA" className="w-4 h-4 object-contain" />
+                <img src="/images/pensaumatofficial.jpg" alt="Official PENSA UMaT Logo" className="w-4 h-4 object-contain rounded-full" />
                 <span className="text-[10px] font-bold text-amber-300 tracking-wide uppercase">
                   PENSA UMaT Fellowship
                 </span>

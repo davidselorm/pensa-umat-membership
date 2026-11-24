@@ -49,9 +49,9 @@ export default function FamilyUnitsPage() {
             />
             <div className="h-7 w-px bg-slate-700" />
             <img
-              src="/images/pensa-umat-logo.png"
-              alt="PENSA UMaT Chapter"
-              className="w-14 h-14 object-contain drop-shadow brightness-105"
+              src="/images/pensaumatofficial.jpg"
+              alt="Official PENSA UMaT Chapter Logo"
+              className="w-14 h-14 object-contain rounded-full drop-shadow brightness-105"
             />
           </div>
 

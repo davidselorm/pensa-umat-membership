@@ -40,9 +40,9 @@ export default function AboutPage() {
             />
             <div className="h-8 w-px bg-slate-700" />
             <img
-              src="/images/pensa-umat-logo.png"
-              alt="PENSA UMaT Chapter"
-              className="w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow brightness-105"
+              src="/images/pensaumatofficial.jpg"
+              alt="Official PENSA UMaT Chapter Logo"
+              className="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-full drop-shadow brightness-105"
             />
           </div>
 

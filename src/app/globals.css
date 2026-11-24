@@ -23,17 +23,17 @@ body {
 
 /* Micro-transitions */
 .transition-smooth {
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-hover {
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-hover:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 24px -10px rgba(10, 25, 47, 0.12);
-  border-color: rgba(217, 119, 6, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -10px rgba(10, 25, 47, 0.14);
+  border-color: rgba(217, 119, 6, 0.45);
 }
 
 /* Custom scrollbars */
@@ -52,7 +52,7 @@ body {
   background: #94A3B8;
 }
 
-/* Pulsing beacon */
+/* Animations */
 @keyframes beacon {
   0%, 100% {
     opacity: 1;
@@ -66,4 +66,30 @@ body {
 
 .animate-beacon {
   animation: beacon 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-glow {
+  animation: glow-pulse 3s ease-in-out infinite;
 }

@@ -74,9 +74,9 @@ export default function Navbar() {
                 className="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow brightness-105"
               />
               <img
-                src="/images/pensa-umat-logo.png"
-                alt="PENSA UMaT"
-                className="w-9 h-9 sm:w-10 sm:h-10 object-contain drop-shadow brightness-105 group-hover:scale-105 transition-transform"
+                src="/images/pensaumatofficial.jpg"
+                alt="Official PENSA UMaT Logo"
+                className="w-9 h-9 sm:w-10 sm:h-10 object-contain drop-shadow brightness-105 rounded-full group-hover:scale-105 transition-transform"
               />
             </div>
             <div className="flex flex-col">

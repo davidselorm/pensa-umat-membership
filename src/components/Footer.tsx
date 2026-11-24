@@ -16,9 +16,9 @@ export default function Footer() {
                 className="w-11 h-11 object-contain drop-shadow brightness-105"
               />
               <img
-                src="/images/pensa-umat-logo.png"
-                alt="PENSA UMaT"
-                className="w-12 h-12 object-contain drop-shadow brightness-105"
+                src="/images/pensaumatofficial.jpg"
+                alt="Official PENSA UMaT Logo"
+                className="w-12 h-12 object-contain drop-shadow brightness-105 rounded-full"
               />
               <div>
                 <span className="text-white font-bold text-base tracking-tight block">PENSA UMaT</span>
