@@ -260,11 +260,14 @@ export async function ensureInitialized(): Promise<void> {
   _schemaInitialized = true;
 }
 
-// Seed initial admin & sample data if database is empty
+// Seed initial admin if database is empty & purge any fake legacy sample data
 async function seedInitialData(): Promise<void> {
-  const memberCount = await get<{ count: number }>('SELECT COUNT(*) as count FROM members');
-  if (memberCount && memberCount.count > 0) {
-    return;
+  // Purge any fake seeded sample members from previous iterations
+  try {
+    await run("DELETE FROM members WHERE id LIKE 'mem_%'");
+    await run("UPDATE family_units SET leader_name = 'PENSA Secretariat', leader_phone = '' WHERE leader_phone LIKE '+233%'");
+  } catch {
+    // ignore if tables not yet populated
   }
 
   // Salted hash for default admin password: pensa2026!
@@ -284,114 +287,14 @@ async function seedInitialData(): Promise<void> {
 
   await run(
     `INSERT OR IGNORE INTO family_units (id, name, leader_name, leader_phone, meeting_info, created_at) VALUES (?, ?, ?, ?, ?, ?)`,
-    [fu1, 'KT Hall Family Unit', 'Eld. Emmanuel Ofori', '+233541234567', 'Sundays 4:30 PM @ KT Hall Common Room', new Date().toISOString()]
+    [fu1, 'KT Hall Family Unit', 'PENSA Secretariat', '', 'Sundays 4:30 PM @ KT Hall Common Room', new Date().toISOString()]
   );
   await run(
     `INSERT OR IGNORE INTO family_units (id, name, leader_name, leader_phone, meeting_info, created_at) VALUES (?, ?, ?, ?, ?, ?)`,
-    [fu2, 'Chamber & Gold Refinery Cell', 'Dcn. Samuel Mensah', '+233249876543', 'Sundays 5:00 PM @ Chamber Forecourt', new Date().toISOString()]
+    [fu2, 'Chamber & Gold Refinery Cell', 'PENSA Secretariat', '', 'Sundays 5:00 PM @ Chamber Forecourt', new Date().toISOString()]
   );
   await run(
     `INSERT OR IGNORE INTO family_units (id, name, leader_name, leader_phone, meeting_info, created_at) VALUES (?, ?, ?, ?, ?, ?)`,
-    [fu3, 'Tarkwa Banso & Off-Campus Cell', 'Sis. Priscilla Addo', '+233501122334', 'Sundays 4:00 PM @ Grace Hostel Lounge', new Date().toISOString()]
+    [fu3, 'Tarkwa Banso & Off-Campus Cell', 'PENSA Secretariat', '', 'Sundays 4:00 PM @ Grace Hostel Lounge', new Date().toISOString()]
   );
-
-  const now = new Date().toISOString();
-  const sampleMembers = [
-    {
-      id: 'mem_1',
-      full_name: 'Kwadwo Asare Boateng',
-      phone: '+233244112233',
-      email: 'kboateng@st.umat.edu.gh',
-      dob: '2003-04-12',
-      programme: 'BSc Computer Science and Engineering',
-      year_level: 'Level 300',
-      hostel: 'KT Hall',
-      membership_status: 'Pentecost Member',
-      home_location: 'Kumasi, Ashanti Region',
-      department: 'Media',
-      family_unit_id: fu1,
-    },
-    {
-      id: 'mem_2',
-      full_name: 'Abena Serwaa Prempeh',
-      phone: '+233502233445',
-      email: 'asprempeh@st.umat.edu.gh',
-      dob: '2004-09-25',
-      programme: 'BSc Mining Engineering',
-      year_level: 'Level 200',
-      hostel: 'Gold Refinery Hall',
-      membership_status: 'Pentecost Member',
-      home_location: 'Sunyani, Bono Region',
-      department: 'Choir',
-      family_unit_id: fu2,
-    },
-    {
-      id: 'mem_3',
-      full_name: 'David Selorm Agbenyega',
-      phone: '+233241987650',
-      email: 'dsagbenyega@st.umat.edu.gh',
-      dob: '2002-11-18',
-      programme: 'BSc Electrical and Electronic Engineering',
-      year_level: 'Level 400',
-      hostel: 'Chamber of Mines Hall',
-      membership_status: 'Pentecost Member',
-      home_location: 'Ho, Volta Region',
-      department: 'Organizing',
-      family_unit_id: fu2,
-    },
-    {
-      id: 'mem_4',
-      full_name: 'Mercy Esi Mensah',
-      phone: '+233273344556',
-      email: 'memensah@st.umat.edu.gh',
-      dob: '2005-02-14',
-      programme: 'BSc Petroleum Engineering',
-      year_level: 'Level 100',
-      hostel: 'KT Hall',
-      membership_status: 'Associate',
-      home_location: 'Takoradi, Western Region',
-      department: 'Ushering',
-      family_unit_id: fu1,
-    },
-    {
-      id: 'mem_5',
-      full_name: 'Emmanuel Nana Yaw Osei',
-      phone: '+233246789012',
-      email: 'enyosei@st.umat.edu.gh',
-      dob: '2003-08-30',
-      programme: 'BSc Mechanical Engineering',
-      year_level: 'Level 300',
-      hostel: 'Executive Hostel (Off-Campus)',
-      membership_status: 'Pentecost Member',
-      home_location: 'Accra, Greater Accra',
-      department: 'Instrumentalist',
-      family_unit_id: fu3,
-    },
-  ];
-
-  for (const m of sampleMembers) {
-    await run(
-      `INSERT OR IGNORE INTO members (
-        id, full_name, phone, email, dob, programme, year_level,
-        hostel, membership_status, home_location, department,
-        family_unit_id, created_at, updated_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-      [
-        m.id,
-        m.full_name,
-        m.phone,
-        m.email,
-        m.dob,
-        m.programme,
-        m.year_level,
-        m.hostel,
-        m.membership_status,
-        m.home_location,
-        m.department,
-        m.family_unit_id,
-        now,
-        now,
-      ]
-    );
-  }
 }

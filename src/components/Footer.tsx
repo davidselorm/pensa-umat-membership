@@ -38,14 +38,23 @@ export default function Footer() {
                 </span>
               </div>
             </div>
-            <div className="mt-4 flex items-center gap-2">
+            <div className="mt-4 flex flex-wrap items-center gap-2">
               <a
                 href="https://www.facebook.com/share/15t4RRcwnn/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600/20 border border-blue-500/30 text-blue-300 hover:text-white hover:bg-blue-600/30 text-xs font-semibold transition-all"
               >
-                <span>Follow on Facebook</span>
+                <span>Facebook</span>
+                <span>&rarr;</span>
+              </a>
+              <a
+                href="https://www.youtube.com/@Pensaumat"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-rose-600/20 border border-rose-500/30 text-rose-300 hover:text-white hover:bg-rose-600/30 text-xs font-semibold transition-all"
+              >
+                <span>YouTube (@Pensaumat)</span>
                 <span>&rarr;</span>
               </a>
             </div>
@@ -99,23 +108,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/sermons" className="hover:text-amber-400 transition-colors">
-                  Sermons &amp; Audio Vault
-                </Link>
-              </li>
-              <li>
-                <Link href="/events" className="hover:text-amber-400 transition-colors">
-                  Campus Events Calendar
-                </Link>
-              </li>
-              <li>
-                <Link href="/giving" className="hover:text-amber-400 transition-colors">
-                  Giving &amp; Welfare Dues
-                </Link>
-              </li>
-              <li>
-                <Link href="/leadership" className="hover:text-amber-400 transition-colors">
-                  Secretariat &amp; Executive Council
+                <Link href="/register" className="hover:text-amber-400 transition-colors font-medium text-amber-400/90">
+                  2025/2026 Membership Census &rarr;
                 </Link>
               </li>
             </ul>

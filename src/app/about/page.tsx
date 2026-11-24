@@ -116,7 +116,7 @@ export default function AboutPage() {
           </h2>
           <div className="space-y-3 text-xs sm:text-sm text-slate-600 leading-relaxed">
             <p>
-              PENSA UMaT has been a cornerstone of spiritual guidance since the institution&apos;s early days as the KNUST School of Mines and later Western University College, through to its charter as the University of Mines and Technology.
+              PENSA UMaT has been a cornerstone of spiritual guidance since the institution&apos;s early foundation in Tarkwa, through to its charter as Ghana&apos;s premier University of Mines and Technology.
             </p>
             <p>
               With thousands of students undergoing intensive academic training in mining, geological, petroleum, renewable energy, computer science, and electrical engineering, PENSA provides the spiritual sanctuary and community that keeps students balanced, prayerful, and ethically grounded.

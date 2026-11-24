@@ -6,8 +6,7 @@ import { SUGGESTED_HOSTELS } from '@/lib/types';
 
 interface CellInfo {
   unitName: string;
-  leaderName: string;
-  leaderPhone: string;
+  coordinator: string;
   meetingTime: string;
   meetingVenue: string;
   description: string;
@@ -16,42 +15,37 @@ interface CellInfo {
 const CELL_MAPPING: Record<string, CellInfo> = {
   'KT Hall': {
     unitName: 'KT Hall Family Unit',
-    leaderName: 'Eld. Emmanuel Ofori',
-    leaderPhone: '+233541234567',
+    coordinator: 'PENSA Secretariat & KT Hall Shepherds',
     meetingTime: 'Sundays &bull; 4:30 PM',
     meetingVenue: 'KT Hall Common Room / Quadrangle',
-    description: 'Active residential cell covering all rooms in KT Hall. Regular prayer walks, academic accountability, and pastoral care.',
+    description: 'Active residential fellowship covering all blocks in KT Hall. Academic accountability, prayer walks, and mutual encouragement.',
   },
   'Chamber of Mines Hall': {
     unitName: 'Chamber & Gold Refinery Cell',
-    leaderName: 'Dcn. Samuel Mensah',
-    leaderPhone: '+233249876543',
+    coordinator: 'PENSA Secretariat & Chamber Shepherds',
     meetingTime: 'Sundays &bull; 5:00 PM',
     meetingVenue: 'Chamber Forecourt / Study Lounge',
-    description: 'Serving engineering and science students residing in Chamber of Mines Hall with fellowship and brotherhood.',
+    description: 'Serving engineering and science students residing in Chamber of Mines Hall with fellowship, study support, and prayer.',
   },
   'Gold Refinery Hall': {
     unitName: 'Chamber & Gold Refinery Cell',
-    leaderName: 'Dcn. Samuel Mensah',
-    leaderPhone: '+233249876543',
+    coordinator: 'PENSA Secretariat & Gold Refinery Shepherds',
     meetingTime: 'Sundays &bull; 5:00 PM',
     meetingVenue: 'Chamber Forecourt / Study Lounge',
-    description: 'Serving engineering and science students residing in Gold Refinery Hall with fellowship and brotherhood.',
+    description: 'Serving engineering and science students residing in Gold Refinery Hall with fellowship and mutual encouragement.',
   },
   'University Hall': {
     unitName: 'Chamber & Gold Refinery Cell',
-    leaderName: 'Dcn. Samuel Mensah',
-    leaderPhone: '+233249876543',
+    coordinator: 'PENSA Secretariat & University Hall Shepherds',
     meetingTime: 'Sundays &bull; 5:00 PM',
     meetingVenue: 'Chamber Forecourt / Study Lounge',
-    description: 'Campus hall coverage ensuring students in University Hall are supported spiritually.',
+    description: 'Campus hall coverage ensuring students in University Hall are supported spiritually and academically.',
   },
 };
 
 const DEFAULT_OFF_CAMPUS: CellInfo = {
   unitName: 'Tarkwa Banso & Off-Campus Cell',
-  leaderName: 'Sis. Priscilla Addo',
-  leaderPhone: '+233501122334',
+  coordinator: 'PENSA Secretariat & Off-Campus Shepherds',
   meetingTime: 'Sundays &bull; 4:00 PM',
   meetingVenue: 'Grace Hostel Lounge &bull; Tarkwa Banso',
   description: 'Dedicated off-campus pastoral cell covering Grace, Executive, Jerusalem, Railway Quarters, New Town, and Aboso hostels.',
@@ -61,8 +55,6 @@ export default function HostelCellFinder() {
   const [selectedHostel, setSelectedHostel] = useState('KT Hall');
 
   const cell = CELL_MAPPING[selectedHostel] || DEFAULT_OFF_CAMPUS;
-
-  const getCleanPhone = (phone: string) => phone.replace(/[^0-9]/g, '');
 
   return (
     <div className="bg-white rounded-xl border border-slate-300 shadow-sm overflow-hidden max-w-4xl mx-auto">
@@ -74,7 +66,7 @@ export default function HostelCellFinder() {
           Find Your Assigned Family Unit
         </h2>
         <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-xl">
-          Select your hall of residence or off-campus hostel to instantly connect with your cell leader and meeting venue.
+          Select your hall of residence or off-campus hostel to view your designated cell meeting venue and weekly schedule.
         </p>
 
         {/* Hostel Selector */}
@@ -130,30 +122,26 @@ export default function HostelCellFinder() {
               <span className="font-semibold text-slate-900" dangerouslySetInnerHTML={{ __html: cell.meetingVenue }} />
             </div>
             <div>
-              <span className="text-slate-400 block text-[11px] font-medium">Cell Leader</span>
-              <span className="font-semibold text-slate-900">{cell.leaderName}</span>
+              <span className="text-slate-400 block text-[11px] font-medium">Oversight</span>
+              <span className="font-semibold text-slate-900">{cell.coordinator}</span>
             </div>
           </div>
 
           <div className="mt-6 pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center gap-3">
             <a
-              href={`https://wa.me/${getCleanPhone(cell.leaderPhone)}?text=${encodeURIComponent(
-                `Hi ${cell.leaderName}, I reside at ${selectedHostel} on campus and would like to connect with our ${cell.unitName}.`
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto px-5 py-2.5 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm"
+              href="#census"
+              className="w-full sm:w-auto px-5 py-2.5 rounded-md bg-[#D97706] hover:bg-[#B45309] text-white text-xs font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm"
             >
-              <MessageSquare className="w-4 h-4" />
-              <span>Connect on WhatsApp</span>
+              <CheckCircle2 className="w-4 h-4" />
+              <span>Register for Cell Placement in Census</span>
             </a>
 
             <a
-              href={`tel:${cell.leaderPhone}`}
+              href="mailto:secretariat@pensa-umat.org"
               className="w-full sm:w-auto px-5 py-2.5 rounded-md border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-semibold flex items-center justify-center gap-2 transition-colors"
             >
-              <Phone className="w-3.5 h-3.5 text-slate-400" />
-              <span>Call Cell Leader ({cell.leaderPhone})</span>
+              <MessageSquare className="w-3.5 h-3.5 text-slate-400" />
+              <span>Contact Fellowship Secretariat</span>
             </a>
           </div>
         </div>

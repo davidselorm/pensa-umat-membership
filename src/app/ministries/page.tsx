@@ -14,7 +14,9 @@ import {
   Briefcase,
   GraduationCap,
   ArrowRight,
-  Filter
+  Sparkles,
+  Calendar,
+  CheckCircle2
 } from 'lucide-react';
 
 interface Ministry {
@@ -22,7 +24,8 @@ interface Ministry {
   name: string;
   category: 'music' | 'prayer' | 'media' | 'service';
   icon: React.ReactNode;
-  banner: string;
+  gradient: string;
+  badge: string;
   description: string;
   schedule: string;
 }
@@ -35,8 +38,9 @@ export default function MinistriesPage() {
       id: 'choir',
       name: 'The Minstrels & Drama (Music Ministry)',
       category: 'music',
-      icon: <Mic2 className="w-5 h-5 text-amber-400" />,
-      banner: '/images/departments/music-drama.jpg',
+      icon: <Mic2 className="w-5 h-5 text-amber-300" />,
+      gradient: 'from-amber-600/90 via-slate-900 to-[#0A192F]',
+      badge: 'Anointed Worship & Praise',
       description: 'Anointed choir and drama ministration leading the fellowship in high praises, deep prophetic worship, and impactful Christian drama.',
       schedule: 'Rehearsals: Saturdays 4:00 PM &bull; Main Auditorium',
     },
@@ -44,8 +48,9 @@ export default function MinistriesPage() {
       id: 'media',
       name: 'Media & Technical Department',
       category: 'media',
-      icon: <Tv className="w-5 h-5 text-amber-400" />,
-      banner: '/images/departments/media.jpg',
+      icon: <Tv className="w-5 h-5 text-sky-300" />,
+      gradient: 'from-sky-700/90 via-slate-900 to-[#0A192F]',
+      badge: 'Livestreaming & Broadcast',
       description: 'Livestreaming, campus photography, sound engineering, graphic design, projection, social media, and digital broadcast operations.',
       schedule: 'Technical Crew: Sundays 6:30 AM &amp; Midweek Services',
     },
@@ -53,8 +58,9 @@ export default function MinistriesPage() {
       id: 'prayer',
       name: 'Prayer Force (Intercessory Wing)',
       category: 'prayer',
-      icon: <Flame className="w-5 h-5 text-amber-400" />,
-      banner: '/images/departments/prayer.jpg',
+      icon: <Flame className="w-5 h-5 text-rose-300" />,
+      gradient: 'from-rose-700/90 via-slate-900 to-[#0A192F]',
+      badge: 'Campus Intercession',
       description: 'Standing in the gap for the body of Christ, student welfare, exam seasons, and national revival through fervent Holy Ghost intercession.',
       schedule: 'Tuesdays 6:30 PM &amp; Friday Prayer Encounters',
     },
@@ -62,8 +68,9 @@ export default function MinistriesPage() {
       id: 'evangelism',
       name: 'Evangelism & Missions Committee',
       category: 'prayer',
-      icon: <Globe2 className="w-5 h-5 text-amber-400" />,
-      banner: '/images/departments/evangelism.jpg',
+      icon: <Globe2 className="w-5 h-5 text-emerald-300" />,
+      gradient: 'from-emerald-700/90 via-slate-900 to-[#0A192F]',
+      badge: 'Soul Winning & Missions',
       description: 'Taking the gospel to campus halls, hostels, lecture theatres, surrounding Tarkwa mining townships, and rural mission fields.',
       schedule: 'Saturday Morning Street &amp; Hall Evangelism: 7:00 AM',
     },
@@ -71,8 +78,9 @@ export default function MinistriesPage() {
       id: 'bible-study',
       name: 'Bible Study & Discipleship Committee',
       category: 'service',
-      icon: <BookOpen className="w-5 h-5 text-amber-400" />,
-      banner: '/images/departments/bible-study.jpg',
+      icon: <BookOpen className="w-5 h-5 text-indigo-300" />,
+      gradient: 'from-indigo-700/90 via-slate-900 to-[#0A192F]',
+      badge: 'Doctrinal Grounding',
       description: 'Facilitating systematic doctrinal studies, Sunday Bible discussions, member follow-ups, and freshers discipleship syllabus.',
       schedule: 'Midweek Expository Studies: Wednesdays 6:30 PM',
     },
@@ -80,8 +88,9 @@ export default function MinistriesPage() {
       id: 'organizing',
       name: 'Organizing & Stage Protocol',
       category: 'service',
-      icon: <Boxes className="w-5 h-5 text-amber-400" />,
-      banner: '/images/departments/organizing.jpg',
+      icon: <Boxes className="w-5 h-5 text-amber-300" />,
+      gradient: 'from-amber-700/90 via-slate-900 to-[#0A192F]',
+      badge: 'Auditorium Protocol & Logistics',
       description: 'Logistics, auditorium seating arrangements, stage management, venue reservations, and coordinating major fellowship conferences.',
       schedule: 'Setup: Saturdays 5:00 PM &amp; Sundays before service',
     },
@@ -89,8 +98,9 @@ export default function MinistriesPage() {
       id: 'transport',
       name: 'Transport & Logistics Committee',
       category: 'service',
-      icon: <Truck className="w-5 h-5 text-amber-400" />,
-      banner: '/images/departments/transport.jpg',
+      icon: <Truck className="w-5 h-5 text-orange-300" />,
+      gradient: 'from-orange-700/90 via-slate-900 to-[#0A192F]',
+      badge: 'Campus Transit Logistics',
       description: 'Coordinating student bus shuttles from off-campus hostels across Tarkwa, logistics movement for crusades, and vehicular operations.',
       schedule: 'Sunday Shuttles: 6:45 AM &amp; 8:45 AM from hostel cell stops',
     },
@@ -98,8 +108,9 @@ export default function MinistriesPage() {
       id: 'ladies-gents',
       name: 'Ladies&apos; & Gents&apos; Wing',
       category: 'service',
-      icon: <Users2 className="w-5 h-5 text-amber-400" />,
-      banner: '/images/departments/ladies-gents.jpg',
+      icon: <Users2 className="w-5 h-5 text-teal-300" />,
+      gradient: 'from-teal-700/90 via-slate-900 to-[#0A192F]',
+      badge: 'PEMEN & Virtuous Ladies',
       description: 'Nurturing godly young men (PEMEN) and virtuous women (Virtuous Ladies) for leadership, relationship purity, and professional excellence.',
       schedule: 'Bi-Weekly Meetings &bull; Alternate Saturdays 4:30 PM',
     },
@@ -107,8 +118,9 @@ export default function MinistriesPage() {
       id: 'bpc',
       name: 'Business & Political Chamber (BPC)',
       category: 'service',
-      icon: <Briefcase className="w-5 h-5 text-amber-400" />,
-      banner: '/images/departments/bpc.jpg',
+      icon: <Briefcase className="w-5 h-5 text-purple-300" />,
+      gradient: 'from-purple-700/90 via-slate-900 to-[#0A192F]',
+      badge: 'Governance & Enterprise',
       description: 'Equipping Christian students for ethical governance, student politics, entrepreneurship, finance management, and career leadership.',
       schedule: 'Chamber Sessions: Scheduled Monthly Symposiums',
     },
@@ -116,8 +128,9 @@ export default function MinistriesPage() {
       id: 'professional-guild',
       name: 'PENSA Professional Guild (PPG)',
       category: 'service',
-      icon: <GraduationCap className="w-5 h-5 text-amber-400" />,
-      banner: '/images/departments/professional-guild.jpg',
+      icon: <GraduationCap className="w-5 h-5 text-blue-300" />,
+      gradient: 'from-blue-700/90 via-slate-900 to-[#0A192F]',
+      badge: 'Engineering & Alumni Mentorship',
       description: 'Connecting undergraduate engineering and science students with alumni mentors, professional associations, and industrial internships.',
       schedule: 'Mentorship Circles &bull; Academic Semester Clinics',
     },
@@ -140,22 +153,33 @@ export default function MinistriesPage() {
       {/* Header Banner */}
       <section className="bg-[#0A192F] text-white py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800 relative overflow-hidden">
         {/* Subtle background glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-80 bg-gradient-to-b from-amber-500/10 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/20 via-slate-900/40 to-transparent" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] opacity-25" />
+        </div>
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          {/* Official Dual Crests */}
-          <div className="flex items-center justify-center gap-3.5 mb-5">
-            <img
-              src="/images/cop-logo.png"
-              alt="The Church of Pentecost"
-              className="w-12 h-12 sm:w-14 sm:h-14 object-contain drop-shadow brightness-105"
-            />
-            <div className="h-8 w-px bg-slate-700" />
-            <img
-              src="/images/pensa-umat-logo.png"
-              alt="PENSA UMaT Chapter"
-              className="w-14 h-14 sm:w-16 sm:h-16 object-contain drop-shadow brightness-105 hover:scale-105 transition-transform"
-            />
+          {/* Official Tri-Crest Institutional Badge */}
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mb-5">
+            <div className="flex items-center gap-2.5 bg-slate-900/80 px-3.5 py-1.5 rounded-2xl border border-slate-700/60 shadow-xl backdrop-blur-md">
+              <img
+                src="/images/cop-logo.png"
+                alt="The Church of Pentecost"
+                className="w-10 h-10 object-contain drop-shadow brightness-105"
+              />
+              <div className="h-6 w-px bg-slate-700" />
+              <img
+                src="/images/pensa-umat-logo.png"
+                alt="PENSA Crest"
+                className="w-11 h-11 object-contain drop-shadow hover:scale-105 transition-transform"
+              />
+              <div className="h-6 w-px bg-slate-700" />
+              <img
+                src="/images/umat-logo.jpg"
+                alt="UMaT Crest"
+                className="w-8 h-8 object-contain rounded drop-shadow brightness-105"
+              />
+            </div>
           </div>
 
           <span className="text-xs uppercase tracking-wider font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/30 px-3 py-1 rounded-full">
@@ -187,7 +211,7 @@ export default function MinistriesPage() {
         </div>
       </section>
 
-      {/* Ministries Grid with Authentic Department Banners */}
+      {/* Ministries Grid */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filtered.map((min) => (
@@ -195,23 +219,20 @@ export default function MinistriesPage() {
               key={min.id}
               className="bg-white rounded-xl border border-slate-200/90 shadow-sm hover:shadow-md transition-all duration-300 card-hover flex flex-col justify-between overflow-hidden group"
             >
-              {/* Department Banner Image */}
-              <div className="h-44 w-full relative overflow-hidden bg-slate-900">
-                <img
-                  src={min.banner}
-                  alt={min.name}
-                  loading="lazy"
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
-                <div className="absolute top-3 left-3 w-9 h-9 rounded-lg bg-black/60 backdrop-blur-md border border-white/20 flex items-center justify-center shadow">
-                  {min.icon}
+              {/* Department Header Badge */}
+              <div className={`p-6 bg-gradient-to-br ${min.gradient} text-white relative overflow-hidden`}>
+                <div className="absolute right-0 top-0 translate-x-4 -translate-y-4 w-32 h-32 bg-white/5 rounded-full blur-2xl pointer-events-none" />
+                <div className="flex items-center justify-between mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-inner">
+                    {min.icon}
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-black/40 border border-white/15 text-amber-300">
+                    {min.badge}
+                  </span>
                 </div>
-                <div className="absolute bottom-3 left-3 right-3 text-white">
-                  <h3 className="text-base font-bold text-white group-hover:text-amber-300 transition-colors leading-snug">
-                    {min.name}
-                  </h3>
-                </div>
+                <h3 className="text-lg font-bold text-white group-hover:text-amber-300 transition-colors leading-snug">
+                  {min.name}
+                </h3>
               </div>
 
               {/* Department Info & Schedule */}

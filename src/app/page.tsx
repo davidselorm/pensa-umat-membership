@@ -48,36 +48,40 @@ export default function HomePage() {
 
   return (
     <div className="flex-1 bg-slate-50 pb-20">
-      {/* Premier Hero Section with Real Campus Fellowship Photography */}
+      {/* Premier Hero Section with Authentic UMaT Institution Styling */}
       <section className="bg-[#0A192F] text-white pt-20 pb-28 px-4 sm:px-6 lg:px-8 border-b border-slate-800 relative overflow-hidden">
-        {/* Real Campus Fellowship Hero Backdrop */}
+        {/* Architectural Ambient Grid & Radial Glow */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <img
-            src="/images/hero/hero-worship-1.jpg"
-            alt="PENSA UMaT Campus Fellowship"
-            className="w-full h-full object-cover object-center opacity-25 filter contrast-125"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A192F]/80 via-[#0A192F]/95 to-[#0A192F]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-amber-500/15 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/20 via-slate-900/40 to-transparent" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] opacity-25 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_30%,#000_70%,transparent_100%)]" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-amber-500/10 blur-[120px] rounded-full pointer-events-none" />
         </div>
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          {/* Official Dual Crest Badge */}
-          <div className="flex items-center justify-center gap-3.5 mb-6">
-            <img
-              src="/images/cop-logo.png"
-              alt="The Church of Pentecost Official Logo"
-              className="w-14 h-14 sm:w-16 sm:h-16 object-contain drop-shadow-xl brightness-105"
-            />
-            <div className="h-10 w-px bg-slate-700/80" />
-            <img
-              src="/images/pensa-umat-logo.png"
-              alt="PENSA UMaT Chapter Logo"
-              className="w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow-2xl brightness-105 hover:scale-105 transition-transform"
-            />
+          {/* Official Tri-Crest Institutional Badge */}
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mb-6">
+            <div className="flex items-center gap-2.5 bg-slate-900/80 px-3.5 py-1.5 rounded-2xl border border-slate-700/60 shadow-xl backdrop-blur-md">
+              <img
+                src="/images/cop-logo.png"
+                alt="The Church of Pentecost Official Logo"
+                className="w-10 h-10 sm:w-12 sm:h-12 object-contain drop-shadow brightness-105"
+              />
+              <div className="h-6 w-px bg-slate-700" />
+              <img
+                src="/images/pensa-umat-logo.png"
+                alt="PENSA Crest"
+                className="w-11 h-11 sm:w-14 sm:h-14 object-contain drop-shadow hover:scale-105 transition-transform"
+              />
+              <div className="h-6 w-px bg-slate-700" />
+              <img
+                src="/images/umat-logo.jpg"
+                alt="UMaT University Crest"
+                className="w-9 h-9 sm:w-11 sm:h-11 object-contain rounded-md drop-shadow brightness-105"
+              />
+            </div>
           </div>
 
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs font-semibold mb-5 tracking-wide uppercase">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs font-semibold mb-5 tracking-wide uppercase">
             <span>The Church of Pentecost &bull; UMaT Chapter, Tarkwa</span>
           </div>
 
@@ -106,10 +110,10 @@ export default function HomePage() {
             </a>
 
             <Link
-              href="/sermons"
+              href="/ministries"
               className="px-4 py-3 rounded-lg text-slate-300 hover:text-white text-xs sm:text-sm font-medium transition-colors"
             >
-              Listen to Sermons &rarr;
+              Explore Ministries &rarr;
             </Link>
           </div>
         </div>

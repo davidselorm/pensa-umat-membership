@@ -1218,7 +1218,7 @@ export default function DashboardPage() {
                 <input
                   type="tel"
                   required
-                  placeholder="e.g. +233541234567"
+                  placeholder="e.g. 024XXXXXXX"
                   value={familyForm.leader_phone}
                   onChange={(e) => setFamilyForm({ ...familyForm, leader_phone: e.target.value })}
                   className="w-full p-2.5 rounded-xl border border-slate-300 text-sm outline-none focus:border-[#0F294A]"
