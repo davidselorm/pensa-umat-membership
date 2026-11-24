@@ -9,7 +9,7 @@ interface GalleryItem {
   tag: string;
   date: string;
   venue: string;
-  gradient: string;
+  gradient?: string;
   caption: string;
   accent: string;
 }
@@ -45,6 +45,7 @@ export default function CampusLifeGallery() {
       tag: 'prayer',
       date: 'Bi-Weekly Friday All-Night',
       venue: 'Campus Fellowship Center',
+      gradient: 'from-[#1C1917] via-[#C2410C] to-[#0A192F]',
       caption: 'Students pressing into God&apos;s presence during all-night prayer vigils. Interceding for semester examinations, spiritual revival, academic excellence, and family breakthroughs.',
       accent: 'text-orange-400',
     },
@@ -54,6 +55,7 @@ export default function CampusLifeGallery() {
       tag: 'cells',
       date: 'Sunday 4:30 PM',
       venue: 'KT Hall Common Room',
+      gradient: 'from-[#064E3B] via-[#047857] to-[#0A192F]',
       caption: 'Residential campus cells meeting in small circles. Students sharing personal testimonies, reviewing Sunday sermon notes, and encouraging one another.',
       accent: 'text-emerald-400',
     },
@@ -63,6 +65,7 @@ export default function CampusLifeGallery() {
       tag: 'cells',
       date: 'Semester Exam Season',
       venue: 'Engineering Block A',
+      gradient: 'from-[#0F294A] via-[#1D4ED8] to-[#0A192F]',
       caption: 'Senior engineering students and teaching assistants organizing free peer tutorials on engineering mathematics, applied mechanics, circuit analysis, and thermodynamics.',
       accent: 'text-amber-300',
     },
@@ -72,6 +75,7 @@ export default function CampusLifeGallery() {
       tag: 'outreach',
       date: 'Saturday Morning Outreach',
       venue: 'Tarkwa Banso & Market Area',
+      gradient: 'from-[#881337] via-[#BE123C] to-[#0A192F]',
       caption: 'PENSA UMaT members taking the gospel outside campus walls into the mining townships and communities of Tarkwa with tracts, prayer, and practical charity.',
       accent: 'text-rose-400',
     },
